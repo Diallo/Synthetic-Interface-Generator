@@ -436,10 +436,10 @@ if __name__ == "__main__":
     parser.add_argument('prevalence', metavar='P', type=float, action='store',
                     help='Prevalence of Non-Determinism')                   
 
-    parser.add_argument('--output', dest='outputFile', action='store',
+    parser.add_argument('--f', dest='outputFile', action='store',
                         default="generation",
                         help='Enter Name of Output File')
-    parser.add_argument('--Graphical', dest='outputGraphical', action='store_false',
+    parser.add_argument('--g', dest='outputGraphical', action='store_false',
                         default=False,
                         help='Should a graphical reprsentation be given?')
 
