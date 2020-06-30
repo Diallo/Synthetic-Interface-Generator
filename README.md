@@ -15,4 +15,6 @@ The code is a result of my bachelor thesis on "Towards the Scalability of Detect
 
 # Additional Reading
 Thesis: https://diallom.com/static/thesis.pdf
+  
+  
 ComMA:  https://sws.cs.ru.nl/publications/papers/hooman/MODELSWARD2017.pdf
