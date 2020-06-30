@@ -1,0 +1,18 @@
+import "{{output_file}}.types"
+
+signature {{output_file}}
+
+// inputs
+signals 
+{% for transition in statemachine.transitions -%}
+{%- if transition.input -%}
+	in{{loop.index}}
+{% endif -%}
+{%- endfor -%}
+// outputs
+notifications
+{% for transition in statemachine.transitions -%}
+{%- if transition.output -%}
+	out{{loop.index}}
+{% endif -%}
+{%- endfor -%}

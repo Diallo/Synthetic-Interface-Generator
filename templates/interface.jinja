@@ -1,0 +1,27 @@
+import "{{output_file}}.signature"
+
+interface {{output_file}} version "1.0"
+
+
+		
+machine {{output_file}} {
+{% for place in statemachine.states %}
+	{% if place == statemachine.BeginState -%}
+	initial {%- endif %} state {{place.name}}{
+		{%- for transition in statemachine.transitions -%}
+		{% if transition.start == place %}
+			{%- if transition.output %}
+			transition
+				do: out{{loop.index}}
+				next state: {{transition.end.name}}
+			
+			{%- else %}
+			transition
+				trigger: in{{loop.index}}
+				next state: {{transition.end.name}}
+			{% endif %}
+			{% endif %}
+		{%- endfor -%}
+	}
+{% endfor -%}	
+}
