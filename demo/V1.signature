@@ -1,0 +1,19 @@
+import "V1.types"
+
+signature V1
+
+// inputs
+signals 
+inTR1_1
+inTR2_1
+inTR3_1
+inTR1_3
+inTR1_2
+inTR3_1
+inTR1_2
+// outputs
+notifications
+outTR1_1
+outTR1_1
+outTR4_1
+

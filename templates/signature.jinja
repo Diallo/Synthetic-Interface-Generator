@@ -6,13 +6,13 @@ signature {{output_file}}
 signals 
 {% for transition in statemachine.transitions -%}
 {%- if transition.input -%}
-	in{{loop.index}}
+	in{{transition.name}}
 {% endif -%}
 {%- endfor -%}
 // outputs
 notifications
 {% for transition in statemachine.transitions -%}
 {%- if transition.output -%}
-	out{{loop.index}}
+	out{{transition.name}}
 {% endif -%}
 {%- endfor -%}

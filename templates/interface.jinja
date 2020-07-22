@@ -12,12 +12,12 @@ machine {{output_file}} {
 		{% if transition.start == place %}
 			{%- if transition.output %}
 			transition
-				do: out{{loop.index}}
+				do: out{{transition.name}}
 				next state: {{transition.end.name}}
 			
 			{%- else %}
 			transition
-				trigger: in{{loop.index}}
+				trigger: in{{transition.name}}
 				next state: {{transition.end.name}}
 			{% endif %}
 			{% endif %}

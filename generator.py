@@ -8,6 +8,8 @@ from collections import defaultdict
 from collections import Counter
 import stateyasper
 import conversion
+
+# TODO: bug with incorrect number of transitions inputs/outputs?
 class StateMachine:
    
 
@@ -19,6 +21,7 @@ class StateMachine:
         self.deterministic = 0
         self.BeginState = None
         self.FinalState = None
+        self.legs = 1
         
 
 
@@ -39,10 +42,10 @@ class StateMachine:
     def __str__(self):
         output = "STATES: \n"
         for state in self.states:
-            output += "\t state: {} \n".format(state.name)
+            output += "\t state: {} ({})\n".format(state.name,"DT" if state.deterministic else "ND")
         output += "TRANSITIONS: \n"
         for transition in self.transitions:
-            output += "\t transition: {} \n".format(transition)
+            output += "\t transition: {} ({}) \n".format(transition,"input" if transition.input else "output")
 
         output += "Refinement Iterations: \n"
         for refinement_iteration in set(self.rulelist):
@@ -58,23 +61,40 @@ class StateMachine:
 
 class State:
 
-    def __init__(self,name,statemachine):
+    def __init__(self,name,statemachine,leg,number):
         self.name = name
-        statemachine.states.append(self)
+
+        self.name = "{}_{}".format(leg,number)
         self.deterministic = True
         self.outgoing = 0
-       
+        self.nondeterministic = False
+        # identifying info for leg STARTS AT 1
+        self.leg = leg
+        self.number = number
 
+        # If this is lower than maximum of leg there was an expanison
+        for state in statemachine.states:
+            if state.leg == leg and state.number >= number:
+                state.number += 1
+                state.name = "{}_{}".format(state.leg,state.number)
+        statemachine.states.append(self)
+        
+
+    
+           
+    
     def __str__(self):
         return "state '{}'".format(self.name)
 
 class Transition:
 
     def __init__(self,start,end,statemachine):
+        self.name = "TR{}".format(start.name)
         self.start = start
         self.end = end
         self.input = False # This indicates that this transition is an output
         self.output = False
+        self.nondeterministic = False
         statemachine.transitions.append(self)
     
     def __str__(self):
@@ -86,7 +106,7 @@ def r0(state,statemachine):
     """
     This rule expands a given state into two states with a transition between them. 
     """
-    newState = State("r0_gen_{}".format(len(statemachine.states)),statemachine)
+    newState = State("r0_gen_{}".format(len(statemachine.states)),statemachine,state.leg,state.number + 1)
 
     # entire place is replacewd by new place -> transition -> place 
     for transition in statemachine.transitions:
@@ -95,12 +115,24 @@ def r0(state,statemachine):
 
     transition = Transition(state,newState,statemachine)
 
+    if state.nondeterministic:
+        transition.nondeterministic = True
+        newState.nondeterministic = True
+
+    if not state.deterministic:
+        newState.deterministic = False
+        state.deterministic = True
+
     return (transition,None)
 
 def r1(transition,statemachine):
-    newState = State("r1_gen_{}".format(len(statemachine.states)),statemachine)
+    newState = State("r1_gen_{}".format(len(statemachine.states)),statemachine,transition.start.leg,transition.start.number + 1)
     newTransition = Transition(newState,transition.end,statemachine)
     transition.end = newState
+
+    if transition.nondeterministic:
+        newTransition.nondeterministic = True
+        newState.nondeterministic = True
 
     return (transition,newTransition) ### T1 and T2
 
@@ -108,10 +140,18 @@ def r1(transition,statemachine):
 def r2(transition,statemachine):
     newTransition = Transition(transition.start,transition.end,statemachine)
     transition.start.deterministic = False
+    
+    
+    # TODO: Don't need to do anything here about nondeterminism cause modified rules
+
     return (transition,newTransition) ### T1 and T2
 
 def r3(state,statemachine):
     transition = Transition(state,state,statemachine)
+
+    state.deterministic = False
+    #TODO:L Dont need to do anything here about nondet cause modified rules
+
     return (state,transition)
 
 def r4(transition,statemachine):
@@ -140,8 +180,9 @@ def r1_2(t1,t2,statemachine):
 
 
 def r2_1(t1,t2,statemachine):
-    FirstLegState = State("r2_gen_{}".format(len(statemachine.states)),statemachine)
-    SecondLegState = State("r2_gen_{}".format(len(statemachine.states)),statemachine)
+    FirstLegState = State("r2_gen_{}".format(len(statemachine.states)),statemachine,statemachine.legs + 1,1)
+    SecondLegState = State("r2_gen_{}".format(len(statemachine.states)),statemachine,statemachine.legs + 2,1)
+    statemachine.legs += 2
 
     
     t3 = Transition(FirstLegState,t1.end,statemachine)
@@ -157,12 +198,21 @@ def r2_1(t1,t2,statemachine):
     t4.input = True
 
 
+    FirstLegState.nondeterministic = True
+    SecondLegState.nondeterministic = True
+    t1.nondeterministic = True
+    t2.nondeterministic = True
+    t3.nondeterministic = True
+    t4.nondeterministic = True
+
     return None,None
 
     
 def r2_2(t1,t2,statemachine):
-    FirstLegState = State("r2_gen_{}".format(len(statemachine.states)),statemachine)
-    SecondLegState = State("r2_gen_{}".format(len(statemachine.states)),statemachine)
+    FirstLegState = State("r2_gen_{}".format(len(statemachine.states)),statemachine,statemachine.legs + 1,1)
+    SecondLegState = State("r2_gen_{}".format(len(statemachine.states)),statemachine,statemachine.legs + 2,1)
+    statemachine.legs += 2
+
 
     
     t3 = Transition(FirstLegState,t1.end,statemachine)
@@ -177,29 +227,40 @@ def r2_2(t1,t2,statemachine):
     t1.input = True
     t2.input = True
 
+    FirstLegState.nondeterministic = True
+    SecondLegState.nondeterministic = True
+    t1.nondeterministic = True
+    t2.nondeterministic = True
+    t3.nondeterministic = True
+    t4.nondeterministic = True
+
     return None,None
 
 
 def r3_1(p1,t1,statemachine):
     # In examples t1 is labeled as t2
-    newState =  State("r3_gen_n{}".format(p1.name),statemachine)
+    newState =  State("r3_gen_n{}".format(p1.name),statemachine,statemachine.legs + 1,1)
+    statemachine.legs += 1
     t1.end = newState
     t2 = Transition(newState,p1,statemachine)
 
     t2.output = True
     t1.input = True
 
+
+    p1.nondeterministic = True
     return None,None
 
 def r3_2(p1,t1,statemachine):
     # In examples t1 is labeled as t2
-    newState =  State("r3_gen_n{}".format(len(statemachine.states)),statemachine)
-    t1.end = newState
+    newState =  State("r3_gen_n{}".format(p1.name),statemachine,statemachine.legs + 1,1)
+    statemachine.legs += 1
     t2 = Transition(newState,p1,statemachine)
 
     t2.input = True
     t1.output = True
 
+    p1.nondeterministic = True
     return None,None
 
 
@@ -217,7 +278,6 @@ NRuleset[r0] = [r2]
 
 NRuleset[r2] = [r2_1,r2_2]
 NRuleset[r3] = [r3_1,r3_2]
-# ruleset[r4] = [] ]
 # OTHER RULESETS TOO
 
 ################################################################################################
@@ -260,7 +320,35 @@ def selected_rule_states(rule,placeDeterministic=False):
         return 0,0
 
 
+def verify_choice_property(statemachine):
+    nondeterministic_states = [x for x in statemachine.states if x.deterministic == False]
+    
+    for state in nondeterministic_states:
+        transitions = [x for x in statemachine.transitions if x.start == state]
+        
+        
+        for transition in transitions:
+            if transition.input != transitions[0].input:
+                return False
+    return True
 
+
+# TODO: do this recursively
+# def verify_leg_property(statemachine):
+#     nondeterministic_states = [x for x in statemachine.states if x.deterministic == False]
+
+#     for state in nondeterministic_states:
+#         transitions = [x for x in statemachine.transitions if x.start == state and transition.nondeterministic]
+        
+        
+#         for transition in transitions:
+#             current_transition = transitions[0]
+#             count = 0
+#             while current_transition.nondeterministic:
+#                 current_transition = 
+
+#     return True
+  
 
 def max_prevalence(inputs,outputs):
     r1 = abs(inputs-outputs)
@@ -290,6 +378,7 @@ def random_generator(inputs,outputs,prevalence):
     nondeterministic = 0
     deterministic = 0
     currentPrevalence = 0
+
 
     while tempInputs > 0 or tempOutputs > 0:
         if currentPrevalence < prevalence and tempInputs >= 1 and tempOutputs >= 1 :
@@ -349,7 +438,7 @@ def random_generator(inputs,outputs,prevalence):
         currentPrevalence = nondeterministic/(nondeterministic+deterministic) 
       
        
-
+   
     StateMachine.deterministic = deterministic
     StateMachine.nondeterminsitics = nondeterministic
     random.shuffle(ruleApplications)
@@ -382,12 +471,12 @@ def generate(rules):
     statemachine = StateMachine()
     statemachine.rulelist  = rules
     
-    state = State("start",statemachine)
+    state = State("start",statemachine,statemachine.legs,1)
     rulesCopy = rules.copy()
 
     
     while len(rulesCopy) != 0:
-        
+
         randomindex =  random.randrange(len(rulesCopy))
         ruleTuple = rulesCopy[randomindex]
 
@@ -401,7 +490,11 @@ def generate(rules):
 
         firstParam = state
         secondParam = None
+
+        print(ruleTuple)
         for rule in ruleTuple:
+           
+
             # r3_1 or r3_2
             if rule == r3_1 or rule == r3_2:
                 for transition in statemachine.transitions:
@@ -422,8 +515,8 @@ def generate(rules):
         # TODO MAKE THIS POP PRESERVE order
         del rulesCopy[randomindex]
         
-
-        
+    
+       
     return statemachine
 
 
@@ -442,23 +535,45 @@ if __name__ == "__main__":
     parser.add_argument('--g', dest='outputGraphical', action='store_false',
                         default=False,
                         help='Should a graphical reprsentation be given?')
+    parser.add_argument('--s', dest='seed', action='store',
+                     
+                        help='random seed')
 
-    args = parser.parse_args()
+    a = 12
+    while a > 8:
+        print("NEW ROUND")
+        args = parser.parse_args()
 
-    ## Generate StateMachine
-    # TODO: disable wrong parameter values
-    inputs = args.inputs
-    outputs = args.outputs
-    prevalence = args.prevalence
-    max_prevalence = max_prevalence(inputs,outputs)
-    if prevalence > max_prevalence:
-        warnings.warn("Prevalence of {} higher than maximum achievable {}".format(prevalence,max_prevalence), RuntimeWarning,stacklevel=2)
+        ## Generate StateMachine
+        # TODO: disable wrong parameter values
+        if args.seed:
+            random.seed(args.seed)
+
+        inputs = args.inputs
+        outputs = args.outputs
+        prevalence = args.prevalence
+        max_prev = max_prevalence(inputs,outputs)
+        if prevalence > max_prev:
+            warnings.warn("Prevalence of {} higher than maximum achievable {}".format(prevalence,max_prev), RuntimeWarning,stacklevel=2)
+        
+        rules = random_generator(inputs,outputs,prevalence)
+        statemachine  = generate(rules)
+
+        #### TEMP MODIFICATIONS DEMO
     
-    rules = random_generator(inputs,outputs,prevalence)
-    statemachine  = generate(rules)
 
-    conversion.generate_conversion(statemachine,args.outputFile)
+        with open('{}.pnml'.format(args.outputFile), 'w+') as f:
+            print(stateyasper.generate_yasper(statemachine), file=f)  
+        
+        conversion.generate_conversion(statemachine,args.outputFile)
 
+
+        a = len(statemachine.transitions)
+        if a <= 8:
+            print((rules))
+            print(len(statemachine.transitions))  
+            print(statemachine)
+ 
 
     
 

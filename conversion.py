@@ -101,6 +101,7 @@ def generate_conversion(statemachine,output_file="generation",):
     env = Environment(loader=FileSystemLoader('templates'))
 
 
+
     statemachine = replace_final(statemachine)
     
     file_interface = env.get_template('interface.jinja')
@@ -125,3 +126,5 @@ def generate_conversion(statemachine,output_file="generation",):
 
     with open('{}.types'.format(output_file), 'w+') as f:
         print(file_types, file=f)  
+
+   

@@ -52,6 +52,7 @@ def generate_transitions(transitions):
         transitionString = defaultT
         stateInputString = defaultS
 
+        # transitionName = "transition{}".format(transitionNumber)
         transitionName = "transition{}".format(transitionNumber)
         
         inputName = "{}{}".format("in" if transition.input else "out",transitionNumber)
@@ -84,8 +85,8 @@ def generate_transitions(transitions):
 if __name__ == "__main__":
     det = 0
     statemachine = None
-    statemachine  = generator.generate(generator.random_generator(2,7,0.8))
+    statemachine  = generator.generate(generator.random_generator(5,5,0.2))
     det = generator.determine_non_determinism(statemachine)
-    print(det)
+    # print(statemachine)
     print(generate_yasper(statemachine))
 
