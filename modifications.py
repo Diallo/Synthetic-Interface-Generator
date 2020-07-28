@@ -31,14 +31,16 @@ statemachine  = generator.generate(rules)
 statemachine_modified = perform_modifications(statemachine)
 
 print(generator.verify_choice_property(statemachine_modified))
-print(statemachine_modified)
+print(generator.verify_leg_property(statemachine,statemachine.states[4]))
 
-print(stateyasper.generate_yasper(statemachine))
-print(stateyasper.generate_yasper(statemachine_modified))
+# print(statemachine_modified)
+
+# print(stateyasper.generate_yasper(statemachine))
+# print(stateyasper.generate_yasper(statemachine_modified))
 
 
-conversion.generate_conversion(statemachine,"V1")
-conversion.generate_conversion(statemachine_modified,"V2")
+# conversion.generate_conversion(statemachine,"V1")
+# conversion.generate_conversion(statemachine_modified,"V2")
 
 
 

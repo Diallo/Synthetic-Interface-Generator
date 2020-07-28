@@ -1,0 +1,5 @@
+True
+defaultdict(<class 'int'>, {1: 4})
+True
+defaultdict(<class 'int'>, {1: 3})
+True

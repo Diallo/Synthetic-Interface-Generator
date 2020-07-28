@@ -344,21 +344,31 @@ def verify_choice_property(statemachine):
     return True
 
 
-# TODO: do this recursively
-# def verify_leg_property(statemachine):
-#     nondeterministic_states = [x for x in statemachine.states if x.deterministic == False]
 
-#     for state in nondeterministic_states:
-#         transitions = [x for x in statemachine.transitions if x.start == state and transition.nondeterministic]
-        
-        
-#         for transition in transitions:
-#             current_transition = transitions[0]
-#             count = 0
-#             while current_transition.nondeterministic:
-#                 current_transition = 
 
-#     return True
+def verify_leg_property(statemachine,deleting_state):
+    """Verifies that a deletion is legal based upon the leg property.
+
+    Legs must have at least two transitions, which implies that within a leg
+    there must be at least one transition. Generator guarantees such properties.
+    Upon deletion of a transition, one state would disappear, thus to retain valid
+    leg property there must be at least two states within a leg implying three 
+    transitions.
+
+    Args:
+        statemachine ([type]): [description]
+        deleting_state ([type]): [description]
+
+    Returns:
+        [type]: [description]
+    """
+    count = 0
+    for state in statemachine.states:
+        if state.leg == deleting_state.leg:
+            count += 1
+
+
+    return count >= 2 # Deleting legal
   
 
 def max_prevalence(inputs,outputs):
