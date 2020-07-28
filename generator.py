@@ -8,6 +8,7 @@ from collections import defaultdict
 from collections import Counter
 import stateyasper
 import conversion
+import copy
 
 # TODO: bug with incorrect number of transitions inputs/outputs?
 class StateMachine:
@@ -26,18 +27,25 @@ class StateMachine:
 
 
     def setBeginFinal(self):
-        BeginStates = self.states.copy()
-        FinalStates = self.states.copy()
-        excluded = set()
+
+
+        excludedBegin = set()
+        excludedFinal = set()
+
+        # Have to look at each transition and remove
         for t in self.transitions:
-            if t.end not in excluded:
-                BeginStates.remove(t.end)
-                excluded.add(t.end)
-            if t.start not in excluded:
-                FinalStates.remove(t.start)
-                excluded.add(t.start)
-        self.BeginState = BeginStates[0]
-        self.FinalState = FinalStates[0]
+            excludedBegin.add(t.end)
+            excludedFinal.add(t.start)
+        
+        for state in self.states:
+            if state not in excludedBegin:
+                self.BeginState = state
+            if state not in excludedFinal:
+                self.FinalState = state
+        
+    
+
+
 
     def __str__(self):
         output = "STATES: \n"
@@ -88,8 +96,11 @@ class State:
 
 class Transition:
 
+    count = 0
+
     def __init__(self,start,end,statemachine):
-        self.name = "TR{}".format(start.name)
+        self.name = "TR{}_{}".format(start.name,Transition.count)
+        Transition.count += 1
         self.start = start
         self.end = end
         self.input = False # This indicates that this transition is an output
@@ -472,7 +483,7 @@ def generate(rules):
     statemachine.rulelist  = rules
     
     state = State("start",statemachine,statemachine.legs,1)
-    rulesCopy = rules.copy()
+    rulesCopy = copy.deepcopy(rules)
 
     
     while len(rulesCopy) != 0:
@@ -481,6 +492,7 @@ def generate(rules):
         ruleTuple = rulesCopy[randomindex]
 
         statemachine.setBeginFinal()
+        
 
         state = random.choice(statemachine.states)
         while ruleTuple[0] == r3 and (state == statemachine.BeginState or state == statemachine.FinalState):
@@ -491,7 +503,6 @@ def generate(rules):
         firstParam = state
         secondParam = None
 
-        print(ruleTuple)
         for rule in ruleTuple:
            
 
@@ -516,7 +527,7 @@ def generate(rules):
         del rulesCopy[randomindex]
         
     
-       
+    statemachine.setBeginFinal()   
     return statemachine
 
 
@@ -539,40 +550,40 @@ if __name__ == "__main__":
                      
                         help='random seed')
 
-    a = 12
-    while a > 8:
-        print("NEW ROUND")
-        args = parser.parse_args()
+    # a = 12
+    # while a > 8:
+    #     print("NEW ROUND")
+    args = parser.parse_args()
 
-        ## Generate StateMachine
-        # TODO: disable wrong parameter values
-        if args.seed:
-            random.seed(args.seed)
+    ## Generate StateMachine
+    # TODO: disable wrong parameter values
+    if args.seed:
+        random.seed(args.seed)
 
-        inputs = args.inputs
-        outputs = args.outputs
-        prevalence = args.prevalence
-        max_prev = max_prevalence(inputs,outputs)
-        if prevalence > max_prev:
-            warnings.warn("Prevalence of {} higher than maximum achievable {}".format(prevalence,max_prev), RuntimeWarning,stacklevel=2)
-        
-        rules = random_generator(inputs,outputs,prevalence)
-        statemachine  = generate(rules)
-
-        #### TEMP MODIFICATIONS DEMO
+    inputs = args.inputs
+    outputs = args.outputs
+    prevalence = args.prevalence
+    max_prev = max_prevalence(inputs,outputs)
+    if prevalence > max_prev:
+        warnings.warn("Prevalence of {} higher than maximum achievable {}".format(prevalence,max_prev), RuntimeWarning,stacklevel=2)
     
+    rules = random_generator(inputs,outputs,prevalence)
+    statemachine  = generate(rules)
 
-        with open('{}.pnml'.format(args.outputFile), 'w+') as f:
-            print(stateyasper.generate_yasper(statemachine), file=f)  
-        
-        conversion.generate_conversion(statemachine,args.outputFile)
+    #### TEMP MODIFICATIONS DEMO
 
 
-        a = len(statemachine.transitions)
-        if a <= 8:
-            print((rules))
-            print(len(statemachine.transitions))  
-            print(statemachine)
+    with open('{}.pnml'.format(args.outputFile), 'w+') as f:
+        print(stateyasper.generate_yasper(statemachine), file=f)  
+    
+    conversion.generate_conversion(statemachine,args.outputFile)
+
+
+    # a = len(statemachine.transitions)
+    # if a <= 8:
+    #     print((rules))
+    #     print(len(statemachine.transitions))  
+    #     print(statemachine)
  
 
     

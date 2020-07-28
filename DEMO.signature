@@ -1,0 +1,19 @@
+import "DEMO.types"
+
+signature DEMO
+
+// inputs
+signals 
+inTR1_1_0
+inTR1_1_1
+inTR1_2_3
+inTR1_2_4
+inTR1_5_8
+// outputs
+notifications
+outTR1_2_2
+outTR2_1_5
+outTR3_1_6
+outTR2_1_7
+outTR1_6_9
+

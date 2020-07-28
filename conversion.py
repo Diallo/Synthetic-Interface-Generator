@@ -91,9 +91,11 @@ def replace_final(statemachine):
         if transition.end == found:
             transition.end = statemachine.BeginState 
 
-
+    
     statemachine.states.remove(found)
 
+    print(found)
+    print(statemachine.FinalState)
     return statemachine
 
 def generate_conversion(statemachine,output_file="generation",):
@@ -103,7 +105,8 @@ def generate_conversion(statemachine,output_file="generation",):
 
 
     statemachine = replace_final(statemachine)
-    
+
+
     file_interface = env.get_template('interface.jinja')
     file_prj = env.get_template('prj.jinja')
     file_signature = env.get_template('signature.jinja')

@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pnml>
+	<net type='http://www.yasper.org/specs/epnml-1.1' id='do1'>
+	<toolspecific tool='Yasper' version='1.2.4020.34351'>
+		<roles xmlns='http://www.yasper.org/specs/epnml-1.1/toolspec' />
+	</toolspecific>
+ <place id='sin1'>
+       <name><text>in1</text> </name> <graphics>
+        <position x='390' y='170' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place><transition id='stransition1'> 
+ <graphics>
+ <position x='330' y='170' />
+ <dimension x='32' y='32' />
+ </graphics>
+ </transition> <place id='sin2'>
+       <name><text>in2</text> </name> <graphics>
+        <position x='390' y='270' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place><transition id='stransition2'> 
+ <graphics>
+ <position x='330' y='270' />
+ <dimension x='32' y='32' />
+ </graphics>
+ </transition> <place id='sout3'>
+       <name><text>out3</text> </name> <graphics>
+        <position x='390' y='370' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place><transition id='stransition3'> 
+ <graphics>
+ <position x='330' y='370' />
+ <dimension x='32' y='32' />
+ </graphics>
+ </transition> <place id='sin4'>
+       <name><text>in4</text> </name> <graphics>
+        <position x='390' y='470' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place><transition id='stransition4'> 
+ <graphics>
+ <position x='330' y='470' />
+ <dimension x='32' y='32' />
+ </graphics>
+ </transition> <place id='sin5'>
+       <name><text>in5</text> </name> <graphics>
+        <position x='390' y='570' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place><transition id='stransition5'> 
+ <graphics>
+ <position x='330' y='570' />
+ <dimension x='32' y='32' />
+ </graphics>
+ </transition> <place id='sout6'>
+       <name><text>out6</text> </name> <graphics>
+        <position x='390' y='670' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place><transition id='stransition6'> 
+ <graphics>
+ <position x='330' y='670' />
+ <dimension x='32' y='32' />
+ </graphics>
+ </transition> <place id='sout7'>
+       <name><text>out7</text> </name> <graphics>
+        <position x='390' y='770' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place><transition id='stransition7'> 
+ <graphics>
+ <position x='330' y='770' />
+ <dimension x='32' y='32' />
+ </graphics>
+ </transition> <place id='sout8'>
+       <name><text>out8</text> </name> <graphics>
+        <position x='390' y='870' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place><transition id='stransition8'> 
+ <graphics>
+ <position x='330' y='870' />
+ <dimension x='32' y='32' />
+ </graphics>
+ </transition> <place id='sin9'>
+       <name><text>in9</text> </name> <graphics>
+        <position x='390' y='970' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place><transition id='stransition9'> 
+ <graphics>
+ <position x='330' y='970' />
+ <dimension x='32' y='32' />
+ </graphics>
+ </transition> <place id='sout10'>
+       <name><text>out10</text> </name> <graphics>
+        <position x='390' y='1070' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place><transition id='stransition10'> 
+ <graphics>
+ <position x='330' y='1070' />
+ <dimension x='32' y='32' />
+ </graphics>
+ </transition> <place id='s1_1'>
+       <name><text>1_1</text> </name> <graphics>
+        <position x='330' y='150' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place> <place id='s1_5'>
+       <name><text>1_5</text> </name> <graphics>
+        <position x='330' y='250' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place> <place id='s1_4'>
+       <name><text>1_4</text> </name> <graphics>
+        <position x='330' y='350' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place> <place id='s1_2'>
+       <name><text>1_2</text> </name> <graphics>
+        <position x='330' y='450' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place> <place id='s1_3'>
+       <name><text>1_3</text> </name> <graphics>
+        <position x='330' y='550' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place> <place id='s2_1'>
+       <name><text>2_1</text> </name> <graphics>
+        <position x='330' y='650' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place> <place id='s3_1'>
+       <name><text>3_1</text> </name> <graphics>
+        <position x='330' y='750' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place> <place id='s2_2'>
+       <name><text>2_2</text> </name> <graphics>
+        <position x='330' y='850' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place> <place id='s1_7'>
+       <name><text>1_7</text> </name> <graphics>
+        <position x='330' y='950' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place> <place id='s1_6'>
+       <name><text>1_6</text> </name> <graphics>
+        <position x='330' y='1050' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place><arc id='a10' source='s1_4' target='stransition1' />
+<arc id='a15' source='stransition1' target='s1_5' />
+<arc id='a11' source='sin1' target='stransition1' />
+<arc id='a20' source='s1_1' target='stransition2' />
+<arc id='a25' source='stransition2' target='s1_2' />
+<arc id='a21' source='sin2' target='stransition2' />
+<arc id='a30' source='s1_3' target='stransition3' />
+<arc id='a35' source='stransition3' target='s1_4' />
+<arc id='a31' source='stransition3' target='sout3' />
+<arc id='a40' source='s1_2' target='stransition4' />
+<arc id='a45' source='stransition4' target='s2_1' />
+<arc id='a41' source='sin4' target='stransition4' />
+<arc id='a50' source='s1_2' target='stransition5' />
+<arc id='a55' source='stransition5' target='s3_1' />
+<arc id='a51' source='sin5' target='stransition5' />
+<arc id='a60' source='s2_2' target='stransition6' />
+<arc id='a65' source='stransition6' target='s1_3' />
+<arc id='a61' source='stransition6' target='sout6' />
+<arc id='a70' source='s3_1' target='stransition7' />
+<arc id='a75' source='stransition7' target='s1_3' />
+<arc id='a71' source='stransition7' target='sout7' />
+<arc id='a80' source='s2_1' target='stransition8' />
+<arc id='a85' source='stransition8' target='s2_2' />
+<arc id='a81' source='stransition8' target='sout8' />
+<arc id='a90' source='s1_5' target='stransition9' />
+<arc id='a95' source='stransition9' target='s1_6' />
+<arc id='a91' source='sin9' target='stransition9' />
+<arc id='a100' source='s1_6' target='stransition10' />
+<arc id='a105' source='stransition10' target='s1_7' />
+<arc id='a101' source='stransition10' target='sout10' />
+	</net> 
+</pnml>

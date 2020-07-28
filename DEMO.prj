@@ -1,0 +1,34 @@
+import "DEMO.interface"
+
+Project NewProject {
+	Type Mappings {
+		typeMappings {
+			int -> "int32"
+			real -> "double"		
+		}
+	}
+
+	Generate UML {
+		umlTask for interface DEMO
+	}
+	
+	Generate Petri-net {
+		PNet for interface DEMO
+	}
+
+	Generate Dynamics Open Net {
+		openNetTask for interface DEMO {
+			pnet-task: PNet
+			stub-task: stubTask 
+		}
+	}
+	
+	Generate Dynamics stubs {
+		stubTask for interface DEMO {
+			client-params-file-name: "ip.params"
+			web-client: OFF
+			open-net-task: openNetTask
+			o2n-namespace: "tno.dynamics"
+		}
+	}
+}
