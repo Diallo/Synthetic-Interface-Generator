@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="name" for="node" attr.name="name" attr.type="string" />
+  <key id="ttxt" for="edge" attr.name="ttxt" attr.type="string" />
+  <graph edgedefault="directed">
+  <node id="p1_1">
+    <data key="name">p1_1</data>
+  </node>
+  <node id="p1_2">
+    <data key="name">p1_2</data>
+  </node>
+  <node id="p2_1">
+    <data key="name">p2_1</data>
+  </node>
+  <node id="p3_1">
+    <data key="name">p3_1</data>
+  </node>
+  <node id="p4_1">
+    <data key="name">p4_1</data>
+  </node>
+  <node id="p1_3">
+    <data key="name">p1_3</data>
+  </node>
+  <node id="p2_2">
+    <data key="name">p2_2</data>
+  </node>
+  <edge source="p1_1" target="p2_1">
+    <data key="ttxt">/V2::outTRp1_1_1 </data>
+  </edge>
+  <edge source="p1_1" target="p3_1">
+    <data key="ttxt">/V2::outTRp1_1_2 </data>
+  </edge>
+  <edge source="p1_2" target="p1_3">
+    <data key="ttxt">inTRp1_2_8/-</data>
+  </edge>
+  <edge source="p2_1" target="p2_2">
+    <data key="ttxt">/V2::outTRp2_1_9 </data>
+  </edge>
+  <edge source="p3_1" target="p1_2">
+    <data key="ttxt">inTRp3_1_4/-</data>
+  </edge>
+  <edge source="p4_1" target="p1_3">
+    <data key="ttxt">/V2::outTRp4_1_7 </data>
+  </edge>
+  <edge source="p1_3" target="p1_1">
+    <data key="ttxt">inTRp1_3_5/-</data>
+  </edge>
+  <edge source="p1_3" target="p4_1">
+    <data key="ttxt">inTRp1_3_6/-</data>
+  </edge>
+  <edge source="p2_2" target="p1_2">
+    <data key="ttxt">inTRp2_1_3/-</data>
+  </edge>
+  </graph>
+</graphml>

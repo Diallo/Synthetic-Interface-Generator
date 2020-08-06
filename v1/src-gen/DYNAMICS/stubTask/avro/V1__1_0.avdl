@@ -1,0 +1,70 @@
+@namespace("tno.dynamics")
+@version("1.0")
+protocol types {
+	enum Response {
+		ACK,
+		UPDATE
+	}
+	
+	
+	record inTRp1_1_0 {
+		// Records without fields not supported! (because empty stuct are handled different in C/C++) 
+		// introduce a dummy field
+		int dummy;
+	}
+	
+	record inTRp2_1_3 {
+		// Records without fields not supported! (because empty stuct are handled different in C/C++) 
+		// introduce a dummy field
+		int dummy;
+	}
+	
+	record inTRp3_1_4 {
+		// Records without fields not supported! (because empty stuct are handled different in C/C++) 
+		// introduce a dummy field
+		int dummy;
+	}
+	
+	record inTRp1_3_5 {
+		// Records without fields not supported! (because empty stuct are handled different in C/C++) 
+		// introduce a dummy field
+		int dummy;
+	}
+	
+	record inTRp1_3_6 {
+		// Records without fields not supported! (because empty stuct are handled different in C/C++) 
+		// introduce a dummy field
+		int dummy;
+	}
+	
+	record inTRp1_2_8 {
+		// Records without fields not supported! (because empty stuct are handled different in C/C++) 
+		// introduce a dummy field
+		int dummy;
+	}
+	
+	record outTRp1_1_1 {
+		// Records without fields not supported! (because empty stuct are handled different in C/C++) 
+		// introduce a dummy field
+		int dummy;
+	}
+	
+	record outTRp1_1_2 {
+		// Records without fields not supported! (because empty stuct are handled different in C/C++) 
+		// introduce a dummy field
+		int dummy;
+	}
+	
+	record outTRp4_1_7 {
+		// Records without fields not supported! (because empty stuct are handled different in C/C++) 
+		// introduce a dummy field
+		int dummy;
+	}
+	
+	record outTRp2_1_9 {
+		// Records without fields not supported! (because empty stuct are handled different in C/C++) 
+		// introduce a dummy field
+		int dummy;
+	}
+	
+}

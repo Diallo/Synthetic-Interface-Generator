@@ -1,0 +1,39 @@
+INTERFACE
+    INPUT
+        outTRp1_1_1,
+        outTRp1_1_2,
+        outTRp4_1_7,
+        outTRp2_1_9;
+    OUTPUT
+        inTRp1_1_0,
+        inTRp2_1_3,
+        inTRp3_1_4,
+        inTRp1_3_5,
+        inTRp1_3_6,
+        inTRp1_2_8;
+    
+NODES
+    p1_1_Start : ?outTRp1_1_1 + ?outTRp1_1_2 : blue,
+    p1_1_End : final : blue,
+    p1_4 : !inTRp1_3_5 + !inTRp1_3_6 : blue,
+    p1_2 : !inTRp1_2_8 : blue,
+    p2_1 : ?outTRp2_1_9 : blue,
+    p3_1 : !inTRp3_1_4 : blue,
+    p4_1 : ?outTRp4_1_7 : blue,
+    p1_3 : !inTRp1_1_0 : blue,
+    p2_2 : !inTRp2_1_3 : blue;
+    
+INITIALNODE
+    p1_1_Start;
+    
+TRANSITIONS
+    p1_1_Start -> p2_1 : ?outTRp1_1_1,
+    p1_1_Start -> p3_1 : ?outTRp1_1_2,
+    p1_4 -> p1_1_End : !inTRp1_3_5,
+    p1_4 -> p4_1 : !inTRp1_3_6,
+    p1_2 -> p1_3 : !inTRp1_2_8,
+    p2_1 -> p2_2 : ?outTRp2_1_9,
+    p3_1 -> p1_2 : !inTRp3_1_4,
+    p4_1 -> p1_4 : ?outTRp4_1_7,
+    p1_3 -> p1_4 : !inTRp1_1_0,
+    p2_2 -> p1_2 : !inTRp2_1_3;

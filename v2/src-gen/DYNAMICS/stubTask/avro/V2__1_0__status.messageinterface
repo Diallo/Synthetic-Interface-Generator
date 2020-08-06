@@ -1,0 +1,28 @@
+dsl = "org.inaetics/dsl/message/interface/v1.0.0"
+
+message interface V2__1_0__status {
+	version = 1.0
+	"qos" : "sample"
+	"pubsub.config" : "zmq"
+	"pubsub.serializer" : "json"
+	
+	message tno.dynamics.outTRp1_1_1 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_1_2 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp4_1_7 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp2_1_9 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+}
