@@ -10,6 +10,24 @@ import stateyasper
 import conversion
 import copy
 
+
+
+# These dictionaires represent THE FSM
+# indicating which rule functions may be called in which
+# state. 
+# Split into the deterministic ruleset and non-deterministic ruleset
+Druleset = {}
+Druleset["start"] = [r0]
+Druleset[r0] = [r0_1,r0_2,r1]
+Druleset[r1] = [r1_1,r1_2]
+NRuleset = {}
+NRuleset["start"] = [r0,r3]
+NRuleset[r0] = [r2]
+NRuleset[r2] = [r2_1,r2_2]
+NRuleset[r3] = [r3_1,r3_2]
+
+
+
 # TODO: bug with incorrect number of transitions inputs/outputs?
 class StateMachine:
    
@@ -18,30 +36,38 @@ class StateMachine:
         self.rulelist = []
         self.transitions = []
         self.states = []
-        self.nondeterminsitics = 0
-        self.deterministic = 0
+        self.nondeterminsitics = 0 # Number of nondeterministic transitions
+        self.deterministic = 0 # Number of deterministic transitions
         self.BeginState = None
         self.FinalState = None
-        self.legs = 1
+        self.legs = 1 # All portnets start with a single leg as the main leg
         
 
 
     def setBeginFinal(self):
+        """This function determines which places in the portnet
+        are to be marked begin/final after a refinement-iteration.
+        """
 
-
-        excludedBegin = set()
+        
+        excludedBegin = set()   
         excludedFinal = set()
 
-        # Have to look at each transition and remove
+        # For a transition: Start -> End
+        # Start/Final cannot be Final or Begin places respectively
+        # so they're added to the set of excluded
         for t in self.transitions:
             excludedBegin.add(t.end)
             excludedFinal.add(t.start)
         
+        # Find the states which are not present in the respective
+        # excluded
         for state in self.states:
             if state not in excludedBegin:
                 self.BeginState = state
             if state not in excludedFinal:
                 self.FinalState = state
+        # TODO: Test can be done here confirm the length of these sets is len(self.states) - 1
         
     
 
@@ -72,7 +98,7 @@ class State:
     def __init__(self,name,statemachine,leg,number):
         self.name = name
 
-        self.name = "{}_{}".format(leg,number)
+        self.name = "p{}_{}".format(leg,number)
         self.deterministic = True
         self.outgoing = 0
         self.nondeterministic = False
@@ -84,7 +110,7 @@ class State:
         for state in statemachine.states:
             if state.leg == leg and state.number >= number:
                 state.number += 1
-                state.name = "{}_{}".format(state.leg,state.number)
+                state.name = "p{}_{}".format(state.leg,state.number)
         statemachine.states.append(self)
         
 
@@ -165,8 +191,7 @@ def r3(state,statemachine):
 
     return (state,transition)
 
-def r4(transition,statemachine):
-    pass
+
 
 
 
@@ -278,21 +303,7 @@ def r3_2(p1,t1,statemachine):
 
 
 
-Druleset = {}
-Druleset["start"] = [r0]
-Druleset[r0] = [r0_1,r0_2,r1]
-Druleset[r1] = [r1_1,r1_2]
 
-NRuleset = {}
-NRuleset["start"] = [r0,r3]
-NRuleset[r0] = [r2]
-
-NRuleset[r2] = [r2_1,r2_2]
-NRuleset[r3] = [r3_1,r3_2]
-# OTHER RULESETS TOO
-
-################################################################################################
-# TODO aadd r4
 
 
 
@@ -318,7 +329,7 @@ def selected_rule_states(rule,placeDeterministic=False):
     # NOTE: r3 doesnt addd states but always followed by modified that does
 
     # Deterministic/Nondeterministic
-    if rule == r0_1 or rule == r0_2 or rule == r1_1 or rule == r1_2 or rule == r4 :
+    if rule == r0_1 or rule == r0_2 or rule == r1_1 or rule == r1_2:
         return 1,0
     if rule == r2_1 or rule == r2_2:
         return 2,2
@@ -347,7 +358,7 @@ def verify_choice_property(statemachine):
 
 
 def verify_leg_property(statemachine,deleting_state):
-    """Verifies that a deletion is legal based upon the leg property.
+    """Verifies that a deletion of a state is legal based upon the leg property.
 
     Legs must have at least two transitions, which implies that within a leg
     there must be at least one transition. Generator guarantees such properties.
@@ -356,11 +367,11 @@ def verify_leg_property(statemachine,deleting_state):
     transitions.
 
     Args:
-        statemachine ([type]): [description]
-        deleting_state ([type]): [description]
+        statemachine (Statemachine): Current portnet representation.
+        deleting_state (State): State that is to be deleted.
 
     Returns:
-        [type]: [description]
+        Boolean: Would the deletion of this state invalidate portnet properties.
     """
     count = 0
     for state in statemachine.states:
@@ -372,6 +383,22 @@ def verify_leg_property(statemachine,deleting_state):
   
 
 def max_prevalence(inputs,outputs):
+    """Compute the maximum obtainable prevalence based upon
+    an idealistic scenario in which only operations which increase 
+    the prevalence of non-deterministence are selected.
+    
+
+    NOTE: 
+        - Probabilistically unlikely to reach this.
+        - Maximum values when inputs == outputs.
+
+    Args:
+        inputs (integer): Inputs for the simulated portnet.
+        outputs (integer): Outputs for the simulated portnet.
+
+    Returns:
+        float: The maximum obtainable prevalence in a portnet with the given inputs/outputs.
+    """
     r1 = abs(inputs-outputs)
     r2 = 1
     r3 = np.minimum(inputs,outputs) - (r2*2)
@@ -560,9 +587,7 @@ if __name__ == "__main__":
                      
                         help='random seed')
 
-    # a = 12
-    # while a > 8:
-    #     print("NEW ROUND")
+   
     args = parser.parse_args()
 
     ## Generate StateMachine
@@ -580,7 +605,7 @@ if __name__ == "__main__":
     rules = random_generator(inputs,outputs,prevalence)
     statemachine  = generate(rules)
 
-    #### TEMP MODIFICATIONS DEMO
+   
 
 
     with open('{}.pnml'.format(args.outputFile), 'w+') as f:
@@ -589,12 +614,7 @@ if __name__ == "__main__":
     conversion.generate_conversion(statemachine,args.outputFile)
 
 
-    # a = len(statemachine.transitions)
-    # if a <= 8:
-    #     print((rules))
-    #     print(len(statemachine.transitions))  
-    #     print(statemachine)
- 
+
 
     
 
