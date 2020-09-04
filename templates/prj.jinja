@@ -31,4 +31,28 @@ Project NewProject {
 			o2n-namespace: "tno.dynamics"
 		}
 	}
+
+	Generate Reachability-Graph {
+
+             ReachabilityGraph for interface {{output_file}} // Provide Petri net generation task OR interface-name OR *.pnet file.
+
+             {
+
+                    parameters file: "ip.params" // Provide input parameters file.
+
+                    compile-and-generate // Compiles and generates reachability graph as part of ComMA workflow
+
+                    generate-validation-report // Generates report about property checks such as Deadlocks, Race Conditions, Coverage etc.
+
+                    // max-search-depth: 5 // The depth up to which the walker must search. Default value is 5.
+
+                    // Default path to bin folder of a JDK 1.8 (update 181) installation
+
+                    jdk-bin-install-path: "/usr/bin/java" // Check path to bin folder of your JDK installation!
+
+             }
+
+       }
+
+      
 }

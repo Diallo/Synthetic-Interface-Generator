@@ -1,0 +1,26 @@
+{% for key,value in ar_file_input.items() %}
+
+{%- if key != "" -%}
+	tno_dynamics_in{{key}}C -> tno_dynamics_in{{value}}S;
+{% else %}
+-> tno_dynamics_in{{value}}S;
+
+{% endif -%}
+
+
+{%- endfor -%}
+    
+
+
+{% for key,value in ar_file_output.items() %}
+
+{%- if key != "" -%}
+	tno_dynamics_in{{key}}S -> tno_dynamics_in{{value}}C;
+{% else %}
+-> tno_dynamics_in{{value}}S;
+
+{% endif -%}
+
+
+{%- endfor -%}
+    
