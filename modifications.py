@@ -145,9 +145,39 @@ def merge(states,statemachine):
     new_state_position = random.choice(possible_creations)
 
     # Create here
-    return create(statemachine,state)
+    return create(statemachine,new_state_position)
 
 
+def transform(states,statemachine):
+    # States is a list of states either of length 2 or 3
+    # have to verify they are all in the same leg
+    check_leg = states[0].leg
+    if not (states == [x for x in states if x.leg == check_leg]):
+        return False
+
+    # Now have deleted them
+    for state in states:
+        if not delete(statemachine,state):
+            return False
+
+    maximum_number = max(states,key = lambda x: x.number)
+    possible_creations = [x for x in statemachine if x.leg == check_leg and x.number >= maximum_number]
+    
+    # No location possible for create
+    if possible_creations == []:
+        return False
+
+    # Select a random position
+    # TODO REDO NUMBERING
+    first = create(statemachine, random.choice(possible_creations)) 
+    second = create(statemachine, random.choice(possible_creations)) 
+    # Create here
+    return first and second
+
+
+def split():
+    # TODO: createa fucntion that renumbers the statemachine
+    pass
 
 
 random.seed(5)
@@ -169,26 +199,13 @@ for transition in statemachine.transitions:
 
 
 
-# print(statemachine.states[7]) # 1_3
-# print(statemachine.states[1]) # 1_4
 
-
-# print(generator.verify_leg_property(statemachine,statemachine.states[1]))
 
 statemachine_modified = perform_modifications(statemachine)
 
-# print(generator.verify_choice_property(statemachine_modified))
-# print(generator.verify_leg_property(statemachine,statemachine.states[4]))
-# print(statemachine)
-# print(statemachine_modified)
 
-# print(stateyasper.generate_yasper(statemachine))
-# print(statemachine_modified)
-# print(stateyasper.generate_yasper(statemachine_modified))
-
-
-# conversion.generate_conversion(statemachine,"V1")
-# conversion.generate_conversion(statemachine_modified,"V2")
+conversion.generate_conversion(statemachine,"V1")
+conversion.generate_conversion(statemachine_modified,"V2")
 
 # TEMPORARY TODO
 from jinja2 import Environment, FileSystemLoader

@@ -12,19 +12,6 @@ import copy
 
 
 
-# These dictionaires represent THE FSM
-# indicating which rule functions may be called in which
-# state. 
-# Split into the deterministic ruleset and non-deterministic ruleset
-Druleset = {}
-Druleset["start"] = [r0]
-Druleset[r0] = [r0_1,r0_2,r1]
-Druleset[r1] = [r1_1,r1_2]
-NRuleset = {}
-NRuleset["start"] = [r0,r3]
-NRuleset[r0] = [r2]
-NRuleset[r2] = [r2_1,r2_2]
-NRuleset[r3] = [r3_1,r3_2]
 
 
 
@@ -97,7 +84,7 @@ class State:
 
     def __init__(self,name,statemachine,leg,number):
         self.name = name
-
+        self.modifiable = True
         self.name = "p{}_{}".format(leg,number)
         self.deterministic = True
         self.outgoing = 0
@@ -303,6 +290,19 @@ def r3_2(p1,t1,statemachine):
 
 
 
+# These dictionaires represent THE FSM
+# indicating which rule functions may be called in which
+# state. 
+# Split into the deterministic ruleset and non-deterministic ruleset
+Druleset = {}
+Druleset["start"] = [r0]
+Druleset[r0] = [r0_1,r0_2,r1]
+Druleset[r1] = [r1_1,r1_2]
+NRuleset = {}
+NRuleset["start"] = [r0,r3]
+NRuleset[r0] = [r2]
+NRuleset[r2] = [r2_1,r2_2]
+NRuleset[r3] = [r3_1,r3_2]
 
 
 
