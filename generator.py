@@ -275,15 +275,20 @@ def r3_1(p1,t1,statemachine):
     return None,None
 
 def r3_2(p1,t1,statemachine):
+    
     # In examples t1 is labeled as t2
     newState =  State("r3_gen_n{}".format(p1.name),statemachine,statemachine.legs + 1,1)
     statemachine.legs += 1
+    t1.end = newState
     t2 = Transition(newState,p1,statemachine)
 
     t2.input = True
     t1.output = True
 
     p1.nondeterministic = True
+    
+   
+
     return None,None
 
 
@@ -522,8 +527,11 @@ def generate(rules):
     state = State("start",statemachine,statemachine.legs,1)
     rulesCopy = copy.deepcopy(rules)
 
-    
     while len(rulesCopy) != 0:
+       
+        
+
+        
 
         randomindex =  random.randrange(len(rulesCopy))
         ruleTuple = rulesCopy[randomindex]
@@ -532,6 +540,7 @@ def generate(rules):
         
 
         state = random.choice(statemachine.states)
+        
         while ruleTuple[0] == r3 and (state == statemachine.BeginState or state == statemachine.FinalState):
             state = random.choice(statemachine.states)
             randomindex =  random.randrange(len(rulesCopy))
@@ -545,6 +554,7 @@ def generate(rules):
 
             # r3_1 or r3_2
             if rule == r3_1 or rule == r3_2:
+            
                 for transition in statemachine.transitions:
                     if transition.start == state:
                         if transition.input:
@@ -553,7 +563,7 @@ def generate(rules):
                             rule = r3_2
                         break
 
-
+                   
             if secondParam:
                 firstParam, secondParam = rule(firstParam,secondParam,statemachine)
                 
@@ -562,7 +572,6 @@ def generate(rules):
 
         # TODO MAKE THIS POP PRESERVE order
         del rulesCopy[randomindex]
-        
     
     statemachine.setBeginFinal()   
     return statemachine
