@@ -15,7 +15,7 @@ import copy
 
 
 
-# TODO: bug with incorrect number of transitions inputs/outputs?
+# TODO: There might be a bug with incorrect number of transitions inputs/outputs?
 class StateMachine:
    
 
@@ -435,58 +435,33 @@ def random_generator(inputs,outputs,prevalence):
 
     while tempInputs > 0 or tempOutputs > 0:
         if currentPrevalence < prevalence and tempInputs >= 1 and tempOutputs >= 1 :
-           
-            currentState = "start"
-            rules = []
-            while currentState in NRuleset:
-             
-                madeChoice = random.choice(NRuleset[currentState])
-                if madeChoice == r3 and deterministic == 0:
-                    continue
-                else:
-                    currentState = madeChoice
-                    rules.append(currentState)
-                
-            deterministic += selected_rule_states(currentState)[0]
-            nondeterministic += selected_rule_states(currentState)[1]
-            tempInputs -= selected_rule_inputs_outputs(currentState)[0]
-            tempOutputs -= selected_rule_inputs_outputs(currentState)[1]
-
-            if tempInputs < 0 or tempOutputs < 0:
-                tempInputs += selected_rule_inputs_outputs(currentState)[0]
-                tempOutputs += selected_rule_inputs_outputs(currentState)[1]
-                deterministic += selected_rule_states(currentState)[0]
-                nondeterministic += selected_rule_states(currentState)[1]
-            else:
-                ruleApplications.append(tuple(rules))
-
-
-        
-        # if prevalence above required
+            setToUse = NRuleset
         else:
-      
-            currentState = "start"
-            rules = []
-            while currentState in Druleset:
-             
-                madeChoice = random.choice(Druleset[currentState])
-                
+            setToUse = Druleset
+
+        currentState = "start"
+        rules = []
+        while currentState in NRuleset:
+            
+            madeChoice = random.choice(setToUse[currentState])
+            if madeChoice == r3 and deterministic == 0:
+                continue
+            else:
                 currentState = madeChoice
                 rules.append(currentState)
-                
             
-            deterministic += selected_rule_states(currentState)[0]
-            nondeterministic += selected_rule_states(currentState)[1]
-            tempInputs -= selected_rule_inputs_outputs(currentState)[0]
-            tempOutputs -= selected_rule_inputs_outputs(currentState)[1]
+        deterministic += selected_rule_states(currentState)[0]
+        nondeterministic += selected_rule_states(currentState)[1]
+        tempInputs -= selected_rule_inputs_outputs(currentState)[0]
+        tempOutputs -= selected_rule_inputs_outputs(currentState)[1]
 
-            if tempInputs < 0 or tempOutputs < 0:
-                tempInputs += selected_rule_inputs_outputs(currentState)[0]
-                tempOutputs += selected_rule_inputs_outputs(currentState)[1]
-                deterministic += selected_rule_states(currentState)[0]
-                nondeterministic += selected_rule_states(currentState)[1]
-            else:
-                ruleApplications.append(tuple(rules))
+        if tempInputs < 0 or tempOutputs < 0:
+            tempInputs += selected_rule_inputs_outputs(currentState)[0]
+            tempOutputs += selected_rule_inputs_outputs(currentState)[1]
+            deterministic -= selected_rule_states(currentState)[0]
+            nondeterministic -= selected_rule_states(currentState)[1]
+        else:
+            ruleApplications.append(tuple(rules))
 
         currentPrevalence = nondeterministic/(nondeterministic+deterministic) 
       
