@@ -15,7 +15,12 @@
 {% for key,value in ar_file_output.items() %}
 
 {%- if key != "" -%}
-	tno_dynamics_in{{key}}S -> tno_dynamics_in{{value}}C;
+
+{%- if value != "" -%}
+tno_dynamics_in{{key}}S -> tno_dynamics_in{{value}}C;
+{% else %}
+tno_dynamics_in{{key}}S -> ;
+{% endif -%}
 {% else %}
 -> tno_dynamics_in{{value}}S;
 

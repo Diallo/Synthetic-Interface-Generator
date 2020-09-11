@@ -325,7 +325,7 @@ def selected_rule_inputs_outputs(rule):
     if rule == r2_1 or rule == r2_2:
         return (2,2)
     else:
-        return 0
+        return (0,0)
 
 
 
@@ -422,12 +422,8 @@ def random_generator(inputs,outputs,prevalence):
     tempInputs = inputs
     tempOutputs = outputs
     
-    # estimatedPlaces = round(inputs * 2 /AVGNUMBER)
-    # rule2applications = round(prevalence * estimatedPlaces)
+
     ruleApplications = []
-
-
-    
     nondeterministic = 0
     deterministic = 0
     currentPrevalence = 0
@@ -463,7 +459,8 @@ def random_generator(inputs,outputs,prevalence):
         else:
             ruleApplications.append(tuple(rules))
 
-        currentPrevalence = nondeterministic/(nondeterministic+deterministic) 
+     
+        currentPrevalence = (nondeterministic/(nondeterministic+deterministic)) if (nondeterministic+deterministic) else 0
       
        
    
@@ -503,11 +500,7 @@ def generate(rules):
     rulesCopy = copy.deepcopy(rules)
 
     while len(rulesCopy) != 0:
-       
-        
-
-        
-
+     
         randomindex =  random.randrange(len(rulesCopy))
         ruleTuple = rulesCopy[randomindex]
 
