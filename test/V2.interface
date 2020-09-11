@@ -1,0 +1,28 @@
+import "V2.signature"
+
+interface V2 version "1.0"
+
+
+		
+machine V2 {
+
+	initial state p1_1{
+			transition
+				trigger: inTRp1_1_0
+				next state: p1_2
+			
+			}
+
+	 state p1_2{
+			transition
+				trigger: inTRp1_3_3
+				next state: p1_4
+			
+			}
+
+	 state p1_4{
+			transition
+				do: outTRp1_2_1
+				next state: p1_1
+			}
+}

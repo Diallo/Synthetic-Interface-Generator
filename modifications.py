@@ -333,9 +333,9 @@ if __name__ == "__main__":
 #         continue
 #     random.seed(x)
 #     print(x)
-    INPUTS = 5
-    OUTPUTS = 5
-    NONDETERMINISM = 0.2
+    INPUTS = 2
+    OUTPUTS = 2
+    NONDETERMINISM = 0.0
     statemachine_modified = False
     while not statemachine_modified:
         # rules = generator.random_generator(5,5,0.0)
@@ -367,10 +367,10 @@ if __name__ == "__main__":
     conversion.generate_conversion(statemachine,"V1")
     conversion.generate_conversion(statemachine_modified,"V2")
 
-    with open('v2isual.pnml', 'w+') as f:
+    with open('v1-original-server.pnml', 'w+') as f:
         print(stateyasper.generate_yasper(statemachine), file=f) 
     
-    with open('v1isual.pnml', 'w+') as f:
+    with open('v2-modified-server.pnml', 'w+') as f:
         print(stateyasper.generate_yasper(statemachine_modified), file=f) 
 
     # # TEMPORARY TODO

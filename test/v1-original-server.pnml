@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='utf-8'?>
+<pnml>
+	<net type='http://www.yasper.org/specs/epnml-1.1' id='do1'>
+	<toolspecific tool='Yasper' version='1.2.4020.34351'>
+		<roles xmlns='http://www.yasper.org/specs/epnml-1.1/toolspec' />
+	</toolspecific>
+ <place id='sin1'>
+       <name><text>in1</text> </name> <graphics>
+        <position x='390' y='170' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place><transition id='stransition1'> 
+ <graphics>
+ <position x='330' y='170' />
+ <dimension x='32' y='32' />
+ </graphics>
+ </transition> <place id='sout2'>
+       <name><text>out2</text> </name> <graphics>
+        <position x='390' y='270' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place><transition id='stransition2'> 
+ <graphics>
+ <position x='330' y='270' />
+ <dimension x='32' y='32' />
+ </graphics>
+ </transition> <place id='sout3'>
+       <name><text>out3</text> </name> <graphics>
+        <position x='390' y='370' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place><transition id='stransition3'> 
+ <graphics>
+ <position x='330' y='370' />
+ <dimension x='32' y='32' />
+ </graphics>
+ </transition> <place id='sin4'>
+       <name><text>in4</text> </name> <graphics>
+        <position x='390' y='470' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place><transition id='stransition4'> 
+ <graphics>
+ <position x='330' y='470' />
+ <dimension x='32' y='32' />
+ </graphics>
+ </transition> <place id='sp1_1'>
+       <name><text>p1_1</text> </name> <graphics>
+        <position x='330' y='150' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place> <place id='sp1_2'>
+       <name><text>p1_2</text> </name> <graphics>
+        <position x='330' y='250' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place> <place id='sp1_4'>
+       <name><text>p1_4</text> </name> <graphics>
+        <position x='330' y='350' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place> <place id='sp1_3'>
+       <name><text>p1_3</text> </name> <graphics>
+        <position x='330' y='450' />
+        <dimension x='20' y='20' />
+      </graphics>
+        </place><arc id='a10' source='sp1_1' target='stransition1' />
+<arc id='a15' source='stransition1' target='sp1_2' />
+<arc id='a11' source='sin1' target='stransition1' />
+<arc id='a20' source='sp1_4' target='stransition2' />
+<arc id='a25' source='stransition2' target='sp1_1' />
+<arc id='a21' source='stransition2' target='sout2' />
+<arc id='a30' source='sp1_2' target='stransition3' />
+<arc id='a35' source='stransition3' target='sp1_3' />
+<arc id='a31' source='stransition3' target='sout3' />
+<arc id='a40' source='sp1_3' target='stransition4' />
+<arc id='a45' source='stransition4' target='sp1_4' />
+<arc id='a41' source='sin4' target='stransition4' />
+	</net> 
+</pnml>

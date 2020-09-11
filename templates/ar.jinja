@@ -17,9 +17,9 @@
 {%- if key != "" -%}
 
 {%- if value != "" -%}
-tno_dynamics_in{{key}}S -> tno_dynamics_in{{value}}C;
+tno_dynamics_out{{key}}S -> tno_dynamics_out{{value}}C;
 {% else %}
-tno_dynamics_in{{key}}S -> ;
+tno_dynamics_out{{key}}S -> ;
 {% endif -%}
 {% else %}
 -> tno_dynamics_in{{value}}S;
