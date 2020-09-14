@@ -1,4 +1,0 @@
-enum Response {
-	ACK
-	UPDATE
-}
