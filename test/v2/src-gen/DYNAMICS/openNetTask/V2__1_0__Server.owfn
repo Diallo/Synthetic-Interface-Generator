@@ -1,0 +1,63 @@
+PLACE INTERNAL
+  tno_dynamics_p1_1_Start, tno_dynamics_p1_1_End, tno_dynamics_p1_4, tno_dynamics_p1_3, tno_dynamics_p1_5, tno_dynamics_p1_2, tno_dynamics_p1_6, tno_dynamics_p2_1, tno_dynamics_p3_2, tno_dynamics_p3_5, tno_dynamics_p3_4, tno_dynamics_p3_3;
+
+INPUT
+  tno_dynamics_inTRp2_1_31S, tno_dynamics_inTRp1_1_24S, tno_dynamics_inTRp1_1_27S, tno_dynamics_inTRp3_1_33S, tno_dynamics_inTRp3_1_32S;
+
+OUTPUT
+  tno_dynamics_outTRp1_6_29S, tno_dynamics_outTRp1_5_28S, tno_dynamics_outTRp1_3_26S, tno_dynamics_outTRp1_2_25S, tno_dynamics_outTRp3_2_34S, tno_dynamics_outTRp3_2_36S, tno_dynamics_outTRp3_2_35S;
+
+INITIALMARKING
+  tno_dynamics_p1_1_Start;
+
+FINALMARKING
+  tno_dynamics_p1_1_End;
+
+TRANSITION p1_1_V2_inTRp1_1_27_1_1_0
+  CONSUME tno_dynamics_p1_1_Start, tno_dynamics_inTRp1_1_27S;
+  PRODUCE tno_dynamics_p1_2;
+
+TRANSITION p1_4_V2_outTRp1_3_26_1_1_0
+  CONSUME tno_dynamics_p1_4;
+  PRODUCE tno_dynamics_p1_5, tno_dynamics_outTRp1_3_26S;
+
+TRANSITION p1_3_V2_outTRp1_2_25_1_1_0
+  CONSUME tno_dynamics_p1_3;
+  PRODUCE tno_dynamics_p1_4, tno_dynamics_outTRp1_2_25S;
+
+TRANSITION p1_5_V2_outTRp1_5_28_1_1_0
+  CONSUME tno_dynamics_p1_5;
+  PRODUCE tno_dynamics_p1_6, tno_dynamics_outTRp1_5_28S;
+
+TRANSITION p1_2_V2_inTRp1_1_24_1_1_0
+  CONSUME tno_dynamics_p1_2, tno_dynamics_inTRp1_1_24S;
+  PRODUCE tno_dynamics_p1_3;
+
+TRANSITION p1_6_V2_outTRp1_6_29_1_1_0
+  CONSUME tno_dynamics_p1_6;
+  PRODUCE tno_dynamics_p2_1, tno_dynamics_outTRp1_6_29S;
+
+TRANSITION p1_6_V2_inTRp3_1_33_1_1_0
+  CONSUME tno_dynamics_p1_6, tno_dynamics_inTRp3_1_33S;
+  PRODUCE tno_dynamics_p3_2;
+
+TRANSITION p2_1_V2_inTRp2_1_31_1_1_0
+  CONSUME tno_dynamics_p2_1, tno_dynamics_inTRp2_1_31S;
+  PRODUCE tno_dynamics_p1_1_End;
+
+TRANSITION p3_2_V2_outTRp3_2_36_1_1_0
+  CONSUME tno_dynamics_p3_2;
+  PRODUCE tno_dynamics_p3_3, tno_dynamics_outTRp3_2_36S;
+
+TRANSITION p3_5_V2_inTRp3_1_32_1_1_0
+  CONSUME tno_dynamics_p3_5, tno_dynamics_inTRp3_1_32S;
+  PRODUCE tno_dynamics_p1_1_End;
+
+TRANSITION p3_4_V2_outTRp3_2_34_1_1_0
+  CONSUME tno_dynamics_p3_4;
+  PRODUCE tno_dynamics_p3_5, tno_dynamics_outTRp3_2_34S;
+
+TRANSITION p3_3_V2_outTRp3_2_35_1_1_0
+  CONSUME tno_dynamics_p3_3;
+  PRODUCE tno_dynamics_p3_4, tno_dynamics_outTRp3_2_35S;
+

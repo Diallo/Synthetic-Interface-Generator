@@ -1,0 +1,21 @@
+import "V2.types"
+
+signature V2
+
+// inputs
+signals 
+inTRp1_1_32
+inTRp1_2_33
+inTRp2_1_37
+inTRp3_1_38
+inTRp1_5_40
+// outputs
+notifications
+outTRp1_4_35
+outTRp1_4_36
+outTRp1_3_39
+outTRp1_6_41
+outTRp1_3_42
+outTRp1_7_43
+outTRp1_5_44
+

@@ -1,0 +1,14 @@
+dsl = "org.inaetics.dsl/component/v1.0.0"
+
+@CpfCopyLang("cxx")
+component V2__1_0__Server {
+	version = 1.0
+	
+	subscribe "commands" {
+		messageInterface = V2__1_0__commands [1,1.1)
+	}
+	
+	publish "status" {
+		messageInterface = V2__1_0__status [1,2)
+	}
+}

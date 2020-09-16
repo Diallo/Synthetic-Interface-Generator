@@ -17,7 +17,7 @@ if __name__ == "__main__":
     possible_modifications = [modifications.delete,modifications.create,modifications.merge,modifications.split]
 
     while len(input_list):
-        input = input_list.pop(0)
+        inputs = input_list.pop(0)
         outputs = output_list.pop(0)
         prevalence = prevalence_list.pop(0)
 
@@ -34,7 +34,7 @@ if __name__ == "__main__":
                 statemachine_modified = False
                 wrong = 0
                 while not statemachine_modified:
-                    statemachine_modified = modifications.perform_modifications(statemachine,possible_modifications=possible_modifications)
+                    statemachine_modified = modifications.perform_modifications(statemachine,possible_modifications=selected_modification)
                     wrong += 1
 
             
@@ -67,12 +67,12 @@ if __name__ == "__main__":
                 # TODO: Run FIONA here with TIME
                 # fiona -t adapter SERVER.owfn CLIENT.owfn -a ARFILE.ar
                 time_start = time.time()
-                with open('results.csv', 'w+') as f:
+                with open('results.csv', 'a+') as f:
                     time_start = time.time()
                     subprocess.call(['fiona', '-t',"adapter", "test/v1/src-gen/DYNAMICS/openNetTask/V1__1_0__Server.owfn","test/v2/src-gen/DYNAMICS/openNetTask/V2__1_0__Client.owfn","-a","test/ZARFILE.ar"])
                     elapsed_time = time.time() - time_start
 
                     print("{},{},{},{},{}".format(selected_modification[0].__name__,inputs,outputs,prevalence,elapsed_time),file=f)
                     
-            except:
+            except Exception as e:
                 pass

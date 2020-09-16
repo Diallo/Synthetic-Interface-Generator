@@ -1,0 +1,116 @@
+import "../../../V1.signature"
+
+
+
+interface-net: V1
+{
+	// Places of net
+	init-token
+	internal-place p1_1 {
+		post-transitions:
+							p1_1_V1_inTRp1_1_27_1_1
+	}
+	internal-place p1_4 {
+		post-transitions:
+							p1_4_V1_outTRp1_3_26_1_1
+	}
+	internal-place p1_3 {
+		post-transitions:
+							p1_3_V1_outTRp1_2_25_1_1
+	}
+	internal-place p1_5 {
+		post-transitions:
+							p1_5_V1_outTRp1_5_28_1_1
+	}
+	internal-place p1_2 {
+		post-transitions:
+							p1_2_V1_inTRp1_1_24_1_1
+	}
+	internal-place p1_6 {
+		post-transitions:
+							p1_6_V1_outTRp1_6_29_1_1
+							p1_6_V1_outTRp1_6_30_1_1
+	}
+	internal-place p2_1 {
+		post-transitions:
+							p2_1_V1_inTRp2_1_31_1_1
+	}
+	internal-place p3_1 {
+		post-transitions:
+							p3_1_V1_inTRp3_1_33_1_1
+	}
+	internal-place p3_2 {
+		post-transitions:
+							p3_2_V1_inTRp3_1_32_1_1
+	}
+	
+	// Transitions of net
+	
+	
+	transition-trig: p1_1_V1_inTRp1_1_27_1_1 {
+		trigger: inTRp1_1_27 
+		post-place: p1_2
+	}
+	
+	transition-trig: p1_2_V1_inTRp1_1_24_1_1 {
+		trigger: inTRp1_1_24 
+		post-place: p1_3
+	}
+	
+	transition-trig: p3_2_V1_inTRp3_1_32_1_1 {
+		trigger: inTRp3_1_32 
+		post-place: p1_1
+	}
+	
+	transition-trig: p3_1_V1_inTRp3_1_33_1_1 {
+		trigger: inTRp3_1_33 
+		post-place: p3_2
+	}
+	
+	transition-trig: p2_1_V1_inTRp2_1_31_1_1 {
+		trigger: inTRp2_1_31 
+		post-place: p1_1
+	}
+	
+	
+	transition-non-trig: p1_4_V1_outTRp1_3_26_1_1 {
+		//do: { outTRp1_3_26}
+		label: outTRp1_3_26 
+		do: 
+			outTRp1_3_26
+		post-place: p1_5
+	}
+	
+	transition-non-trig: p1_6_V1_outTRp1_6_29_1_1 {
+		//do: { outTRp1_6_29}
+		label: outTRp1_6_29 
+		do: 
+			outTRp1_6_29
+		post-place: p2_1
+	}
+	
+	transition-non-trig: p1_5_V1_outTRp1_5_28_1_1 {
+		//do: { outTRp1_5_28}
+		label: outTRp1_5_28 
+		do: 
+			outTRp1_5_28
+		post-place: p1_6
+	}
+	
+	transition-non-trig: p1_3_V1_outTRp1_2_25_1_1 {
+		//do: { outTRp1_2_25}
+		label: outTRp1_2_25 
+		do: 
+			outTRp1_2_25
+		post-place: p1_4
+	}
+	
+	transition-non-trig: p1_6_V1_outTRp1_6_30_1_1 {
+		//do: { outTRp1_6_30}
+		label: outTRp1_6_30 
+		do: 
+			outTRp1_6_30
+		post-place: p3_1
+	}
+	
+}
