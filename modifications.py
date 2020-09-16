@@ -20,11 +20,7 @@ ar_file_output = defaultdict(list)
 
 
 
-def perform_modifications(statemachine,amount=1):
-    possible_modifications = [create,delete,merge,split]
-    possible_modifications = [delete]
-    # possible_modifications = [delete]
-    # possible_modifications = [merge]
+def perform_modifications(statemachine,amount=1,possible_modifications=[]):
     statemachine =  copy.deepcopy(statemachine)
     done_modifications = []
 
@@ -379,7 +375,7 @@ if __name__ == "__main__":
     file_ar = env.get_template('ar.jinja').render(**locals())
 
 
-    with open('{}.ar'.format("ZARFILE"), 'w+') as f:
+    with open('test/{}.ar'.format("ZARFILE"), 'w+') as f:
         print(file_ar, file=f) 
     
 

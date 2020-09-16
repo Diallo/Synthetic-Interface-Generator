@@ -64,6 +64,6 @@ def generate_conversion(statemachine,output_file="generation",directory="test/")
 
    
 
-    with open(directory+'{}ip.params'.format(output_file), 'w+') as f:
+    with open(directory+'ip.params'.format(output_file), 'w+') as f:
         print(file_param, file=f)  
    
