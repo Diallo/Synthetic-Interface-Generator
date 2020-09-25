@@ -1,0 +1,2 @@
+import "V2.interface"
+interface: V2

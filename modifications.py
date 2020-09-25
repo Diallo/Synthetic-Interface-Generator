@@ -2,12 +2,7 @@
 # TODO numbering
 # SELECTED STATE means TRANSITION ABOVE
 
-"""
-Checked:
-Delete
 
-TODO: create, MERGE and SPLIT
-"""
 import generator
 import conversion
 import copy
@@ -19,7 +14,7 @@ ar_file_input = defaultdict(list)
 ar_file_output = defaultdict(list)
 
 
-
+# Entry point of applications
 def perform_modifications(statemachine,amount=1,possible_modifications=[]):
     statemachine =  copy.deepcopy(statemachine)
     done_modifications = []
@@ -317,7 +312,8 @@ def populate_ar_file(statemachine):
             # This will be S -> C
 
  
-   
+
+# TODO: Remove unused
 if __name__ == "__main__":
 
     # TODOOOO

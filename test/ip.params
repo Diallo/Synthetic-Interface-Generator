@@ -1,0 +1,2 @@
+import "generation.interface"
+interface: generation
