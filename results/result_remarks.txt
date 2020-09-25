@@ -1,0 +1,26 @@
+1.) Quite a difference sometimes even with high number of inputs outputs 
+2.)  -- Furuture research might be worth looking at how and why that is the case
+---- Sometimes 900 sometimes 6 seconds based on random order
+need to see what affects performance manually
+GRpahically this could be done
+extend state yasper
+
+
+975 s consumed for computing controller
+
+|P|=640, |P_in|= 100, |P_out|= 102, |T|=461, |F|=2001
+
+270 s consumed for building complete adapter
+
+
+6/40
+
+------------
+Prototype of a multiple modification experiment  more than 10 seconds less than a minute
+1 modification vs 2 modification
+
+Start with 10/10  
+WHICH modification
+
+----------------------
+Memory exhausted in some cases of test 

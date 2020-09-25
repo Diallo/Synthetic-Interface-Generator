@@ -226,7 +226,7 @@ def merge(states,statemachine):
     for name in deleted_transitions:
         del ar_file_output[name]
      
-    ar_file_output["S,tno_dynamics_in".join(deleted_transitions)] = created.name
+    ar_file_output["S,tno_dynamics_out".join(deleted_transitions)] = created.name
     return True
 
 
