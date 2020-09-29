@@ -52,7 +52,7 @@ if __name__ == "__main__":
                     statemachine_modified = False
                     wrong = 0
                     while not statemachine_modified:
-                        statemachine_modified = modifications.perform_modifications(statemachine,possible_modifications=selected_modification)
+                        statemachine_modified, performed_modifications = modifications.perform_modifications(statemachine,possible_modifications=selected_modification,amount=2)
                         wrong += 1
 
                 

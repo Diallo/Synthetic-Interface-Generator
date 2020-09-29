@@ -12,10 +12,12 @@ from collections import defaultdict
 
 ar_file_input = defaultdict(list)
 ar_file_output = defaultdict(list)
-
+already_modified = []
 
 # Entry point of applications
 def perform_modifications(statemachine,amount=1,possible_modifications=[]):
+    global already_modified
+
     statemachine =  copy.deepcopy(statemachine)
     done_modifications = []
 
@@ -24,27 +26,30 @@ def perform_modifications(statemachine,amount=1,possible_modifications=[]):
         selected = random.choice(possible_modifications)
         done_modifications.append(selected)
         if selected == create:
-            selected_state = random.choice([x for x in statemachine.states if x != statemachine.BeginState]) #)
+            selected_state = random.choice([x for x in statemachine.states if x != statemachine.BeginState and x not in already_modified]) #)
+            already_modified.append(selected_state)
+
             if not selected(statemachine,selected_state):
                 print("Something went wrong") # Temporary debug
                 return False
 
         if selected == delete or selected == split:
-            selected_state = random.choice([x.end for x in statemachine.transitions if x.output]) #)
-            
+            selected_state = random.choice([x.end for x in statemachine.transitions if x.output and x not in already_modified]) #)
+            already_modified.append(selected_state)
             if not selected(statemachine,selected_state):
                 print("Something went wrong") # Temporary debug
                 return False
 
         if selected == merge:
             # Will take only outpout
-            states = random.sample([x.end for x in statemachine.transitions if  x.output], random.choice([2,3])) #)
-            if not merge(states,statemachine):
+            selected_state = random.sample([x.end for x in statemachine.transitions if  x.output and x not in already_modified], random.choice([2,3])) #)
+            already_modified.append(selected_state)
+
+            if not merge(selected_state,statemachine):
                 print("something went wrong")
                 return False
                 
-        if selected == transform:
-            pass #todo
+       
 
     # TODO: UPDATE NUMBERS
     # create(statemachine,statemachine.states[0])
@@ -55,7 +60,7 @@ def perform_modifications(statemachine,amount=1,possible_modifications=[]):
     # if split(statemachine,statemachine.states[1]):
         
 
-    return statemachine
+    return (statemachine,done_modifications)
 
 
 def create(statemachine,state,update_mapping_file=True):
