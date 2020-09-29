@@ -24,7 +24,7 @@ def perform_modifications(statemachine,amount=1,possible_modifications=[]):
     # TODO: Create AR file here
     for _ in range(amount):
         selected = random.choice(possible_modifications)
-        done_modifications.append(selected)
+        done_modifications.append(selected.__name__)
         if selected == create:
             selected_state = random.choice([x for x in statemachine.states if x != statemachine.BeginState and x not in already_modified]) #)
             already_modified.append(selected_state)

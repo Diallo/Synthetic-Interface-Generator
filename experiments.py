@@ -18,7 +18,7 @@ if __name__ == "__main__":
     # possible_modifications = [modifications.delete,modifications.create,modifications.merge,modifications.split]
     # possible_modifications = [modifications.merge,modifications.split]
     possible_modifications = [modifications.delete]
-
+    performed_modifications = []
 
     while len(possible_modifications):
         selected_modification =  [possible_modifications.pop(0)]
@@ -99,7 +99,7 @@ if __name__ == "__main__":
                             elapsed_time = -1
                             x -= 1
                        
-                        print("{},{},{},{},{}".format(selected_modification[0].__name__,inputs,outputs,prevalence,elapsed_time),file=f)
+                        print("{},{},{},{},{}".format(".".join(performed_modifications),inputs,outputs,prevalence,elapsed_time),file=f)
                     x += 1
                 except Exception as e:
                     # How to end up here:
