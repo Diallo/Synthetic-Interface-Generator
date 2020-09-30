@@ -7,92 +7,75 @@ import time
 import random
 from subprocess import STDOUT, check_output
 from collections import defaultdict
+from jinja2 import Environment, FileSystemLoader
+
 
 LOCATION_COMMA = "/home/scripts/comma-cmd.jar" 
 LOCATION_FIONA = "" # Can leave this blank just add to path
 
+def create_ar_file():
+    ar_file_input = modifications.ar_file_input
+    ar_file_output = modifications.ar_file_output
+    env = Environment(loader=FileSystemLoader('templates'))
+    file_ar = env.get_template('ar.jinja').render(**locals())
 
 
-if __name__ == "__main__":
-   
-    # possible_modifications = [modifications.merge,modifications.split]
+    with open('test/{}.ar'.format("ZARFILE"), 'w') as f:
+        print(file_ar, file=f)  
+        
+
+    # Now should be 2 directories with V1 and V2
+    subprocess.call(['java', '-jar', LOCATION_COMMA,"-l","test/v1/V1.prj"])
+    subprocess.call(['java', '-jar', LOCATION_COMMA,"-l","test/v2/V2.prj"])
+
+
+
+def experiment_1(prevalence=0.2):
+    """This runs experiment set 1 and writes it to the file
+    "experiments1.csv" formatted as
+    "Operation, Inputs, Outputs, Prevalence, Time in seconds"
+    """
+    INPUT_RANGE = [10,30,50,80,100]
+    DATAPOINT_SAMPLES = 10
+    AMOUNT_MODIFICATIONS = 1
+    TIMEOUT = 600
+    filename = "experiments1.csv"
+    
+    
     possible_modifications = [modifications.delete,modifications.create,modifications.merge,modifications.split]
-    # possible_modifications = [modifications.merge,modifications.split]
-    # possible_modifications = [modifications.split]
-    performed_modifications = []
-
-    while len(possible_modifications):
-        selected_modification =  [possible_modifications.pop(0)]
-
-        # input_list =  [(10,30),(30,10),(10,50),(50,10)] # in out  (inputs same > Outputs increase)
-        input_list =  [(10,10),(30,30),(50,50)] # in out  (inputs same > Outputs increase)
-        amount_of_modifications = 3
-        while len(input_list):
-            tup = input_list.pop(0)
-            inputs = tup[0]
-            outputs = tup[1]
-            prevalence = 0.2
-
-            # Do 3 iterations
-            x = 0
-            # data-points
-            datapoints = 3
-            while x < datapoints:
+    for modification in possible_modifications:
+        for inout in INPUT_RANGE:
+            for _ in range(DATAPOINT_SAMPLES):
+                
                 modifications.ar_file_input = defaultdict(list)
                 modifications.ar_file_output =  defaultdict(list)
                 modifications.already_modified = []
-
+                
                 try:
-                    # Generation the statemachine (Original)
-                    rules = generator.random_generator(inputs,outputs,prevalence)
+                    rules = generator.random_generator(inout,inout,prevalence)
                     statemachine = generator.generate(rules)
-                    # Generatiosns the default AR 
                     modifications.populate_ar_file(statemachine)
-                
-
                     
-                    # Try to perform a modification
+                    # Attempt to perform modifications
                     statemachine_modified = False
-                    wrong = 0
                     while not statemachine_modified:
-                        statemachine_modified, performed_modifications = modifications.perform_modifications(statemachine,possible_modifications=selected_modification,amount=amount_of_modifications)
-                        wrong += 1
-
-                
-
-
-
-
-
-
+                        statemachine_modified, performed_modifications = modifications.perform_modifications(statemachine,possible_modifications=[modification],amount=AMOUNT_MODIFICATIONS)
+            
+                    # Genereates the COMMA files hardcoded directory
                     conversion.generate_conversion(statemachine,"V1","test/v1/")
                     conversion.generate_conversion(statemachine_modified,"V2","test/v2/")
 
-                    # # TEMPORARY TODO (document) CREATE THE AR
-                    ar_file_input = modifications.ar_file_input
-                    ar_file_output = modifications.ar_file_output
-                    from jinja2 import Environment, FileSystemLoader
-                    env = Environment(loader=FileSystemLoader('templates'))
-                    file_ar = env.get_template('ar.jinja').render(**locals())
-
-
-                    with open('test/{}.ar'.format("ZARFILE"), 'w') as f:
-                        print(file_ar, file=f)  
-                    
-
-                    # Now should be 2 directories with V1 and V2
-                    subprocess.call(['java', '-jar', LOCATION_COMMA,"-l","test/v1/V1.prj"])
-                    subprocess.call(['java', '-jar', LOCATION_COMMA,"-l","test/v2/V2.prj"])
-
-
+                    # Create AR file and run CMD Comma
+                    create_ar_file()
+                
+                
                     # Should now have directories containing files
                     # TODO: Run FIONA here with TIME
                     # fiona -t adapter SERVER.owfn CLIENT.owfn -a ARFILE.ar
-                    with open('results.csv', 'a+') as f:
-                        print("{},{},{}".format(selected_modification[0].__name__,inputs,outputs,prevalence))
+                    with open(filename, 'a+') as f:
                         
                         time_start = time.time()
-                        outpu = subprocess.check_output(['fiona', '-t',"smalladapter", "test/v1/src-gen/DYNAMICS/openNetTask/V1__1_0__Server.owfn","test/v2/src-gen/DYNAMICS/openNetTask/V2__1_0__Client.owfn","-a","test/ZARFILE.ar"],timeout=300)
+                        outpu = subprocess.check_output(['fiona', '-t',"smalladapter", "test/v1/src-gen/DYNAMICS/openNetTask/V1__1_0__Server.owfn","test/v2/src-gen/DYNAMICS/openNetTask/V2__1_0__Client.owfn","-a","test/ZARFILE.ar"],timeout=TIMEOUT)
                         elapsed_time = time.time() - time_start
                         
                         # CHeck if an adapter was created even
@@ -100,10 +83,10 @@ if __name__ == "__main__":
                         print(outpu)
                         if "Cannot synthesize a partner for a net" in outpu or "memory exhausted" in outpu:
                             elapsed_time = -1
-                            x -= 1
-                       
-                        print("{},{},{},{},{}".format(".".join(performed_modifications),inputs,outputs,prevalence,elapsed_time),file=f)
-                    x += 1
+                           
+                        
+                        print("{},{},{},{},{},(good)".format(".".join(performed_modifications),inout,inout,prevalence,elapsed_time),file=f)
+                  
                 except Exception as e:
                     # How to end up here:
                     # -- If it was timed out after subprocess call
@@ -111,15 +94,22 @@ if __name__ == "__main__":
                     
 
                     if "timed out after" in str(e):
-                        with open('results.csv', 'a+') as f:
-                            print("{},{},{},{},-1,(timed_out)".format(".".join(performed_modifications),inputs,outputs,prevalence),file=f)
-                        x += 1
+                        with open(filename, 'a+') as f:
+                            print("{},{},{},{},-1,(timed_out)".format(".".join(performed_modifications),inout,inout,prevalence),file=f)
+                       
 
                     elif "non-zero exit status 5" in str(e):
-                        with open('results.csv', 'a+') as f:
-                            print("{},{},{},{},-1,(exhausted)".format(".".join(performed_modifications),inputs,outputs,prevalence),file=f)
+                        with open(filename, 'a+') as f:
+                            print("{},{},{},{},-1,(exhausted)".format(".".join(performed_modifications),inout,inout,prevalence),file=f)
                         # This was a memory exhaustion
                         
                     
-                    # TODO: infinite loop might occur
+                
         
+                
+
+    
+
+
+if __name__ == "__main__":
+    experiment_1()

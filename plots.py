@@ -18,20 +18,22 @@ merge = defaultdict(list)
 split = defaultdict(list)
 
 
-with open("results.csv", "r") as f:
+with open("results/equal_result_multipel_mod.csv", "r") as f:
     reader = csv.reader(f, delimiter=",")
     for i, line in enumerate(reader):
         oper,ins,outs,prev,t = line
         selected = None
-        if oper == "delete":
+        if oper == "delete.delete.delete":
             selected = delete
-        if oper == "create":
+        if oper == "create.create.create":
             selected = create
-        if oper == "merge":
+        if oper == "merge.merge.merge":
             selected = merge
-        if oper == "split":
+        if oper == "split.split.split":
             selected = split
 
+
+        
         selected["{},{}".format(ins,outs)].append(float(t))
 
 for key,value in create.items():
@@ -49,31 +51,32 @@ for key,value in split.items():
 
 plt.subplot(2, 2, 1)
 plt.bar(list(create.keys()), list(create.values()),label="Create")
-plt.axhline(y=0,linewidth=5, color='red')
-plt.yscale("log")
+plt.axhline(y=0,linewidth=1, color='red')
+# plt.yscale("log")
+plt.ylim(-10, 300)
 plt.title("Create")
 
 plt.subplot(2, 2, 2)
 plt.bar(list(delete.keys()), list(delete.values()))
-plt.yscale("log")
+# plt.yscale("log")
 plt.title("Delete")
-plt.axhline(y=0,linewidth=5, color='red')
-
+plt.axhline(y=0,linewidth=1, color='red')
+plt.ylim(-10, 300)
 
 
 plt.subplot(2, 2, 3)
 plt.bar(list(merge.keys()), list(merge.values()))
-plt.yscale("log")
+# plt.yscale("log")
 plt.title("merge")
-plt.axhline(y=0,linewidth=5, color='red')
-
+plt.axhline(y=0,linewidth=1, color='red')
+plt.ylim(-10, 300)
 
 plt.subplot(2, 2, 4)
 plt.bar(list(split.keys()), list(split.values()))
-plt.yscale("log")
+# plt.yscale("log")
 plt.title("split")
-plt.axhline(y=0,linewidth=5, color='red')
-
+plt.axhline(y=0,linewidth=1, color='red')
+plt.ylim(-10, 300)
 
 
 

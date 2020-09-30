@@ -23,13 +23,14 @@ with open("results.csv", "r") as f:
     for i, line in enumerate(reader):
         oper,ins,outs,prev,t = line
         selected = None
-        if oper == "delete":
+        print(oper)
+        if oper == "delete.delete.delete":
             selected = delete
-        if oper == "create":
+        if oper == "create.create.create":
             selected = create
-        if oper == "merge":
+        if oper == "merge.merge.merge":
             selected = merge
-        if oper == "split":
+        if oper == "split.split.split":
             selected = split
 
         selected["{}".format(prev)].append(float(t))
