@@ -6,6 +6,7 @@ import subprocess
 import time
 import random
 from subprocess import STDOUT, check_output
+from collections import defaultdict
 
 LOCATION_COMMA = "/home/scripts/comma-cmd.jar" 
 LOCATION_FIONA = "" # Can leave this blank just add to path
@@ -15,19 +16,17 @@ LOCATION_FIONA = "" # Can leave this blank just add to path
 if __name__ == "__main__":
    
     # possible_modifications = [modifications.merge,modifications.split]
-    # possible_modifications = [modifications.delete,modifications.create,modifications.merge,modifications.split]
+    possible_modifications = [modifications.delete,modifications.create,modifications.merge,modifications.split]
     # possible_modifications = [modifications.merge,modifications.split]
-    possible_modifications = [modifications.delete]
+    # possible_modifications = [modifications.split]
     performed_modifications = []
 
     while len(possible_modifications):
         selected_modification =  [possible_modifications.pop(0)]
 
-        # input_list =  [(x,x) for x in [30]]
-        # input_list =  [(10,5),(10,30),(10,50),(25,5),(25,30),(25,50),(35,5),(35,30),(35,50)] # in out  (inputs same > Outputs increase)
-        input_list =  [(10,10)] # in out  (inputs same > Outputs increase)
-        # input_list =  [(35,5),(35,30),(35,50)] # in out  (inputs same > Outputs increase)
-        
+        # input_list =  [(10,30),(30,10),(10,50),(50,10)] # in out  (inputs same > Outputs increase)
+        input_list =  [(10,10),(30,30),(50,50)] # in out  (inputs same > Outputs increase)
+        amount_of_modifications = 3
         while len(input_list):
             tup = input_list.pop(0)
             inputs = tup[0]
@@ -37,8 +36,12 @@ if __name__ == "__main__":
             # Do 3 iterations
             x = 0
             # data-points
-            datapoints = 5
+            datapoints = 3
             while x < datapoints:
+                modifications.ar_file_input = defaultdict(list)
+                modifications.ar_file_output =  defaultdict(list)
+                modifications.already_modified = []
+
                 try:
                     # Generation the statemachine (Original)
                     rules = generator.random_generator(inputs,outputs,prevalence)
@@ -52,7 +55,7 @@ if __name__ == "__main__":
                     statemachine_modified = False
                     wrong = 0
                     while not statemachine_modified:
-                        statemachine_modified, performed_modifications = modifications.perform_modifications(statemachine,possible_modifications=selected_modification,amount=2)
+                        statemachine_modified, performed_modifications = modifications.perform_modifications(statemachine,possible_modifications=selected_modification,amount=amount_of_modifications)
                         wrong += 1
 
                 
@@ -73,7 +76,7 @@ if __name__ == "__main__":
                     file_ar = env.get_template('ar.jinja').render(**locals())
 
 
-                    with open('test/{}.ar'.format("ZARFILE"), 'w+') as f:
+                    with open('test/{}.ar'.format("ZARFILE"), 'w') as f:
                         print(file_ar, file=f)  
                     
 
@@ -109,12 +112,12 @@ if __name__ == "__main__":
 
                     if "timed out after" in str(e):
                         with open('results.csv', 'a+') as f:
-                            print("{},{},{},{},-1,(timed_out)".format(selected_modification[0].__name__,inputs,outputs,prevalence),file=f)
+                            print("{},{},{},{},-1,(timed_out)".format(".".join(performed_modifications),inputs,outputs,prevalence),file=f)
                         x += 1
 
                     elif "non-zero exit status 5" in str(e):
                         with open('results.csv', 'a+') as f:
-                            print("{},{},{},{},-1,(exhausted)".format(selected_modification[0].__name__,inputs,outputs,prevalence),file=f)
+                            print("{},{},{},{},-1,(exhausted)".format(".".join(performed_modifications),inputs,outputs,prevalence),file=f)
                         # This was a memory exhaustion
                         
                     

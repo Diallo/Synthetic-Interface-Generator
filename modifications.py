@@ -58,8 +58,8 @@ def perform_modifications(statemachine,amount=1,possible_modifications=[]):
     
     # print(statemachine.states[2])
     # if split(statemachine,statemachine.states[1]):
-        
-
+    
+ 
     return (statemachine,done_modifications)
 
 
