@@ -35,14 +35,16 @@ def experiment_1(prevalence=0.2):
     "experiments1.csv" formatted as
     "Operation, Inputs, Outputs, Prevalence, Time in seconds"
     """
-    INPUT_RANGE = [10,30,50,80,100]
-    DATAPOINT_SAMPLES = 10
+    # INPUT_RANGE = [10,30,50,80]
+    INPUT_RANGE = [50,80]
+    DATAPOINT_SAMPLES = 7
     AMOUNT_MODIFICATIONS = 1
-    TIMEOUT = 600
+    TIMEOUT = 350
     filename = "experiments1.csv"
     
     
-    possible_modifications = [modifications.delete,modifications.create,modifications.merge,modifications.split]
+    # possible_modifications = [modifications.delete,modifications.create,modifications.merge,modifications.split]
+    possible_modifications = [modifications.split]
     for modification in possible_modifications:
         for inout in INPUT_RANGE:
             for _ in range(DATAPOINT_SAMPLES):
@@ -75,7 +77,7 @@ def experiment_1(prevalence=0.2):
                     with open(filename, 'a+') as f:
                         
                         time_start = time.time()
-                        outpu = subprocess.check_output(['fiona', '-t',"smalladapter", "test/v1/src-gen/DYNAMICS/openNetTask/V1__1_0__Server.owfn","test/v2/src-gen/DYNAMICS/openNetTask/V2__1_0__Client.owfn","-a","test/ZARFILE.ar"],timeout=TIMEOUT)
+                        outpu = subprocess.check_output(['fiona',  "-p", "no-dot","-p" ,"no-png",'-t',"smalladapter", "test/v1/src-gen/DYNAMICS/openNetTask/V1__1_0__Server.owfn","test/v2/src-gen/DYNAMICS/openNetTask/V2__1_0__Client.owfn","-a","test/ZARFILE.ar"],timeout=TIMEOUT)
                         elapsed_time = time.time() - time_start
                         
                         # CHeck if an adapter was created even
@@ -109,9 +111,9 @@ def experiment_2(prevalence=0.2):
     "Operation, Inputs, Outputs, Prevalence, Time in seconds"
     """
     INPUT_RANGE = [(10,30),(30,10),(10,50),(50,10),(30,50),(50,30)]
-    DATAPOINT_SAMPLES = 10
+    DATAPOINT_SAMPLES = 7
     AMOUNT_MODIFICATIONS = 1
-    TIMEOUT = 600
+    TIMEOUT = 350
     filename = "experiments2.csv"
     
     
@@ -151,7 +153,7 @@ def experiment_2(prevalence=0.2):
                     with open(filename, 'a+') as f:
                         
                         time_start = time.time()
-                        outpu = subprocess.check_output(['fiona', '-t',"smalladapter", "test/v1/src-gen/DYNAMICS/openNetTask/V1__1_0__Server.owfn","test/v2/src-gen/DYNAMICS/openNetTask/V2__1_0__Client.owfn","-a","test/ZARFILE.ar"],timeout=TIMEOUT)
+                        outpu = subprocess.check_output(['fiona',  "-p", "no-dot","-p" ,"no-png",'-t',"smalladapter", "test/v1/src-gen/DYNAMICS/openNetTask/V1__1_0__Server.owfn","test/v2/src-gen/DYNAMICS/openNetTask/V2__1_0__Client.owfn","-a","test/ZARFILE.ar"],timeout=TIMEOUT)
                         elapsed_time = time.time() - time_start
                         
                         # CHeck if an adapter was created even
@@ -187,10 +189,10 @@ def experiment_3(prevalence=0.2):
     "experiments3.csv" formatted as
     "Operation, Inputs, Outputs, Prevalence, Time in seconds"
     """
-    INPUT_RANGE = [10,30,50,80,100]
-    DATAPOINT_SAMPLES = 10
+    INPUT_RANGE = [10,30,50,80]
+    DATAPOINT_SAMPLES = 7
     AMOUNT_MODIFICATIONS = 3
-    TIMEOUT = 600
+    TIMEOUT = 350
     filename = "experiments3.csv"
     
     
@@ -227,7 +229,7 @@ def experiment_3(prevalence=0.2):
                     with open(filename, 'a+') as f:
                         
                         time_start = time.time()
-                        outpu = subprocess.check_output(['fiona', '-t',"smalladapter", "test/v1/src-gen/DYNAMICS/openNetTask/V1__1_0__Server.owfn","test/v2/src-gen/DYNAMICS/openNetTask/V2__1_0__Client.owfn","-a","test/ZARFILE.ar"],timeout=TIMEOUT)
+                        outpu = subprocess.check_output(['fiona',  "-p", "no-dot","-p" ,"no-png",'-t',"smalladapter", "test/v1/src-gen/DYNAMICS/openNetTask/V1__1_0__Server.owfn","test/v2/src-gen/DYNAMICS/openNetTask/V2__1_0__Client.owfn","-a","test/ZARFILE.ar"],timeout=TIMEOUT)
                         elapsed_time = time.time() - time_start
                         
                         # CHeck if an adapter was created even
@@ -263,9 +265,9 @@ def experiment_4(prevalence=0.2):
     "Operation, Inputs, Outputs, Prevalence, Time in seconds"
     """
     INPUT_RANGE = [30,50,80,100]
-    DATAPOINT_SAMPLES = 10
+    DATAPOINT_SAMPLES = 7
     AMOUNT_MODIFICATIONS = 5
-    TIMEOUT = 600
+    TIMEOUT = 350
     filename = "experiments4.csv"
     
     
@@ -302,7 +304,7 @@ def experiment_4(prevalence=0.2):
                     with open(filename, 'a+') as f:
                         
                         time_start = time.time()
-                        outpu = subprocess.check_output(['fiona', '-t',"smalladapter", "test/v1/src-gen/DYNAMICS/openNetTask/V1__1_0__Server.owfn","test/v2/src-gen/DYNAMICS/openNetTask/V2__1_0__Client.owfn","-a","test/ZARFILE.ar"],timeout=TIMEOUT)
+                        outpu = subprocess.check_output(['fiona',  "-p", "no-dot","-p" ,"no-png",'-t',"smalladapter", "test/v1/src-gen/DYNAMICS/openNetTask/V1__1_0__Server.owfn","test/v2/src-gen/DYNAMICS/openNetTask/V2__1_0__Client.owfn","-a","test/ZARFILE.ar"],timeout=TIMEOUT)
                         elapsed_time = time.time() - time_start
                         
                         # CHeck if an adapter was created even
@@ -335,9 +337,9 @@ def experiment_4(prevalence=0.2):
 
 
 if __name__ == "__main__":
-    experiment_1()
+    # experiment_1()
     print("done1")
-    experiment_2()
+    # experiment_2()
     print("done2")
     experiment_3() # modifications amount is 3
     print("done3")
