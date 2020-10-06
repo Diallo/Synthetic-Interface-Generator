@@ -1,3 +1,13 @@
+"""
+File: modifications.py
+Description: Allows a statemachine to have modifications to be performed upon it.
+
+Usage: Import "modifications.perform_modifications" and call the function. 
+       See: Function documentation.
+    
+"""
+
+
 # TODO for now only outputs
 # TODO numbering
 # SELECTED STATE means TRANSITION ABOVE
@@ -10,21 +20,48 @@ import random
 import stateyasper
 from collections import defaultdict
 
+
 ar_file_input = defaultdict(list)
 ar_file_output = defaultdict(list)
 already_modified = []
 
 # Entry point of applications
 def perform_modifications(statemachine,amount=1,possible_modifications=[]):
+    """Starting point for modifications upon interfaces.
+
+    Performs modifications as specified in the peramaters. 
+    N (amount) of modifications are selected at random from possible_modiifcations and then attempted
+    to be applied upon the provided statemachine.
+
+    
+
+    Args:
+        statemachine (generator.StateMachine object): An original statemachine object created using "generator.py"
+        amount (int, optional): Amount of modifications to be applied upon interface. Defaults to 1.
+        possible_modifications (list, optional): This should be a list of modification function references (from modifications.py). Defaults to [].
+
+    Returns:
+        (generator.StateMachine object,list): Returns a tuple containing the modified statemachine object 
+                                              and the ordered list of modifications applied.
+                                              This can be "False" if no modifications could succesfully be applied.
+    """
+
+    # Have to keep track of states already modified to prevent conflicts within AR file creation.
     global already_modified
 
     statemachine =  copy.deepcopy(statemachine)
     done_modifications = []
 
-    # TODO: Create AR file here
+    
+    # Loop over the amount of modifications to be selected.
     for _ in range(amount):
+
+        # Select at random a modification from the function references list and store it
         selected = random.choice(possible_modifications)
         done_modifications.append(selected.__name__)
+
+        # If the selected modification is create: 
+        # The state upon which this may be applied cannot be a begin state.
         if selected == create:
             selected_state = random.choice([x for x in statemachine.states if x != statemachine.BeginState and x not in already_modified]) #)
             already_modified.append(selected_state)
@@ -32,7 +69,8 @@ def perform_modifications(statemachine,amount=1,possible_modifications=[]):
             if not selected(statemachine,selected_state):
                 print("Something went wrong") # Temporary debug
                 return False
-
+        
+        # If the selected modification is delete or split, the selected transition must be an output on the server side.
         if selected == delete or selected == split:
             selected_state = random.choice([x.end for x in statemachine.transitions if x.output and x not in already_modified]) #)
             already_modified.append(selected_state)
@@ -40,8 +78,9 @@ def perform_modifications(statemachine,amount=1,possible_modifications=[]):
                 print("Something went wrong") # Temporary debug
                 return False
 
+        # If the selected modification is merge the same rules apply as per delete and split, also have to select if merge must happen
+        # on 2 or 3 outputs. 
         if selected == merge:
-            # Will take only outpout
             selected_state = random.sample([x.end for x in statemachine.transitions if  x.output and x not in already_modified], random.choice([2,3])) #)
             already_modified.append(selected_state)
 
@@ -52,14 +91,8 @@ def perform_modifications(statemachine,amount=1,possible_modifications=[]):
        
 
     # TODO: UPDATE NUMBERS
-    # create(statemachine,statemachine.states[0])
-    # if delete(statemachine,statemachine.states[1]):
-    #     return statemachine
+   
     
-    # print(statemachine.states[2])
-    # if split(statemachine,statemachine.states[1]):
-    
- 
     return (statemachine,done_modifications)
 
 
@@ -90,9 +123,6 @@ def create(statemachine,state,update_mapping_file=True):
         ar_file_output[""] = (transition.name)
 
 
-    # TODO: Create upon a non-determinsitic leg is not possible if it violates choice
-    # TODO: random select
-    # TODO: NAMING for transitions and places
     return transition # Succesfull always
 
 def delete(statemachine,state,update_mapping_file=True):
