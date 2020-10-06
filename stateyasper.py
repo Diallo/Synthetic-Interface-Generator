@@ -1,5 +1,15 @@
 #!/usr/bin/python3
 
+"""
+File: stateyasper.py
+Description: Allows a statemachine to be converted to the visual representation.
+             Implementation does not do any formatting of states.
+
+Usage: Import "stateyasper.generate_yasper" and call the function with a statemachine object. 
+       Output is printed directly so output should be piped to a file.
+    
+"""
+
 import generator
 import sys
 
@@ -79,14 +89,4 @@ def generate_transitions(transitions):
 
 
 
-
-
-
-if __name__ == "__main__":
-    det = 0
-    statemachine = None
-    statemachine  = generator.generate(generator.random_generator(5,5,0.2))
-    det = generator.determine_non_determinism(statemachine)
-    # print(statemachine)
-    print(generate_yasper(statemachine))
 
