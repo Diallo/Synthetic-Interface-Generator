@@ -279,9 +279,10 @@ def experiment_4(prevalence=0.2):
     """
     INPUT_RANGE = [30,50,80]
     DATAPOINT_SAMPLES = 7
-    AMOUNT_MODIFICATIONS = 5
+    # TODO
+    AMOUNT_MODIFICATIONS = 3
     TIMEOUT = 350
-    filename = "experiments4.csv"
+    filename = "experiments3.csv"
     
     
     TRIES = 10
