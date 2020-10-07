@@ -1,0 +1,413 @@
+dsl = "org.inaetics/dsl/message/interface/v1.0.0"
+
+message interface V1__1_0__commands {
+	version = 1.0
+	"qos" : "sample"
+	"pubsub.config" : "zmq"
+	"pubsub.serializer" : "json"
+	
+	message tno.dynamics.inTRp2_1_3398721 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_1_3398722 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp1_1_3398723 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_2_3398726 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp2_1_3398728 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_4_3398729 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp2_1_3398732 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_5_3398734 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_4_3398737 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp2_2_3398739 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_10_3398741 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp1_2_3398742 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp1_2_3398743 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp1_4_3398746 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_9_3398747 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_5_3398749 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_4_3398750 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_9_3398751 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_8_3398752 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp2_1_3398753 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp2_3_3398754 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp1_5_3398755 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp2_1_3398757 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp1_3_3398758 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_5_3398760 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_12_3398765 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp1_8_3398767 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_9_3398768 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_11_3398770 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp2_4_3398772 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_26_3398774 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp5_1_3398776 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_8_3398780 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp2_3_3398781 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp1_2_3398783 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp1_14_3398785 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_12_3398786 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_12_3398787 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp1_16_3398790 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_13_3398792 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp10_1_3398795 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp11_1_3398796 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_18_3398798 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp9_1_3398800 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_14_3398803 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp10_1_3398805 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp5_3_3398807 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp1_9_3398808 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp1_2_3398812 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_10_3398813 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_17_3398814 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp12_1_3398818 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp13_1_3398819 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp1_27_3398823 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp1_5_3398825 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp2_5_3398826 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_15_3398827 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp1_31_3398828 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp1_14_3398833 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp1_32_3398834 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp4_1_3398838 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp14_1_3398841 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_3_3398842 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp2_8_3398847 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp1_10_3398849 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp2_6_3398850 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp15_1_3398854 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp16_1_3398856 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp17_1_3398858 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp1_15_3398859 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_34_3398860 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp1_24_3398861 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp1_7_3398862 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp17_2_3398864 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_27_3398865 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp4_2_3398868 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp18_1_3398871 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_22_3398872 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp2_2_3398875 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp4_1_3398876 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.inTRp3_28_3398878 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+}

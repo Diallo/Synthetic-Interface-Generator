@@ -1,0 +1,1676 @@
+import "../../../V1.signature"
+
+
+
+interface-net: V1
+{
+	// Places of net
+	init-token
+	internal-place p1_1 {
+		post-transitions:
+							p1_1_V1_outTRp1_1_3398811_1_1
+	}
+	internal-place p1_43 {
+		post-transitions:
+							p1_43_V1_inTRp1_31_3398828_1_1
+	}
+	internal-place p1_35 {
+		post-transitions:
+							p1_35_V1_outTRp1_20_3398809_1_1
+	}
+	internal-place p2_1 {
+		post-transitions:
+							p2_1_V1_outTRp2_1_3398874_1_1
+	}
+	internal-place p3_1 {
+		post-transitions:
+							p3_1_V1_outTRp3_1_3398724_1_1
+	}
+	internal-place p1_24 {
+		post-transitions:
+							p1_24_V1_outTRp1_6_3398778_1_1
+	}
+	internal-place p3_2 {
+		post-transitions:
+							p3_2_V1_outTRp3_2_3398830_1_1
+	}
+	internal-place p3_40 {
+		post-transitions:
+							p3_40_V1_inTRp3_9_3398751_1_1
+	}
+	internal-place p3_34 {
+		post-transitions:
+							p3_34_V1_outTRp3_11_3398764_1_1
+	}
+	internal-place p2_17 {
+		post-transitions:
+							p2_17_V1_outTRp2_10_3398821_1_1
+	}
+	internal-place p3_52 {
+		post-transitions:
+							p3_52_V1_inTRp3_1_3398722_1_1
+	}
+	internal-place p3_50 {
+		post-transitions:
+							p3_50_V1_outTRp3_44_3398845_1_1
+	}
+	internal-place p3_42 {
+		post-transitions:
+							p3_42_V1_inTRp3_5_3398734_1_1
+	}
+	internal-place p2_7 {
+		post-transitions:
+							p2_7_V1_inTRp2_5_3398826_1_1
+	}
+	internal-place p3_48 {
+		post-transitions:
+							p3_48_V1_inTRp3_10_3398741_1_1
+	}
+	internal-place p3_43 {
+		post-transitions:
+							p3_43_V1_inTRp3_9_3398747_1_1
+	}
+	internal-place p3_6 {
+		post-transitions:
+							p3_6_V1_outTRp3_6_3398857_1_1
+							p3_6_V1_outTRp3_3_3398736_1_1
+	}
+	internal-place p3_26 {
+		post-transitions:
+							p3_26_V1_outTRp3_21_3398836_1_1
+	}
+	internal-place p3_7 {
+		post-transitions:
+							p3_7_V1_outTRp3_4_3398763_1_1
+	}
+	internal-place p1_5 {
+		post-transitions:
+							p1_5_V1_inTRp1_2_3398783_1_1
+	}
+	internal-place p2_16 {
+		post-transitions:
+							p2_16_V1_inTRp2_1_3398728_1_1
+	}
+	internal-place p2_12 {
+		post-transitions:
+							p2_12_V1_inTRp2_8_3398847_1_1
+	}
+	internal-place p3_49 {
+		post-transitions:
+							p3_49_V1_inTRp3_4_3398729_1_1
+							p3_49_V1_inTRp3_26_3398774_1_1
+	}
+	internal-place p1_13 {
+		post-transitions:
+							p1_13_V1_inTRp1_10_3398849_1_1
+	}
+	internal-place p4_1 {
+		post-transitions:
+							p4_1_V1_inTRp4_1_3398838_1_1
+							p4_1_V1_inTRp4_1_3398876_1_1
+	}
+	internal-place p5_1 {
+		post-transitions:
+							p5_1_V1_inTRp5_1_3398776_1_1
+	}
+	internal-place p1_26 {
+		post-transitions:
+							p1_26_V1_inTRp1_5_3398755_1_1
+	}
+	internal-place p3_45 {
+		post-transitions:
+							p3_45_V1_outTRp3_29_3398799_1_1
+							p3_45_V1_outTRp3_40_3398853_1_1
+							p3_45_V1_outTRp3_40_3398855_1_1
+	}
+	internal-place p3_44 {
+		post-transitions:
+							p3_44_V1_outTRp3_10_3398748_1_1
+	}
+	internal-place p3_32 {
+		post-transitions:
+							p3_32_V1_inTRp3_18_3398798_1_1
+	}
+	internal-place p3_9 {
+		post-transitions:
+							p3_9_V1_inTRp3_5_3398760_1_1
+	}
+	internal-place p3_41 {
+		post-transitions:
+							p3_41_V1_outTRp3_4_3398731_1_1
+	}
+	internal-place p3_37 {
+		post-transitions:
+							p3_37_V1_outTRp3_29_3398835_1_1
+	}
+	internal-place p2_5 {
+		post-transitions:
+							p2_5_V1_inTRp2_3_3398781_1_1
+	}
+	internal-place p2_11 {
+		post-transitions:
+							p2_11_V1_inTRp2_2_3398739_1_1
+	}
+	internal-place p1_31 {
+		post-transitions:
+							p1_31_V1_outTRp1_21_3398832_1_1
+	}
+	internal-place p1_27 {
+		post-transitions:
+							p1_27_V1_inTRp1_24_3398861_1_1
+	}
+	internal-place p2_4 {
+		post-transitions:
+							p2_4_V1_inTRp2_1_3398753_1_1
+	}
+	internal-place p1_20 {
+		post-transitions:
+							p1_20_V1_inTRp1_9_3398808_1_1
+	}
+	internal-place p1_15 {
+		post-transitions:
+							p1_15_V1_outTRp1_9_3398815_1_1
+	}
+	internal-place p3_14 {
+		post-transitions:
+							p3_14_V1_outTRp3_13_3398852_1_1
+	}
+	internal-place p3_10 {
+		post-transitions:
+							p3_10_V1_outTRp3_10_3398867_1_1
+	}
+	internal-place p2_15 {
+		post-transitions:
+							p2_15_V1_outTRp2_3_3398740_1_1
+	}
+	internal-place p3_8 {
+		post-transitions:
+							p3_8_V1_inTRp3_4_3398750_1_1
+	}
+	internal-place p3_36 {
+		post-transitions:
+							p3_36_V1_inTRp3_8_3398752_1_1
+	}
+	internal-place p3_35 {
+		post-transitions:
+							p3_35_V1_inTRp3_12_3398765_1_1
+	}
+	internal-place p3_17 {
+		post-transitions:
+							p3_17_V1_inTRp3_9_3398768_1_1
+	}
+	internal-place p1_30 {
+		post-transitions:
+							p1_30_V1_outTRp1_6_3398756_1_1
+	}
+	internal-place p3_18 {
+		post-transitions:
+							p3_18_V1_inTRp3_12_3398786_1_1
+							p3_18_V1_inTRp3_12_3398787_1_1
+	}
+	internal-place p1_33 {
+		post-transitions:
+							p1_33_V1_inTRp1_14_3398785_1_1
+	}
+	internal-place p3_30 {
+		post-transitions:
+							p3_30_V1_inTRp3_27_3398865_1_1
+	}
+	internal-place p3_28 {
+		post-transitions:
+							p3_28_V1_inTRp3_28_3398878_1_1
+	}
+	internal-place p6_1 {
+		post-transitions:
+							p6_1_V1_outTRp6_1_3398773_1_1
+	}
+	internal-place p7_1 {
+		post-transitions:
+							p7_1_V1_outTRp7_1_3398775_1_1
+	}
+	internal-place p5_3 {
+		post-transitions:
+							p5_3_V1_inTRp5_3_3398807_1_1
+	}
+	internal-place p5_2 {
+		post-transitions:
+							p5_2_V1_outTRp5_2_3398777_1_1
+	}
+	internal-place p1_25 {
+		post-transitions:
+							p1_25_V1_inTRp1_4_3398746_1_1
+	}
+	internal-place p3_13 {
+		post-transitions:
+							p3_13_V1_outTRp3_6_3398761_1_1
+	}
+	internal-place p3_12 {
+		post-transitions:
+							p3_12_V1_inTRp3_8_3398780_1_1
+	}
+	internal-place p2_6 {
+		post-transitions:
+							p2_6_V1_inTRp2_1_3398732_1_1
+	}
+	internal-place p1_45 {
+		post-transitions:
+							p1_45_V1_outTRp1_4_3398725_1_1
+	}
+	internal-place p1_10 {
+		post-transitions:
+							p1_10_V1_outTRp1_10_3398879_1_1
+	}
+	internal-place p1_6 {
+		post-transitions:
+							p1_6_V1_outTRp1_5_3398844_1_1
+	}
+	internal-place p1_34 {
+		post-transitions:
+							p1_34_V1_outTRp1_1_3398720_1_1
+							p1_34_V1_outTRp1_1_3398719_1_1
+	}
+	internal-place p3_19 {
+		post-transitions:
+							p3_19_V1_outTRp3_13_3398802_1_1
+	}
+	internal-place p8_1 {
+		post-transitions:
+							p8_1_V1_outTRp8_1_3398788_1_1
+	}
+	internal-place p9_1 {
+		post-transitions:
+							p9_1_V1_outTRp9_1_3398870_1_1
+							p9_1_V1_outTRp9_1_3398829_1_1
+	}
+	internal-place p1_41 {
+		post-transitions:
+							p1_41_V1_inTRp1_32_3398834_1_1
+	}
+	internal-place p1_37 {
+		post-transitions:
+							p1_37_V1_outTRp1_25_3398820_1_1
+	}
+	internal-place p3_24 {
+		post-transitions:
+							p3_24_V1_inTRp3_17_3398814_1_1
+	}
+	internal-place p1_23 {
+		post-transitions:
+							p1_23_V1_inTRp1_1_3398723_1_1
+	}
+	internal-place p10_1 {
+		post-transitions:
+							p10_1_V1_inTRp10_1_3398805_1_1
+	}
+	internal-place p11_1 {
+		post-transitions:
+							p11_1_V1_outTRp11_1_3398824_1_1
+	}
+	internal-place p1_12 {
+		post-transitions:
+							p1_12_V1_inTRp1_2_3398743_1_1
+							p1_12_V1_inTRp1_2_3398742_1_1
+	}
+	internal-place p3_33 {
+		post-transitions:
+							p3_33_V1_inTRp3_2_3398726_1_1
+	}
+	internal-place p3_46 {
+		post-transitions:
+							p3_46_V1_outTRp3_32_3398806_1_1
+	}
+	internal-place p9_4 {
+		post-transitions:
+							p9_4_V1_outTRp9_3_3398810_1_1
+	}
+	internal-place p9_3 {
+		post-transitions:
+							p9_3_V1_outTRp9_2_3398801_1_1
+	}
+	internal-place p3_22 {
+		post-transitions:
+							p3_22_V1_inTRp3_22_3398872_1_1
+	}
+	internal-place p3_20 {
+		post-transitions:
+							p3_20_V1_inTRp3_15_3398827_1_1
+	}
+	internal-place p1_18 {
+		post-transitions:
+							p1_18_V1_inTRp1_15_3398859_1_1
+	}
+	internal-place p10_2 {
+		post-transitions:
+							p10_2_V1_inTRp10_1_3398795_1_1
+	}
+	internal-place p3_47 {
+		post-transitions:
+							p3_47_V1_outTRp3_5_3398733_1_1
+	}
+	internal-place p5_4 {
+		post-transitions:
+							p5_4_V1_outTRp5_4_3398816_1_1
+							p5_4_V1_outTRp5_4_3398817_1_1
+	}
+	internal-place p1_21 {
+		post-transitions:
+							p1_21_V1_inTRp1_14_3398833_1_1
+	}
+	internal-place p1_36 {
+		post-transitions:
+							p1_36_V1_inTRp1_16_3398790_1_1
+	}
+	internal-place p9_5 {
+		post-transitions:
+							p9_5_V1_outTRp9_5_3398831_1_1
+	}
+	internal-place p1_3 {
+		post-transitions:
+							p1_3_V1_outTRp1_3_3398866_1_1
+	}
+	internal-place p1_2 {
+		post-transitions:
+							p1_2_V1_inTRp1_2_3398812_1_1
+	}
+	internal-place p3_16 {
+		post-transitions:
+							p3_16_V1_outTRp3_8_3398766_1_1
+	}
+	internal-place p3_25 {
+		post-transitions:
+							p3_25_V1_inTRp3_4_3398737_1_1
+	}
+	internal-place p1_16 {
+		post-transitions:
+							p1_16_V1_outTRp1_12_3398846_1_1
+	}
+	internal-place p5_5 {
+		post-transitions:
+							p5_5_V1_outTRp5_1_3398745_1_1
+	}
+	internal-place p12_1 {
+		post-transitions:
+							p12_1_V1_inTRp12_1_3398818_1_1
+	}
+	internal-place p13_1 {
+		post-transitions:
+							p13_1_V1_inTRp13_1_3398819_1_1
+	}
+	internal-place p1_38 {
+		post-transitions:
+							p1_38_V1_outTRp1_26_3398822_1_1
+	}
+	internal-place p2_18 {
+		post-transitions:
+							p2_18_V1_inTRp2_1_3398721_1_1
+	}
+	internal-place p1_40 {
+		post-transitions:
+							p1_40_V1_outTRp1_17_3398791_1_1
+	}
+	internal-place p1_39 {
+		post-transitions:
+							p1_39_V1_inTRp1_27_3398823_1_1
+	}
+	internal-place p11_2 {
+		post-transitions:
+							p11_2_V1_inTRp11_1_3398796_1_1
+	}
+	internal-place p1_8 {
+		post-transitions:
+							p1_8_V1_inTRp1_7_3398862_1_1
+	}
+	internal-place p2_8 {
+		post-transitions:
+							p2_8_V1_inTRp2_6_3398850_1_1
+	}
+	internal-place p3_21 {
+		post-transitions:
+							p3_21_V1_inTRp3_14_3398803_1_1
+	}
+	internal-place p1_44 {
+		post-transitions:
+							p1_44_V1_outTRp1_14_3398782_1_1
+	}
+	internal-place p9_2 {
+		post-transitions:
+							p9_2_V1_inTRp9_1_3398800_1_1
+	}
+	internal-place p3_3 {
+		post-transitions:
+							p3_3_V1_inTRp3_3_3398842_1_1
+	}
+	internal-place p9_6 {
+		post-transitions:
+							p9_6_V1_outTRp9_1_3398789_1_1
+	}
+	internal-place p1_32 {
+		post-transitions:
+							p1_32_V1_outTRp1_10_3398769_1_1
+	}
+	internal-place p1_22 {
+		post-transitions:
+							p1_22_V1_outTRp1_7_3398793_1_1
+							p1_22_V1_outTRp1_7_3398794_1_1
+	}
+	internal-place p1_42 {
+		post-transitions:
+							p1_42_V1_outTRp1_1_3398718_1_1
+	}
+	internal-place p3_38 {
+		post-transitions:
+							p3_38_V1_inTRp3_34_3398860_1_1
+	}
+	internal-place p3_27 {
+		post-transitions:
+							p3_27_V1_inTRp3_11_3398770_1_1
+	}
+	internal-place p1_29 {
+		post-transitions:
+							p1_29_V1_inTRp1_8_3398767_1_1
+	}
+	internal-place p4_6 {
+		post-transitions:
+							p4_6_V1_outTRp4_1_3398744_1_1
+	}
+	internal-place p4_2 {
+		post-transitions:
+							p4_2_V1_outTRp4_2_3398873_1_1
+	}
+	internal-place p14_1 {
+		post-transitions:
+							p14_1_V1_inTRp14_1_3398841_1_1
+	}
+	internal-place p3_5 {
+		post-transitions:
+							p3_5_V1_outTRp3_2_3398735_1_1
+	}
+	internal-place p3_4 {
+		post-transitions:
+							p3_4_V1_outTRp3_4_3398843_1_1
+	}
+	internal-place p1_7 {
+		post-transitions:
+							p1_7_V1_inTRp1_5_3398825_1_1
+	}
+	internal-place p3_51 {
+		post-transitions:
+							p3_51_V1_outTRp3_5_3398730_1_1
+	}
+	internal-place p1_17 {
+		post-transitions:
+							p1_17_V1_outTRp1_7_3398804_1_1
+	}
+	internal-place p2_14 {
+		post-transitions:
+							p2_14_V1_outTRp2_6_3398762_1_1
+	}
+	internal-place p2_13 {
+		post-transitions:
+							p2_13_V1_outTRp2_9_3398848_1_1
+	}
+	internal-place p1_14 {
+		post-transitions:
+							p1_14_V1_inTRp1_3_3398758_1_1
+	}
+	internal-place p2_10 {
+		post-transitions:
+							p2_10_V1_inTRp2_3_3398754_1_1
+							p2_10_V1_inTRp2_4_3398772_1_1
+	}
+	internal-place p2_9 {
+		post-transitions:
+							p2_9_V1_outTRp2_7_3398851_1_1
+	}
+	internal-place p3_15 {
+		post-transitions:
+							p3_15_V1_inTRp3_10_3398813_1_1
+	}
+	internal-place p15_1 {
+		post-transitions:
+							p15_1_V1_inTRp15_1_3398854_1_1
+	}
+	internal-place p16_1 {
+		post-transitions:
+							p16_1_V1_inTRp16_1_3398856_1_1
+	}
+	internal-place p17_1 {
+		post-transitions:
+							p17_1_V1_outTRp17_1_3398863_1_1
+	}
+	internal-place p1_19 {
+		post-transitions:
+							p1_19_V1_outTRp1_4_3398759_1_1
+	}
+	internal-place p3_39 {
+		post-transitions:
+							p3_39_V1_outTRp3_3_3398727_1_1
+	}
+	internal-place p1_28 {
+		post-transitions:
+							p1_28_V1_outTRp1_20_3398837_1_1
+	}
+	internal-place p1_9 {
+		post-transitions:
+							p1_9_V1_outTRp1_3_3398784_1_1
+	}
+	internal-place p17_3 {
+		post-transitions:
+							p17_3_V1_inTRp17_1_3398858_1_1
+	}
+	internal-place p17_2 {
+		post-transitions:
+							p17_2_V1_inTRp17_2_3398864_1_1
+	}
+	internal-place p3_31 {
+		post-transitions:
+							p3_31_V1_inTRp3_5_3398749_1_1
+	}
+	internal-place p1_4 {
+		post-transitions:
+							p1_4_V1_outTRp1_1_3398738_1_1
+	}
+	internal-place p3_11 {
+		post-transitions:
+							p3_11_V1_outTRp3_8_3398840_1_1
+							p3_11_V1_outTRp3_7_3398779_1_1
+	}
+	internal-place p4_5 {
+		post-transitions:
+							p4_5_V1_outTRp4_2_3398839_1_1
+	}
+	internal-place p4_4 {
+		post-transitions:
+							p4_4_V1_outTRp4_3_3398869_1_1
+	}
+	internal-place p18_1 {
+		post-transitions:
+							p18_1_V1_inTRp18_1_3398871_1_1
+	}
+	internal-place p3_23 {
+		post-transitions:
+							p3_23_V1_inTRp3_13_3398792_1_1
+	}
+	internal-place p4_3 {
+		post-transitions:
+							p4_3_V1_inTRp4_2_3398868_1_1
+	}
+	internal-place p2_3 {
+		post-transitions:
+							p2_3_V1_inTRp2_1_3398757_1_1
+	}
+	internal-place p2_2 {
+		post-transitions:
+							p2_2_V1_inTRp2_2_3398875_1_1
+	}
+	internal-place p19_1 {
+		post-transitions:
+							p19_1_V1_outTRp19_1_3398877_1_1
+	}
+	internal-place p3_29 {
+		post-transitions:
+							p3_29_V1_outTRp3_12_3398771_1_1
+	}
+	internal-place p1_11 {
+		post-transitions:
+							p1_11_V1_outTRp1_4_3398797_1_1
+	}
+	
+	// Transitions of net
+	
+	
+	transition-trig: p1_8_V1_inTRp1_7_3398862_1_1 {
+		trigger: inTRp1_7_3398862 
+		post-place: p1_9
+	}
+	
+	transition-trig: p13_1_V1_inTRp13_1_3398819_1_1 {
+		trigger: inTRp13_1_3398819 
+		post-place: p5_5
+	}
+	
+	transition-trig: p1_39_V1_inTRp1_27_3398823_1_1 {
+		trigger: inTRp1_27_3398823 
+		post-place: p1_40
+	}
+	
+	transition-trig: p11_2_V1_inTRp11_1_3398796_1_1 {
+		trigger: inTRp11_1_3398796 
+		post-place: p1_23
+	}
+	
+	transition-trig: p1_5_V1_inTRp1_2_3398783_1_1 {
+		trigger: inTRp1_2_3398783 
+		post-place: p1_6
+	}
+	
+	transition-trig: p5_3_V1_inTRp5_3_3398807_1_1 {
+		trigger: inTRp5_3_3398807 
+		post-place: p5_4
+	}
+	
+	transition-trig: p3_48_V1_inTRp3_10_3398741_1_1 {
+		trigger: inTRp3_10_3398741 
+		post-place: p3_49
+	}
+	
+	transition-trig: p17_3_V1_inTRp17_1_3398858_1_1 {
+		trigger: inTRp17_1_3398858 
+		post-place: p3_6
+	}
+	
+	transition-trig: p1_18_V1_inTRp1_15_3398859_1_1 {
+		trigger: inTRp1_15_3398859 
+		post-place: p1_19
+	}
+	
+	transition-trig: p4_1_V1_inTRp4_1_3398876_1_1 {
+		trigger: inTRp4_1_3398876 
+		post-place: p19_1
+	}
+	
+	transition-trig: p2_5_V1_inTRp2_3_3398781_1_1 {
+		trigger: inTRp2_3_3398781 
+		post-place: p2_6
+	}
+	
+	transition-trig: p5_1_V1_inTRp5_1_3398776_1_1 {
+		trigger: inTRp5_1_3398776 
+		post-place: p5_2
+	}
+	
+	transition-trig: p2_8_V1_inTRp2_6_3398850_1_1 {
+		trigger: inTRp2_6_3398850 
+		post-place: p2_9
+	}
+	
+	transition-trig: p3_8_V1_inTRp3_4_3398750_1_1 {
+		trigger: inTRp3_4_3398750 
+		post-place: p3_9
+	}
+	
+	transition-trig: p1_25_V1_inTRp1_4_3398746_1_1 {
+		trigger: inTRp1_4_3398746 
+		post-place: p1_26
+	}
+	
+	transition-trig: p3_30_V1_inTRp3_27_3398865_1_1 {
+		trigger: inTRp3_27_3398865 
+		post-place: p3_31
+	}
+	
+	transition-trig: p1_12_V1_inTRp1_2_3398743_1_1 {
+		trigger: inTRp1_2_3398743 
+		post-place: p5_1
+	}
+	
+	transition-trig: p1_21_V1_inTRp1_14_3398833_1_1 {
+		trigger: inTRp1_14_3398833 
+		post-place: p1_22
+	}
+	
+	transition-trig: p12_1_V1_inTRp12_1_3398818_1_1 {
+		trigger: inTRp12_1_3398818 
+		post-place: p5_5
+	}
+	
+	transition-trig: p1_26_V1_inTRp1_5_3398755_1_1 {
+		trigger: inTRp1_5_3398755 
+		post-place: p1_27
+	}
+	
+	transition-trig: p3_32_V1_inTRp3_18_3398798_1_1 {
+		trigger: inTRp3_18_3398798 
+		post-place: p3_33
+	}
+	
+	transition-trig: p3_49_V1_inTRp3_26_3398774_1_1 {
+		trigger: inTRp3_26_3398774 
+		post-place: p7_1
+	}
+	
+	transition-trig: p1_36_V1_inTRp1_16_3398790_1_1 {
+		trigger: inTRp1_16_3398790 
+		post-place: p1_37
+	}
+	
+	transition-trig: p2_7_V1_inTRp2_5_3398826_1_1 {
+		trigger: inTRp2_5_3398826 
+		post-place: p2_8
+	}
+	
+	transition-trig: p3_43_V1_inTRp3_9_3398747_1_1 {
+		trigger: inTRp3_9_3398747 
+		post-place: p3_44
+	}
+	
+	transition-trig: p3_22_V1_inTRp3_22_3398872_1_1 {
+		trigger: inTRp3_22_3398872 
+		post-place: p3_23
+	}
+	
+	transition-trig: p10_1_V1_inTRp10_1_3398805_1_1 {
+		trigger: inTRp10_1_3398805 
+		post-place: p10_2
+	}
+	
+	transition-trig: p3_36_V1_inTRp3_8_3398752_1_1 {
+		trigger: inTRp3_8_3398752 
+		post-place: p3_37
+	}
+	
+	transition-trig: p1_27_V1_inTRp1_24_3398861_1_1 {
+		trigger: inTRp1_24_3398861 
+		post-place: p1_28
+	}
+	
+	transition-trig: p1_33_V1_inTRp1_14_3398785_1_1 {
+		trigger: inTRp1_14_3398785 
+		post-place: p1_34
+	}
+	
+	transition-trig: p1_41_V1_inTRp1_32_3398834_1_1 {
+		trigger: inTRp1_32_3398834 
+		post-place: p1_42
+	}
+	
+	transition-trig: p2_18_V1_inTRp2_1_3398721_1_1 {
+		trigger: inTRp2_1_3398721 
+		post-place: p1_35
+	}
+	
+	transition-trig: p3_49_V1_inTRp3_4_3398729_1_1 {
+		trigger: inTRp3_4_3398729 
+		post-place: p3_50
+	}
+	
+	transition-trig: p3_15_V1_inTRp3_10_3398813_1_1 {
+		trigger: inTRp3_10_3398813 
+		post-place: p3_16
+	}
+	
+	transition-trig: p3_25_V1_inTRp3_4_3398737_1_1 {
+		trigger: inTRp3_4_3398737 
+		post-place: p3_26
+	}
+	
+	transition-trig: p3_38_V1_inTRp3_34_3398860_1_1 {
+		trigger: inTRp3_34_3398860 
+		post-place: p3_39
+	}
+	
+	transition-trig: p18_1_V1_inTRp18_1_3398871_1_1 {
+		trigger: inTRp18_1_3398871 
+		post-place: p9_1
+	}
+	
+	transition-trig: p2_11_V1_inTRp2_2_3398739_1_1 {
+		trigger: inTRp2_2_3398739 
+		post-place: p2_12
+	}
+	
+	transition-trig: p17_2_V1_inTRp17_2_3398864_1_1 {
+		trigger: inTRp17_2_3398864 
+		post-place: p17_3
+	}
+	
+	transition-trig: p4_3_V1_inTRp4_2_3398868_1_1 {
+		trigger: inTRp4_2_3398868 
+		post-place: p4_4
+	}
+	
+	transition-trig: p16_1_V1_inTRp16_1_3398856_1_1 {
+		trigger: inTRp16_1_3398856 
+		post-place: p3_45
+	}
+	
+	transition-trig: p3_17_V1_inTRp3_9_3398768_1_1 {
+		trigger: inTRp3_9_3398768 
+		post-place: p3_18
+	}
+	
+	transition-trig: p3_9_V1_inTRp3_5_3398760_1_1 {
+		trigger: inTRp3_5_3398760 
+		post-place: p3_10
+	}
+	
+	transition-trig: p3_42_V1_inTRp3_5_3398734_1_1 {
+		trigger: inTRp3_5_3398734 
+		post-place: p3_43
+	}
+	
+	transition-trig: p3_12_V1_inTRp3_8_3398780_1_1 {
+		trigger: inTRp3_8_3398780 
+		post-place: p3_13
+	}
+	
+	transition-trig: p2_10_V1_inTRp2_3_3398754_1_1 {
+		trigger: inTRp2_3_3398754 
+		post-place: p2_11
+	}
+	
+	transition-trig: p2_4_V1_inTRp2_1_3398753_1_1 {
+		trigger: inTRp2_1_3398753 
+		post-place: p2_5
+	}
+	
+	transition-trig: p3_23_V1_inTRp3_13_3398792_1_1 {
+		trigger: inTRp3_13_3398792 
+		post-place: p3_24
+	}
+	
+	transition-trig: p2_16_V1_inTRp2_1_3398728_1_1 {
+		trigger: inTRp2_1_3398728 
+		post-place: p2_17
+	}
+	
+	transition-trig: p3_27_V1_inTRp3_11_3398770_1_1 {
+		trigger: inTRp3_11_3398770 
+		post-place: p3_28
+	}
+	
+	transition-trig: p3_20_V1_inTRp3_15_3398827_1_1 {
+		trigger: inTRp3_15_3398827 
+		post-place: p3_21
+	}
+	
+	transition-trig: p3_21_V1_inTRp3_14_3398803_1_1 {
+		trigger: inTRp3_14_3398803 
+		post-place: p3_22
+	}
+	
+	transition-trig: p3_3_V1_inTRp3_3_3398842_1_1 {
+		trigger: inTRp3_3_3398842 
+		post-place: p3_4
+	}
+	
+	transition-trig: p1_14_V1_inTRp1_3_3398758_1_1 {
+		trigger: inTRp1_3_3398758 
+		post-place: p1_15
+	}
+	
+	transition-trig: p15_1_V1_inTRp15_1_3398854_1_1 {
+		trigger: inTRp15_1_3398854 
+		post-place: p3_45
+	}
+	
+	transition-trig: p2_3_V1_inTRp2_1_3398757_1_1 {
+		trigger: inTRp2_1_3398757 
+		post-place: p2_4
+	}
+	
+	transition-trig: p1_13_V1_inTRp1_10_3398849_1_1 {
+		trigger: inTRp1_10_3398849 
+		post-place: p1_14
+	}
+	
+	transition-trig: p4_1_V1_inTRp4_1_3398838_1_1 {
+		trigger: inTRp4_1_3398838 
+		post-place: p4_2
+	}
+	
+	transition-trig: p3_33_V1_inTRp3_2_3398726_1_1 {
+		trigger: inTRp3_2_3398726 
+		post-place: p3_34
+	}
+	
+	transition-trig: p3_52_V1_inTRp3_1_3398722_1_1 {
+		trigger: inTRp3_1_3398722 
+		post-place: p1_35
+	}
+	
+	transition-trig: p1_23_V1_inTRp1_1_3398723_1_1 {
+		trigger: inTRp1_1_3398723 
+		post-place: p1_24
+	}
+	
+	transition-trig: p2_2_V1_inTRp2_2_3398875_1_1 {
+		trigger: inTRp2_2_3398875 
+		post-place: p2_3
+	}
+	
+	transition-trig: p3_31_V1_inTRp3_5_3398749_1_1 {
+		trigger: inTRp3_5_3398749 
+		post-place: p3_32
+	}
+	
+	transition-trig: p3_18_V1_inTRp3_12_3398786_1_1 {
+		trigger: inTRp3_12_3398786 
+		post-place: p8_1
+	}
+	
+	transition-trig: p14_1_V1_inTRp14_1_3398841_1_1 {
+		trigger: inTRp14_1_3398841 
+		post-place: p3_10
+	}
+	
+	transition-trig: p2_12_V1_inTRp2_8_3398847_1_1 {
+		trigger: inTRp2_8_3398847 
+		post-place: p2_13
+	}
+	
+	transition-trig: p1_43_V1_inTRp1_31_3398828_1_1 {
+		trigger: inTRp1_31_3398828 
+		post-place: p1_44
+	}
+	
+	transition-trig: p10_2_V1_inTRp10_1_3398795_1_1 {
+		trigger: inTRp10_1_3398795 
+		post-place: p1_23
+	}
+	
+	transition-trig: p3_40_V1_inTRp3_9_3398751_1_1 {
+		trigger: inTRp3_9_3398751 
+		post-place: p3_41
+	}
+	
+	transition-trig: p3_28_V1_inTRp3_28_3398878_1_1 {
+		trigger: inTRp3_28_3398878 
+		post-place: p3_29
+	}
+	
+	transition-trig: p1_29_V1_inTRp1_8_3398767_1_1 {
+		trigger: inTRp1_8_3398767 
+		post-place: p1_30
+	}
+	
+	transition-trig: p1_12_V1_inTRp1_2_3398742_1_1 {
+		trigger: inTRp1_2_3398742 
+		post-place: p4_1
+	}
+	
+	transition-trig: p1_7_V1_inTRp1_5_3398825_1_1 {
+		trigger: inTRp1_5_3398825 
+		post-place: p1_8
+	}
+	
+	transition-trig: p9_2_V1_inTRp9_1_3398800_1_1 {
+		trigger: inTRp9_1_3398800 
+		post-place: p9_3
+	}
+	
+	transition-trig: p3_18_V1_inTRp3_12_3398787_1_1 {
+		trigger: inTRp3_12_3398787 
+		post-place: p9_1
+	}
+	
+	transition-trig: p1_2_V1_inTRp1_2_3398812_1_1 {
+		trigger: inTRp1_2_3398812 
+		post-place: p1_3
+	}
+	
+	transition-trig: p1_20_V1_inTRp1_9_3398808_1_1 {
+		trigger: inTRp1_9_3398808 
+		post-place: p1_21
+	}
+	
+	transition-trig: p2_6_V1_inTRp2_1_3398732_1_1 {
+		trigger: inTRp2_1_3398732 
+		post-place: p2_7
+	}
+	
+	transition-trig: p3_24_V1_inTRp3_17_3398814_1_1 {
+		trigger: inTRp3_17_3398814 
+		post-place: p3_25
+	}
+	
+	transition-trig: p3_35_V1_inTRp3_12_3398765_1_1 {
+		trigger: inTRp3_12_3398765 
+		post-place: p3_36
+	}
+	
+	transition-trig: p2_10_V1_inTRp2_4_3398772_1_1 {
+		trigger: inTRp2_4_3398772 
+		post-place: p6_1
+	}
+	
+	
+	transition-non-trig: p1_44_V1_outTRp1_14_3398782_1_1 {
+		//do: { outTRp1_14_3398782}
+		label: outTRp1_14_3398782 
+		do: 
+			outTRp1_14_3398782
+		post-place: p1_45
+	}
+	
+	transition-non-trig: p9_6_V1_outTRp9_1_3398789_1_1 {
+		//do: { outTRp9_1_3398789}
+		label: outTRp9_1_3398789 
+		do: 
+			outTRp9_1_3398789
+		post-place: p3_19
+	}
+	
+	transition-non-trig: p3_7_V1_outTRp3_4_3398763_1_1 {
+		//do: { outTRp3_4_3398763}
+		label: outTRp3_4_3398763 
+		do: 
+			outTRp3_4_3398763
+		post-place: p3_8
+	}
+	
+	transition-non-trig: p1_34_V1_outTRp1_1_3398720_1_1 {
+		//do: { outTRp1_1_3398720}
+		label: outTRp1_1_3398720 
+		do: 
+			outTRp1_1_3398720
+		post-place: p3_1
+	}
+	
+	transition-non-trig: p9_1_V1_outTRp9_1_3398829_1_1 {
+		//do: { outTRp9_1_3398829}
+		label: outTRp9_1_3398829 
+		do: 
+			outTRp9_1_3398829
+		post-place: p9_2
+	}
+	
+	transition-non-trig: p1_37_V1_outTRp1_25_3398820_1_1 {
+		//do: { outTRp1_25_3398820}
+		label: outTRp1_25_3398820 
+		do: 
+			outTRp1_25_3398820
+		post-place: p1_38
+	}
+	
+	transition-non-trig: p5_5_V1_outTRp5_1_3398745_1_1 {
+		//do: { outTRp5_1_3398745}
+		label: outTRp5_1_3398745 
+		do: 
+			outTRp5_1_3398745
+		post-place: p1_13
+	}
+	
+	transition-non-trig: p3_34_V1_outTRp3_11_3398764_1_1 {
+		//do: { outTRp3_11_3398764}
+		label: outTRp3_11_3398764 
+		do: 
+			outTRp3_11_3398764
+		post-place: p3_35
+	}
+	
+	transition-non-trig: p9_1_V1_outTRp9_1_3398870_1_1 {
+		//do: { outTRp9_1_3398870}
+		label: outTRp9_1_3398870 
+		do: 
+			outTRp9_1_3398870
+		post-place: p18_1
+	}
+	
+	transition-non-trig: p3_14_V1_outTRp3_13_3398852_1_1 {
+		//do: { outTRp3_13_3398852}
+		label: outTRp3_13_3398852 
+		do: 
+			outTRp3_13_3398852
+		post-place: p3_15
+	}
+	
+	transition-non-trig: p3_2_V1_outTRp3_2_3398830_1_1 {
+		//do: { outTRp3_2_3398830}
+		label: outTRp3_2_3398830 
+		do: 
+			outTRp3_2_3398830
+		post-place: p3_3
+	}
+	
+	transition-non-trig: p3_44_V1_outTRp3_10_3398748_1_1 {
+		//do: { outTRp3_10_3398748}
+		label: outTRp3_10_3398748 
+		do: 
+			outTRp3_10_3398748
+		post-place: p3_45
+	}
+	
+	transition-non-trig: p3_19_V1_outTRp3_13_3398802_1_1 {
+		//do: { outTRp3_13_3398802}
+		label: outTRp3_13_3398802 
+		do: 
+			outTRp3_13_3398802
+		post-place: p3_20
+	}
+	
+	transition-non-trig: p3_6_V1_outTRp3_6_3398857_1_1 {
+		//do: { outTRp3_6_3398857}
+		label: outTRp3_6_3398857 
+		do: 
+			outTRp3_6_3398857
+		post-place: p17_1
+	}
+	
+	transition-non-trig: p4_2_V1_outTRp4_2_3398873_1_1 {
+		//do: { outTRp4_2_3398873}
+		label: outTRp4_2_3398873 
+		do: 
+			outTRp4_2_3398873
+		post-place: p4_3
+	}
+	
+	transition-non-trig: p3_37_V1_outTRp3_29_3398835_1_1 {
+		//do: { outTRp3_29_3398835}
+		label: outTRp3_29_3398835 
+		do: 
+			outTRp3_29_3398835
+		post-place: p3_38
+	}
+	
+	transition-non-trig: p3_26_V1_outTRp3_21_3398836_1_1 {
+		//do: { outTRp3_21_3398836}
+		label: outTRp3_21_3398836 
+		do: 
+			outTRp3_21_3398836
+		post-place: p3_27
+	}
+	
+	transition-non-trig: p3_10_V1_outTRp3_10_3398867_1_1 {
+		//do: { outTRp3_10_3398867}
+		label: outTRp3_10_3398867 
+		do: 
+			outTRp3_10_3398867
+		post-place: p3_11
+	}
+	
+	transition-non-trig: p9_3_V1_outTRp9_2_3398801_1_1 {
+		//do: { outTRp9_2_3398801}
+		label: outTRp9_2_3398801 
+		do: 
+			outTRp9_2_3398801
+		post-place: p9_4
+	}
+	
+	transition-non-trig: p9_5_V1_outTRp9_5_3398831_1_1 {
+		//do: { outTRp9_5_3398831}
+		label: outTRp9_5_3398831 
+		do: 
+			outTRp9_5_3398831
+		post-place: p9_6
+	}
+	
+	transition-non-trig: p3_50_V1_outTRp3_44_3398845_1_1 {
+		//do: { outTRp3_44_3398845}
+		label: outTRp3_44_3398845 
+		do: 
+			outTRp3_44_3398845
+		post-place: p3_51
+	}
+	
+	transition-non-trig: p1_1_V1_outTRp1_1_3398811_1_1 {
+		//do: { outTRp1_1_3398811}
+		label: outTRp1_1_3398811 
+		do: 
+			outTRp1_1_3398811
+		post-place: p1_2
+	}
+	
+	transition-non-trig: p2_17_V1_outTRp2_10_3398821_1_1 {
+		//do: { outTRp2_10_3398821}
+		label: outTRp2_10_3398821 
+		do: 
+			outTRp2_10_3398821
+		post-place: p2_18
+	}
+	
+	transition-non-trig: p1_42_V1_outTRp1_1_3398718_1_1 {
+		//do: { outTRp1_1_3398718}
+		label: outTRp1_1_3398718 
+		do: 
+			outTRp1_1_3398718
+		post-place: p1_43
+	}
+	
+	transition-non-trig: p3_16_V1_outTRp3_8_3398766_1_1 {
+		//do: { outTRp3_8_3398766}
+		label: outTRp3_8_3398766 
+		do: 
+			outTRp3_8_3398766
+		post-place: p3_17
+	}
+	
+	transition-non-trig: p1_6_V1_outTRp1_5_3398844_1_1 {
+		//do: { outTRp1_5_3398844}
+		label: outTRp1_5_3398844 
+		do: 
+			outTRp1_5_3398844
+		post-place: p1_7
+	}
+	
+	transition-non-trig: p3_47_V1_outTRp3_5_3398733_1_1 {
+		//do: { outTRp3_5_3398733}
+		label: outTRp3_5_3398733 
+		do: 
+			outTRp3_5_3398733
+		post-place: p3_48
+	}
+	
+	transition-non-trig: p1_9_V1_outTRp1_3_3398784_1_1 {
+		//do: { outTRp1_3_3398784}
+		label: outTRp1_3_3398784 
+		do: 
+			outTRp1_3_3398784
+		post-place: p1_10
+	}
+	
+	transition-non-trig: p1_10_V1_outTRp1_10_3398879_1_1 {
+		//do: { outTRp1_10_3398879}
+		label: outTRp1_10_3398879 
+		do: 
+			outTRp1_10_3398879
+		post-place: p1_11
+	}
+	
+	transition-non-trig: p3_45_V1_outTRp3_29_3398799_1_1 {
+		//do: { outTRp3_29_3398799}
+		label: outTRp3_29_3398799 
+		do: 
+			outTRp3_29_3398799
+		post-place: p3_46
+	}
+	
+	transition-non-trig: p1_45_V1_outTRp1_4_3398725_1_1 {
+		//do: { outTRp1_4_3398725}
+		label: outTRp1_4_3398725 
+		do: 
+			outTRp1_4_3398725
+		post-place: p1_1
+	}
+	
+	transition-non-trig: p1_32_V1_outTRp1_10_3398769_1_1 {
+		//do: { outTRp1_10_3398769}
+		label: outTRp1_10_3398769 
+		do: 
+			outTRp1_10_3398769
+		post-place: p1_33
+	}
+	
+	transition-non-trig: p11_1_V1_outTRp11_1_3398824_1_1 {
+		//do: { outTRp11_1_3398824}
+		label: outTRp11_1_3398824 
+		do: 
+			outTRp11_1_3398824
+		post-place: p11_2
+	}
+	
+	transition-non-trig: p2_14_V1_outTRp2_6_3398762_1_1 {
+		//do: { outTRp2_6_3398762}
+		label: outTRp2_6_3398762 
+		do: 
+			outTRp2_6_3398762
+		post-place: p2_15
+	}
+	
+	transition-non-trig: p1_22_V1_outTRp1_7_3398793_1_1 {
+		//do: { outTRp1_7_3398793}
+		label: outTRp1_7_3398793 
+		do: 
+			outTRp1_7_3398793
+		post-place: p10_1
+	}
+	
+	transition-non-trig: p4_5_V1_outTRp4_2_3398839_1_1 {
+		//do: { outTRp4_2_3398839}
+		label: outTRp4_2_3398839 
+		do: 
+			outTRp4_2_3398839
+		post-place: p4_6
+	}
+	
+	transition-non-trig: p8_1_V1_outTRp8_1_3398788_1_1 {
+		//do: { outTRp8_1_3398788}
+		label: outTRp8_1_3398788 
+		do: 
+			outTRp8_1_3398788
+		post-place: p3_19
+	}
+	
+	transition-non-trig: p5_4_V1_outTRp5_4_3398816_1_1 {
+		//do: { outTRp5_4_3398816}
+		label: outTRp5_4_3398816 
+		do: 
+			outTRp5_4_3398816
+		post-place: p12_1
+	}
+	
+	transition-non-trig: p3_29_V1_outTRp3_12_3398771_1_1 {
+		//do: { outTRp3_12_3398771}
+		label: outTRp3_12_3398771 
+		do: 
+			outTRp3_12_3398771
+		post-place: p3_30
+	}
+	
+	transition-non-trig: p3_45_V1_outTRp3_40_3398853_1_1 {
+		//do: { outTRp3_40_3398853}
+		label: outTRp3_40_3398853 
+		do: 
+			outTRp3_40_3398853
+		post-place: p15_1
+	}
+	
+	transition-non-trig: p3_46_V1_outTRp3_32_3398806_1_1 {
+		//do: { outTRp3_32_3398806}
+		label: outTRp3_32_3398806 
+		do: 
+			outTRp3_32_3398806
+		post-place: p3_47
+	}
+	
+	transition-non-trig: p1_19_V1_outTRp1_4_3398759_1_1 {
+		//do: { outTRp1_4_3398759}
+		label: outTRp1_4_3398759 
+		do: 
+			outTRp1_4_3398759
+		post-place: p1_20
+	}
+	
+	transition-non-trig: p1_3_V1_outTRp1_3_3398866_1_1 {
+		//do: { outTRp1_3_3398866}
+		label: outTRp1_3_3398866 
+		do: 
+			outTRp1_3_3398866
+		post-place: p1_4
+	}
+	
+	transition-non-trig: p3_4_V1_outTRp3_4_3398843_1_1 {
+		//do: { outTRp3_4_3398843}
+		label: outTRp3_4_3398843 
+		do: 
+			outTRp3_4_3398843
+		post-place: p3_5
+	}
+	
+	transition-non-trig: p3_45_V1_outTRp3_40_3398855_1_1 {
+		//do: { outTRp3_40_3398855}
+		label: outTRp3_40_3398855 
+		do: 
+			outTRp3_40_3398855
+		post-place: p16_1
+	}
+	
+	transition-non-trig: p1_31_V1_outTRp1_21_3398832_1_1 {
+		//do: { outTRp1_21_3398832}
+		label: outTRp1_21_3398832 
+		do: 
+			outTRp1_21_3398832
+		post-place: p1_32
+	}
+	
+	transition-non-trig: p6_1_V1_outTRp6_1_3398773_1_1 {
+		//do: { outTRp6_1_3398773}
+		label: outTRp6_1_3398773 
+		do: 
+			outTRp6_1_3398773
+		post-place: p2_7
+	}
+	
+	transition-non-trig: p1_38_V1_outTRp1_26_3398822_1_1 {
+		//do: { outTRp1_26_3398822}
+		label: outTRp1_26_3398822 
+		do: 
+			outTRp1_26_3398822
+		post-place: p1_39
+	}
+	
+	transition-non-trig: p17_1_V1_outTRp17_1_3398863_1_1 {
+		//do: { outTRp17_1_3398863}
+		label: outTRp17_1_3398863 
+		do: 
+			outTRp17_1_3398863
+		post-place: p17_2
+	}
+	
+	transition-non-trig: p3_1_V1_outTRp3_1_3398724_1_1 {
+		//do: { outTRp3_1_3398724}
+		label: outTRp3_1_3398724 
+		do: 
+			outTRp3_1_3398724
+		post-place: p3_2
+	}
+	
+	transition-non-trig: p4_4_V1_outTRp4_3_3398869_1_1 {
+		//do: { outTRp4_3_3398869}
+		label: outTRp4_3_3398869 
+		do: 
+			outTRp4_3_3398869
+		post-place: p4_5
+	}
+	
+	transition-non-trig: p2_15_V1_outTRp2_3_3398740_1_1 {
+		//do: { outTRp2_3_3398740}
+		label: outTRp2_3_3398740 
+		do: 
+			outTRp2_3_3398740
+		post-place: p2_16
+	}
+	
+	transition-non-trig: p5_4_V1_outTRp5_4_3398817_1_1 {
+		//do: { outTRp5_4_3398817}
+		label: outTRp5_4_3398817 
+		do: 
+			outTRp5_4_3398817
+		post-place: p13_1
+	}
+	
+	transition-non-trig: p2_1_V1_outTRp2_1_3398874_1_1 {
+		//do: { outTRp2_1_3398874}
+		label: outTRp2_1_3398874 
+		do: 
+			outTRp2_1_3398874
+		post-place: p2_2
+	}
+	
+	transition-non-trig: p1_40_V1_outTRp1_17_3398791_1_1 {
+		//do: { outTRp1_17_3398791}
+		label: outTRp1_17_3398791 
+		do: 
+			outTRp1_17_3398791
+		post-place: p1_41
+	}
+	
+	transition-non-trig: p4_6_V1_outTRp4_1_3398744_1_1 {
+		//do: { outTRp4_1_3398744}
+		label: outTRp4_1_3398744 
+		do: 
+			outTRp4_1_3398744
+		post-place: p1_13
+	}
+	
+	transition-non-trig: p3_41_V1_outTRp3_4_3398731_1_1 {
+		//do: { outTRp3_4_3398731}
+		label: outTRp3_4_3398731 
+		do: 
+			outTRp3_4_3398731
+		post-place: p3_42
+	}
+	
+	transition-non-trig: p1_34_V1_outTRp1_1_3398719_1_1 {
+		//do: { outTRp1_1_3398719}
+		label: outTRp1_1_3398719 
+		do: 
+			outTRp1_1_3398719
+		post-place: p2_1
+	}
+	
+	transition-non-trig: p1_11_V1_outTRp1_4_3398797_1_1 {
+		//do: { outTRp1_4_3398797}
+		label: outTRp1_4_3398797 
+		do: 
+			outTRp1_4_3398797
+		post-place: p1_12
+	}
+	
+	transition-non-trig: p3_5_V1_outTRp3_2_3398735_1_1 {
+		//do: { outTRp3_2_3398735}
+		label: outTRp3_2_3398735 
+		do: 
+			outTRp3_2_3398735
+		post-place: p3_6
+	}
+	
+	transition-non-trig: p3_51_V1_outTRp3_5_3398730_1_1 {
+		//do: { outTRp3_5_3398730}
+		label: outTRp3_5_3398730 
+		do: 
+			outTRp3_5_3398730
+		post-place: p3_52
+	}
+	
+	transition-non-trig: p1_35_V1_outTRp1_20_3398809_1_1 {
+		//do: { outTRp1_20_3398809}
+		label: outTRp1_20_3398809 
+		do: 
+			outTRp1_20_3398809
+		post-place: p1_36
+	}
+	
+	transition-non-trig: p2_13_V1_outTRp2_9_3398848_1_1 {
+		//do: { outTRp2_9_3398848}
+		label: outTRp2_9_3398848 
+		do: 
+			outTRp2_9_3398848
+		post-place: p2_14
+	}
+	
+	transition-non-trig: p3_11_V1_outTRp3_8_3398840_1_1 {
+		//do: { outTRp3_8_3398840}
+		label: outTRp3_8_3398840 
+		do: 
+			outTRp3_8_3398840
+		post-place: p14_1
+	}
+	
+	transition-non-trig: p2_9_V1_outTRp2_7_3398851_1_1 {
+		//do: { outTRp2_7_3398851}
+		label: outTRp2_7_3398851 
+		do: 
+			outTRp2_7_3398851
+		post-place: p2_10
+	}
+	
+	transition-non-trig: p3_13_V1_outTRp3_6_3398761_1_1 {
+		//do: { outTRp3_6_3398761}
+		label: outTRp3_6_3398761 
+		do: 
+			outTRp3_6_3398761
+		post-place: p3_14
+	}
+	
+	transition-non-trig: p9_4_V1_outTRp9_3_3398810_1_1 {
+		//do: { outTRp9_3_3398810}
+		label: outTRp9_3_3398810 
+		do: 
+			outTRp9_3_3398810
+		post-place: p9_5
+	}
+	
+	transition-non-trig: p3_6_V1_outTRp3_3_3398736_1_1 {
+		//do: { outTRp3_3_3398736}
+		label: outTRp3_3_3398736 
+		do: 
+			outTRp3_3_3398736
+		post-place: p3_7
+	}
+	
+	transition-non-trig: p1_30_V1_outTRp1_6_3398756_1_1 {
+		//do: { outTRp1_6_3398756}
+		label: outTRp1_6_3398756 
+		do: 
+			outTRp1_6_3398756
+		post-place: p1_31
+	}
+	
+	transition-non-trig: p3_39_V1_outTRp3_3_3398727_1_1 {
+		//do: { outTRp3_3_3398727}
+		label: outTRp3_3_3398727 
+		do: 
+			outTRp3_3_3398727
+		post-place: p3_40
+	}
+	
+	transition-non-trig: p1_4_V1_outTRp1_1_3398738_1_1 {
+		//do: { outTRp1_1_3398738}
+		label: outTRp1_1_3398738 
+		do: 
+			outTRp1_1_3398738
+		post-place: p1_5
+	}
+	
+	transition-non-trig: p1_22_V1_outTRp1_7_3398794_1_1 {
+		//do: { outTRp1_7_3398794}
+		label: outTRp1_7_3398794 
+		do: 
+			outTRp1_7_3398794
+		post-place: p11_1
+	}
+	
+	transition-non-trig: p3_11_V1_outTRp3_7_3398779_1_1 {
+		//do: { outTRp3_7_3398779}
+		label: outTRp3_7_3398779 
+		do: 
+			outTRp3_7_3398779
+		post-place: p3_12
+	}
+	
+	transition-non-trig: p1_16_V1_outTRp1_12_3398846_1_1 {
+		//do: { outTRp1_12_3398846}
+		label: outTRp1_12_3398846 
+		do: 
+			outTRp1_12_3398846
+		post-place: p1_17
+	}
+	
+	transition-non-trig: p19_1_V1_outTRp19_1_3398877_1_1 {
+		//do: { outTRp19_1_3398877}
+		label: outTRp19_1_3398877 
+		do: 
+			outTRp19_1_3398877
+		post-place: p4_1
+	}
+	
+	transition-non-trig: p7_1_V1_outTRp7_1_3398775_1_1 {
+		//do: { outTRp7_1_3398775}
+		label: outTRp7_1_3398775 
+		do: 
+			outTRp7_1_3398775
+		post-place: p3_49
+	}
+	
+	transition-non-trig: p1_24_V1_outTRp1_6_3398778_1_1 {
+		//do: { outTRp1_6_3398778}
+		label: outTRp1_6_3398778 
+		do: 
+			outTRp1_6_3398778
+		post-place: p1_25
+	}
+	
+	transition-non-trig: p1_15_V1_outTRp1_9_3398815_1_1 {
+		//do: { outTRp1_9_3398815}
+		label: outTRp1_9_3398815 
+		do: 
+			outTRp1_9_3398815
+		post-place: p1_16
+	}
+	
+	transition-non-trig: p1_28_V1_outTRp1_20_3398837_1_1 {
+		//do: { outTRp1_20_3398837}
+		label: outTRp1_20_3398837 
+		do: 
+			outTRp1_20_3398837
+		post-place: p1_29
+	}
+	
+	transition-non-trig: p5_2_V1_outTRp5_2_3398777_1_1 {
+		//do: { outTRp5_2_3398777}
+		label: outTRp5_2_3398777 
+		do: 
+			outTRp5_2_3398777
+		post-place: p5_3
+	}
+	
+	transition-non-trig: p1_17_V1_outTRp1_7_3398804_1_1 {
+		//do: { outTRp1_7_3398804}
+		label: outTRp1_7_3398804 
+		do: 
+			outTRp1_7_3398804
+		post-place: p1_18
+	}
+	
+}

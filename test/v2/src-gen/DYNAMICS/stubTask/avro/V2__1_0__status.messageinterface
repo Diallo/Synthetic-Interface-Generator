@@ -1,0 +1,463 @@
+dsl = "org.inaetics/dsl/message/interface/v1.0.0"
+
+message interface V2__1_0__status {
+	version = 1.0
+	"qos" : "sample"
+	"pubsub.config" : "zmq"
+	"pubsub.serializer" : "json"
+	
+	message tno.dynamics.outTRp1_1_3398718 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_1_3398719 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_1_3398720 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_1_3398724 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_4_3398725 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_3_3398727 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_4_3398731 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_5_3398733 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_2_3398735 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_3_3398736 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_1_3398738 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp2_3_3398740 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp4_1_3398744 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp5_1_3398745 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_10_3398748 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_6_3398756 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_4_3398759 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_6_3398761 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp2_6_3398762 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_4_3398763 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_11_3398764 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_8_3398766 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_10_3398769 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_12_3398771 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp6_1_3398773 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp7_1_3398775 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp5_2_3398777 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_6_3398778 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_14_3398782 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_3_3398784 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp8_1_3398788 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp9_1_3398789 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_17_3398791 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_7_3398793 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_7_3398794 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_4_3398797 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_29_3398799 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp9_2_3398801 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_13_3398802 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_7_3398804 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_32_3398806 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_20_3398809 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp9_3_3398810 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_1_3398811 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_9_3398815 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp5_4_3398816 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp5_4_3398817 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_25_3398820 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp2_10_3398821 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_26_3398822 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp11_1_3398824 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp9_1_3398829 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_2_3398830 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp9_5_3398831 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_21_3398832 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_29_3398835 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_21_3398836 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_20_3398837 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp4_2_3398839 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_8_3398840 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_5_3398844 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_12_3398846 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp2_9_3398848 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp2_7_3398851 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_13_3398852 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_40_3398853 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_40_3398855 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_6_3398857 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp17_1_3398863 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_3_3398866 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_10_3398867 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp4_3_3398869 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp9_1_3398870 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp4_2_3398873 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp2_1_3398874 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp19_1_3398877 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp1_10_3398879 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_52_3398880 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_52_3398881 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_41_3398883 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_36_3398884 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_34_3398885 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_31_3398886 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_29_3398887 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_18_3398888 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_60_3398889 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_62_3398890 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_60_3398891 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_62_3398892 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_62_3398893 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+	
+	message tno.dynamics.outTRp3_61_3398894 {
+		consumer range = [1,2)
+		provider range = [1,2)
+	}
+}

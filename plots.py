@@ -222,14 +222,14 @@ def make_scatter(name="results/experiments{}",number=1):
     plt.savefig(name.format(number) + "scatter.png")
 
 if __name__ == "__main__":
-    make_figure(number=1)
-    make_scatter(number=1)
+    # make_figure(number=1)
+    # make_scatter(number=1)
 
-    make_figure(number=2)
-    make_scatter(number=2)
+    # make_figure(number=2)
+    # make_scatter(number=2)
 
     make_figure(number=3)
     make_scatter(number=3)
 
-    make_figure(number=4)
-    make_scatter(number=4)
+    # make_figure(number=4)
+    # make_scatter(number=4)

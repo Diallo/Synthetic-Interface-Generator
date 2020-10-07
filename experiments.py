@@ -194,17 +194,23 @@ def experiment_3(prevalence=0.2):
     AMOUNT_MODIFICATIONS = 3
     TIMEOUT = 350
     filename = "experiments3.csv"
+
+    TRIES = 10
     
     
-    possible_modifications = [modifications.delete,modifications.create,modifications.merge,modifications.split]
+    # possible_modifications = [modifications.delete,modifications.create,modifications.merge,modifications.split]
+    possible_modifications = [modifications.create,modifications.merge,modifications.split]
     for modification in possible_modifications:
         for inout in INPUT_RANGE:
-            for _ in range(DATAPOINT_SAMPLES):
-                
+            x = 0
+            n_try = TRIES 
+            while x < DATAPOINT_SAMPLES:
+                x += 1
                 modifications.ar_file_input = defaultdict(list)
                 modifications.ar_file_output =  defaultdict(list)
                 modifications.already_modified = []
                 
+                elapsed_time = None
                 try:
                     rules = generator.random_generator(inout,inout,prevalence)
                     statemachine = generator.generate(rules)
@@ -237,7 +243,9 @@ def experiment_3(prevalence=0.2):
                         print(outpu)
                         if "Cannot synthesize a partner for a net" in outpu or "memory exhausted" in outpu:
                             elapsed_time = -1
-                           
+                            if n_try > 0:
+                                x -= 1
+                                n_try -= 1
                         
                         print("{},{},{},{},{},(good)".format(".".join(performed_modifications),inout,inout,prevalence,elapsed_time),file=f)
                   
@@ -245,7 +253,7 @@ def experiment_3(prevalence=0.2):
                     # How to end up here:
                     # -- If it was timed out after subprocess call
                     # -- Non zero exit status that is memory exhaustion
-                    
+                   
 
                     if "timed out after" in str(e):
                         with open(filename, 'a+') as f:
@@ -255,7 +263,12 @@ def experiment_3(prevalence=0.2):
                     elif "non-zero exit status 5" in str(e):
                         with open(filename, 'a+') as f:
                             print("{},{},{},{},-1,(exhausted)".format(".".join(performed_modifications),inout,inout,prevalence),file=f)
-                        # This was a memory exhaustion             
+                        # This was a memory exhaustion      
+                    elif n_try > 0:
+                        x -= 1
+                        n_try -= 1
+                if elapsed_time != None:
+                    n_try = TRIES
        
                 
 
@@ -264,22 +277,29 @@ def experiment_4(prevalence=0.2):
     "experiments4.csv" formatted as
     "Operation, Inputs, Outputs, Prevalence, Time in seconds"
     """
-    INPUT_RANGE = [30,50,80,100]
+    INPUT_RANGE = [30,50,80]
     DATAPOINT_SAMPLES = 7
     AMOUNT_MODIFICATIONS = 5
     TIMEOUT = 350
     filename = "experiments4.csv"
     
     
+    TRIES = 10
+    
+    
     possible_modifications = [modifications.delete,modifications.create,modifications.merge,modifications.split]
+    possible_modifications = [modifications.merge,modifications.split]
     for modification in possible_modifications:
         for inout in INPUT_RANGE:
-            for _ in range(DATAPOINT_SAMPLES):
-                
+            x = 0
+            n_try = TRIES 
+            while x < DATAPOINT_SAMPLES:
+                x += 1
                 modifications.ar_file_input = defaultdict(list)
                 modifications.ar_file_output =  defaultdict(list)
                 modifications.already_modified = []
                 
+                elapsed_time = None
                 try:
                     rules = generator.random_generator(inout,inout,prevalence)
                     statemachine = generator.generate(rules)
@@ -312,7 +332,9 @@ def experiment_4(prevalence=0.2):
                         print(outpu)
                         if "Cannot synthesize a partner for a net" in outpu or "memory exhausted" in outpu:
                             elapsed_time = -1
-                           
+                            if n_try > 0:
+                                x -= 1
+                                n_try -= 1
                         
                         print("{},{},{},{},{},(good)".format(".".join(performed_modifications),inout,inout,prevalence,elapsed_time),file=f)
                   
@@ -320,17 +342,21 @@ def experiment_4(prevalence=0.2):
                     # How to end up here:
                     # -- If it was timed out after subprocess call
                     # -- Non zero exit status that is memory exhaustion
-                    
+                   
 
                     if "timed out after" in str(e):
                         with open(filename, 'a+') as f:
                             print("{},{},{},{},-1,(timed_out)".format(".".join(performed_modifications),inout,inout,prevalence),file=f)
-                       
+                                               
 
                     elif "non-zero exit status 5" in str(e):
                         with open(filename, 'a+') as f:
                             print("{},{},{},{},-1,(exhausted)".format(".".join(performed_modifications),inout,inout,prevalence),file=f)
-                        # This was a memory exhaustion             
+                        # This was a memory exhaustion    
+                    else:
+                        x -= 1
+                if elapsed_time != None:
+                    n_try = TRIES
        
                 
 
@@ -341,7 +367,7 @@ if __name__ == "__main__":
     print("done1")
     # experiment_2()
     print("done2")
-    experiment_3() # modifications amount is 3
+    # experiment_3() # modifications amount is 3
     print("done3")
     experiment_4()
     print("Done4")
