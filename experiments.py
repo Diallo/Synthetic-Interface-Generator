@@ -35,7 +35,7 @@ def experiment_1(prevalence=0.2):
     "experiments1.csv" formatted as
     "Operation, Inputs, Outputs, Prevalence, Time in seconds"
     """
-    INPUT_RANGE = [10,30,50,80]
+    INPUT_RANGE = [10,30,50]
     # INPUT_RANGE = [50,80]
     DATAPOINT_SAMPLES = 5
     AMOUNT_MODIFICATIONS = 1
@@ -88,7 +88,7 @@ def experiment_1(prevalence=0.2):
                         print(outpu)
                         if "Cannot synthesize a partner for a net" in outpu or "memory exhausted" in outpu:
                             elapsed_time = -1
-                           
+                            x -= 1
                         
                         print("{},{},{},{},{},(good)".format(".".join(performed_modifications),inout,inout,prevalence,elapsed_time),file=f)
                     x += 1
@@ -376,9 +376,9 @@ def experiment_4(prevalence=0.2):
 
 
 if __name__ == "__main__":
-    # experiment_1()
+    experiment_1()
     print("done1")
-    experiment_2()
+    # experiment_2()
     print("done2")
     # experiment_3() # modifications amount is 3
     print("done3")
