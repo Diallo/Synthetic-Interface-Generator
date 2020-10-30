@@ -219,7 +219,45 @@ def make_scatter(name="results/experiments{}",number=1):
     
     plt.tight_layout()
 
-    plt.savefig(name.format(number) + "scatter.png")
+    plt.save
+    fig(name.format(number) + "scatter.png")
+
+
+
+def make_table(name="results/experiments{}",number=1):
+    filename = name.format(number) + ".csv"
+
+
+
+    create = defaultdict(int)
+    delete = defaultdict(int)
+    merge = defaultdict(int)
+    split = defaultdict(int)
+
+
+    with open(filename, "r") as f:
+        reader = csv.reader(f, delimiter=",")
+        for _, line in enumerate(reader):
+            oper,ins,outs,prev,t,status = line
+            selected = None
+            if "delete" in oper:
+                selected = delete
+            if "create" in oper:
+                selected = create
+            if "merge" in oper:
+                selected = merge
+            if "split" in oper:
+                selected = split
+            selected["{}.{}".format(ins,outs)] += 1
+    
+    print(filename)
+    vals = [create,delete,merge,split]
+    valss = ["create","delete","merge","split"]
+    for x in range(4):
+        print(valss[x])
+        for key,value in vals[x].items():
+            print(key,value)
+        print("\n")
 
 if __name__ == "__main__":
     make_figure(number=1)
@@ -228,8 +266,13 @@ if __name__ == "__main__":
     make_figure(number=2)
     make_scatter(number=2)
 
-    make_figure(number=3)
-    make_scatter(number=3)
+    # make_figure(number=3)
+    # make_scatter(number=3)
 
-    make_figure(number=4)
-    make_scatter(number=4)
+    # make_figure(number=4)
+    # make_scatter(number=4)
+
+    make_table(number=1)
+    make_table(number=2)
+    make_table(number=3)
+    make_table(number=4)
