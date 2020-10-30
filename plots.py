@@ -219,8 +219,7 @@ def make_scatter(name="results/experiments{}",number=1):
     
     plt.tight_layout()
 
-    plt.save
-    fig(name.format(number) + "scatter.png")
+    plt.savefig(name.format(number) + "scatter.png")
 
 
 
@@ -260,19 +259,19 @@ def make_table(name="results/experiments{}",number=1):
         print("\n")
 
 if __name__ == "__main__":
-    make_figure(number=1)
+    # make_figure(number=1)
     make_scatter(number=1)
 
-    make_figure(number=2)
+    # make_figure(number=2)
     make_scatter(number=2)
 
     # make_figure(number=3)
-    # make_scatter(number=3)
+    make_scatter(number=3)
 
     # make_figure(number=4)
-    # make_scatter(number=4)
+    make_scatter(number=4)
 
-    make_table(number=1)
-    make_table(number=2)
-    make_table(number=3)
-    make_table(number=4)
+    # make_table(number=1)
+    # make_table(number=2)
+    # make_table(number=3)
+    # make_table(number=4)
