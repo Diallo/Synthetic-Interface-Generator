@@ -153,8 +153,8 @@ def make_scatter(name="results/experiments{}",number=1):
     # plt.yscale("symlog")
     plt.ylabel("T in seconds")
     plt.xlabel("Inputs, Outputs")
-    plt.xticks(["10,30,50,80"])
-    plt.ylim(-150, 400)
+    # plt.xticks(["10,30,50,80"])
+    plt.ylim(-250, 400)
     plt.title("Create")
 
 
@@ -172,7 +172,7 @@ def make_scatter(name="results/experiments{}",number=1):
     plt.axhline(y=0,linewidth=1, color='black',label="zero")
     plt.ylabel("T in seconds")
     # plt.xticks([10,30,50,80])
-    plt.ylim(-150, 400)
+    plt.ylim(-250, 400)
 
     plt.xlabel("Inputs, Outputs")
 
@@ -191,7 +191,7 @@ def make_scatter(name="results/experiments{}",number=1):
     plt.axhline(y=0,linewidth=1, color='black',label="zero")
     plt.ylabel("T in seconds")
     # plt.xticks([10,30,50,80])
-    plt.ylim(-150, 400)
+    plt.ylim(-250, 400)
 
     plt.xlabel("Inputs, Outputs")
 
@@ -209,7 +209,7 @@ def make_scatter(name="results/experiments{}",number=1):
     plt.axhline(y=0,linewidth=1, color='black',label="zero")
     plt.ylabel("T in seconds")
     # plt.xticks([10,30,50,80])
-    plt.ylim(-150, 400)
+    plt.ylim(-250, 400)
 
     plt.xlabel("Inputs, Outputs")
 
@@ -222,14 +222,14 @@ def make_scatter(name="results/experiments{}",number=1):
     plt.savefig(name.format(number) + "scatter.png")
 
 if __name__ == "__main__":
-    # make_figure(number=1)
-    # make_scatter(number=1)
+    make_figure(number=1)
+    make_scatter(number=1)
 
-    # make_figure(number=2)
-    # make_scatter(number=2)
+    make_figure(number=2)
+    make_scatter(number=2)
 
     make_figure(number=3)
     make_scatter(number=3)
 
-    # make_figure(number=4)
-    # make_scatter(number=4)
+    make_figure(number=4)
+    make_scatter(number=4)

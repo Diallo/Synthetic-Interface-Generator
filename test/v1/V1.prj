@@ -1,0 +1,38 @@
+import "V1.interface"
+
+Project NewProject {
+	Type Mappings {
+		typeMappings {
+			int -> "int32"
+			real -> "double"		
+		}
+	}
+
+	Generate UML {
+		umlTask for interface V1
+	}
+	
+	Generate Petri-net {
+		PNet for interface V1
+	}
+
+	Generate Dynamics Open Net {
+		openNetTask for interface V1 {
+			pnet-task: PNet
+			stub-task: stubTask 
+		}
+	}
+	
+	Generate Dynamics stubs {
+		stubTask for interface V1 {
+			client-params-file-name: "ip.params"
+			web-client: OFF
+			open-net-task: openNetTask
+			o2n-namespace: "tno.dynamics"
+		}
+	}
+
+	
+
+      
+}
