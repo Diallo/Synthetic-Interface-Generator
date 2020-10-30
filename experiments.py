@@ -35,19 +35,22 @@ def experiment_1(prevalence=0.2):
     "experiments1.csv" formatted as
     "Operation, Inputs, Outputs, Prevalence, Time in seconds"
     """
-    # INPUT_RANGE = [10,30,50,80]
-    INPUT_RANGE = [50,80]
-    DATAPOINT_SAMPLES = 7
+    INPUT_RANGE = [10,30,50,80]
+    # INPUT_RANGE = [50,80]
+    DATAPOINT_SAMPLES = 5
     AMOUNT_MODIFICATIONS = 1
     TIMEOUT = 350
     filename = "experiments1.csv"
     
     
     # possible_modifications = [modifications.delete,modifications.create,modifications.merge,modifications.split]
-    possible_modifications = [modifications.split]
+    possible_modifications = [modifications.merge]
+    performed_modifications =  [x.__name__ for x in possible_modifications]
     for modification in possible_modifications:
         for inout in INPUT_RANGE:
-            for _ in range(DATAPOINT_SAMPLES):
+
+            x = 0
+            while x < DATAPOINT_SAMPLES:
                 
                 modifications.ar_file_input = defaultdict(list)
                 modifications.ar_file_output =  defaultdict(list)
@@ -88,6 +91,7 @@ def experiment_1(prevalence=0.2):
                            
                         
                         print("{},{},{},{},{},(good)".format(".".join(performed_modifications),inout,inout,prevalence,elapsed_time),file=f)
+                    x += 1
                   
                 except Exception as e:
                     # How to end up here:
@@ -104,26 +108,34 @@ def experiment_1(prevalence=0.2):
                         with open(filename, 'a+') as f:
                             print("{},{},{},{},-1,(exhausted)".format(".".join(performed_modifications),inout,inout,prevalence),file=f)
                         # This was a memory exhaustion
+                    else:
+                        with open(filename, 'a+') as f:
+                            print("{},{},{},{},-1,(COULD NOT SYNTHESIZE)".format(".".join(performed_modifications),inout,inout,prevalence),file=f)
+                        # This was a memory exhaustion
+                    
                         
 def experiment_2(prevalence=0.2):
     """This runs experiment set 2 and writes it to the file
     "experiments2.csv" formatted as
     "Operation, Inputs, Outputs, Prevalence, Time in seconds"
     """
-    INPUT_RANGE = [(10,30),(30,10),(10,50),(50,10),(30,50),(50,30)]
+    # INPUT_RANGE = [(10,30),(30,10),(10,50),(50,10),(30,50),(50,30)]
+    INPUT_RANGE = [(30,50),(50,30)]
     DATAPOINT_SAMPLES = 7
     AMOUNT_MODIFICATIONS = 1
     TIMEOUT = 350
     filename = "experiments2.csv"
     
     
-    possible_modifications = [modifications.delete,modifications.create,modifications.merge,modifications.split]
+    # possible_modifications = [modifications.delete,modifications.create,modifications.merge,modifications.split]
+    possible_modifications = [modifications.merge]
     for modification in possible_modifications:
         for inout in INPUT_RANGE:
             inputs = inout[0]
             output = inout[1]
 
-            for _ in range(DATAPOINT_SAMPLES):
+            x = 0
+            while x < DATAPOINT_SAMPLES:
                 
                 modifications.ar_file_input = defaultdict(list)
                 modifications.ar_file_output =  defaultdict(list)
@@ -162,9 +174,9 @@ def experiment_2(prevalence=0.2):
                         if "Cannot synthesize a partner for a net" in outpu or "memory exhausted" in outpu:
                             elapsed_time = -1
                            
-                        
                         print("{},{},{},{},{},(good)".format(".".join(performed_modifications),inputs,output,prevalence,elapsed_time),file=f)
-                  
+                        x += 1
+
                 except Exception as e:
                     # How to end up here:
                     # -- If it was timed out after subprocess call
@@ -366,9 +378,9 @@ def experiment_4(prevalence=0.2):
 if __name__ == "__main__":
     # experiment_1()
     print("done1")
-    # experiment_2()
+    experiment_2()
     print("done2")
     # experiment_3() # modifications amount is 3
     print("done3")
-    experiment_4()
+    # experiment_4()
     print("Done4")
