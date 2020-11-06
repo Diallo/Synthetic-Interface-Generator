@@ -62,8 +62,7 @@ def experiment_1(prevalence=0.2):
                 try:
                     # Generate a ruleset
                     # Parameters (Inputs, OUtputs and prevalence)
-                    rules = generator.random_generato
-                    r(inout,inout,prevalence)
+                    rules = generator.random_generator(inout,inout,prevalence)
                     statemachine = generator.generate(rules)
                     # Pass-through
                     modifications.populate_ar_file(statemachine)
