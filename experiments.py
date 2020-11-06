@@ -14,10 +14,13 @@ LOCATION_COMMA = "/home/scripts/comma-cmd.jar"
 LOCATION_FIONA = "" # Can leave this blank just add to path
 
 def create_ar_file():
+    # For the generated modifications create the AR FILE
+    # Globals set in modifications
     ar_file_input = modifications.ar_file_input
     ar_file_output = modifications.ar_file_output
     env = Environment(loader=FileSystemLoader('templates'))
     file_ar = env.get_template('ar.jinja').render(**locals())
+    # Above code (Creates an AR File in directory /test hardcoded)
 
 
     with open('test/{}.ar'.format("ZARFILE"), 'w') as f:
@@ -48,7 +51,7 @@ def experiment_1(prevalence=0.2):
     performed_modifications =  [x.__name__ for x in possible_modifications]
     for modification in possible_modifications:
         for inout in INPUT_RANGE:
-
+            
             x = 0
             while x < DATAPOINT_SAMPLES:
                 
@@ -57,25 +60,31 @@ def experiment_1(prevalence=0.2):
                 modifications.already_modified = []
                 
                 try:
-                    rules = generator.random_generator(inout,inout,prevalence)
+                    # Generate a ruleset
+                    # Parameters (Inputs, OUtputs and prevalence)
+                    rules = generator.random_generato
+                    r(inout,inout,prevalence)
                     statemachine = generator.generate(rules)
+                    # Pass-through
                     modifications.populate_ar_file(statemachine)
                     
+
                     # Attempt to perform modifications
                     statemachine_modified = False
                     while not statemachine_modified:
+                        # Performed modifications will be a list of operations [Delete,Create]
                         statemachine_modified, performed_modifications = modifications.perform_modifications(statemachine,possible_modifications=[modification],amount=AMOUNT_MODIFICATIONS)
-            
+
                     # Genereates the COMMA files hardcoded directory
+                    # From here have a modified statemachine
                     conversion.generate_conversion(statemachine,"V1","test/v1/")
                     conversion.generate_conversion(statemachine_modified,"V2","test/v2/")
 
-                    # Create AR file and run CMD Comma
+                    # Create AR file and run CMD Comma and get .ownf files
                     create_ar_file()
                 
                 
                     # Should now have directories containing files
-                    # TODO: Run FIONA here with TIME
                     # fiona -t adapter SERVER.owfn CLIENT.owfn -a ARFILE.ar
                     with open(filename, 'a+') as f:
                         
@@ -91,6 +100,7 @@ def experiment_1(prevalence=0.2):
                             x -= 1
                         
                         print("{},{},{},{},{},(good)".format(".".join(performed_modifications),inout,inout,prevalence,elapsed_time),file=f)
+                    # USED TO INDICATE A GOOD RESULT
                     x += 1
                   
                 except Exception as e:
