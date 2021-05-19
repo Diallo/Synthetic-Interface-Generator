@@ -299,17 +299,23 @@ def r3_2(p1,t1,statemachine):
 # indicating which rule functions may be called in which
 # state. 
 # Split into the deterministic ruleset and non-deterministic ruleset
-Druleset = {}
-Druleset["start"] = [r0]
-Druleset[r0] = [r0_1,r0_2,r1]
-Druleset[r1] = [r1_1,r1_2]
-NRuleset = {}
-NRuleset["start"] = [r0,r3]
-NRuleset[r0] = [r2]
-NRuleset[r2] = [r2_1,r2_2]
-NRuleset[r3] = [r3_1,r3_2]
+# Druleset = {}
+# Druleset["start"] = [r0]
+# Druleset[r0] = [r0_1,r0_2,r1]
+# Druleset[r1] = [r1_1,r1_2]
+# NRuleset = {}
+# NRuleset["start"] = [r0,r3]
+# NRuleset[r0] = [r2]
+# NRuleset[r2] = [r2_1,r2_2]
+# NRuleset[r3] = [r3_1,r3_2]
 
 
+
+Druleset = [(r0,r0_1), (r0,r0_2), (r0,r1,r1_1), (r0,r1,r1_1)]
+NRuleset = [(r3,r3_1),(r3,r3_2),(r0,r2,r2_1),(r0,r2,r2_2)]
+
+# LetNonDetRules={〈R3,R3′〉,〈R3,R3”〉,〈R0,R2,R2′〉,〈R0,R2,R2”〉}
+# LetDetRules={〈R0,R0′〉,〈R0,R0”〉,〈R0,R1,R1′〉,〈R0,R1,R1”〉}
 
 
 
@@ -422,134 +428,59 @@ def random_generator(inputs,outputs,prevalence):
     tempInputs = inputs
     tempOutputs = outputs
     
-    # estimatedPlaces = round(inputs * 2 /AVGNUMBER)
-    # rule2applications = round(prevalence * estimatedPlaces)
-    ruleApplications = []
-
-
+    
     
     nondeterministic = 0
     deterministic = 0
     currentPrevalence = 0
 
 
+    
+    Druleset = [(r0,r0_1), (r0,r0_2), (r0,r1,r1_1), (r0,r1,r1_1)]
+    Nruleset = [(r3,r3_1),(r3,r3_2),(r0,r2,r2_1),(r0,r2,r2_2)]
+    ruleset = None
+
+    statemachine = StateMachine()
+    state = State("start",statemachine,statemachine.legs,1)
+
+
     while tempInputs > 0 or tempOutputs > 0:
+        statemachine.setBeginFinal()
+
         if currentPrevalence < prevalence and tempInputs >= 1 and tempOutputs >= 1 :
             
-            currentState = "start"
-            rules = []
-            while currentState in NRuleset:
-             
-                madeChoice = random.choice(NRuleset[currentState])
-                if madeChoice == r3 and deterministic == 0:
-                    continue
-                else:
-                    currentState = madeChoice
-                    rules.append(currentState)
-                
-            deterministic += selected_rule_states(currentState)[0]
-            nondeterministic += selected_rule_states(currentState)[1]
-            tempInputs -= selected_rule_inputs_outputs(currentState)[0]
-            tempOutputs -= selected_rule_inputs_outputs(currentState)[1]
-
-            if tempInputs < 0 or tempOutputs < 0:
-                tempInputs += selected_rule_inputs_outputs(currentState)[0]
-                tempOutputs += selected_rule_inputs_outputs(currentState)[1]
-                deterministic += selected_rule_states(currentState)[0]
-                nondeterministic += selected_rule_states(currentState)[1]
-            else:
-                ruleApplications.append(tuple(rules))
-
-
-        
-        # if prevalence above required
+            #Nruleset
+            ruleset = Nruleset
         else:
-      
-            currentState = "start"
-            rules = []
-            while currentState in Druleset:
-             
-                madeChoice = random.choice(Druleset[currentState])
-                
-                currentState = madeChoice
-                rules.append(currentState)
-                
-            
-            deterministic += selected_rule_states(currentState)[0]
-            nondeterministic += selected_rule_states(currentState)[1]
-            tempInputs -= selected_rule_inputs_outputs(currentState)[0]
-            tempOutputs -= selected_rule_inputs_outputs(currentState)[1]
-
-            if tempInputs < 0 or tempOutputs < 0:
-                tempInputs += selected_rule_inputs_outputs(currentState)[0]
-                tempOutputs += selected_rule_inputs_outputs(currentState)[1]
-                deterministic -= selected_rule_states(currentState)[0]
-                nondeterministic -= selected_rule_states(currentState)[1]
-            else:
-                ruleApplications.append(tuple(rules))
-
-        currentPrevalence = (nondeterministic/(nondeterministic+deterministic) ) if (nondeterministic+deterministic) else 0
-      
-       
-   
-    StateMachine.deterministic = deterministic
-    StateMachine.nondeterminsitics = nondeterministic
-    random.shuffle(ruleApplications)
-   
-   
-    return ruleApplications
-
-
-def determine_non_determinism(statemachine):
-    deterministic = 0
-    nondeterministic = 0
-
-    for transition in statemachine.transitions:
-        transition.start.outgoing += 1
-    
-   
-    for state in statemachine.states:
-       
-        if state.outgoing > 1:
-            nondeterministic += state.outgoing
-        else:
-            deterministic += state.outgoing
-   
-    return nondeterministic/(deterministic + nondeterministic)
-        
-
-    
-
-def generate(rules):
-    statemachine = StateMachine()
-    statemachine.rulelist  = rules
-    
-    state = State("start",statemachine,statemachine.legs,1)
-    rulesCopy = copy.deepcopy(rules)
-
-    while len(rulesCopy) != 0:
-       
-        
+            ruleset = Druleset
 
         
-
-        randomindex =  random.randrange(len(rulesCopy))
-        ruleTuple = rulesCopy[randomindex]
-
-        statemachine.setBeginFinal()
-        
-
+        refinement_iteration = random.choice(ruleset)
         state = random.choice(statemachine.states)
+        # Can't apply upon initial and final place
         
-        while ruleTuple[0] == r3 and (state == statemachine.BeginState or state == statemachine.FinalState):
+        while refinement_iteration[0] == r3 and (state == statemachine.BeginState or state == statemachine.FinalState):
+            refinement_iteration = random.choice(ruleset)
             state = random.choice(statemachine.states)
-            randomindex =  random.randrange(len(rulesCopy))
-            ruleTuple = rules[randomindex]
+
+
+           
+        tempInputs -= selected_rule_inputs_outputs(refinement_iteration[-1])[0]
+        tempOutputs -= selected_rule_inputs_outputs(refinement_iteration[-1])[1]
+
+        if tempInputs < 0 or tempOutputs < 0:
+            tempInputs += selected_rule_inputs_outputs(refinement_iteration[-1])[0]
+            tempOutputs += selected_rule_inputs_outputs(refinement_iteration[-1])[1]
+            continue
+
+
+
+              
 
         firstParam = state
         secondParam = None
 
-        for rule in ruleTuple:
+        for rule in refinement_iteration:
            
 
             # r3_1 or r3_2
@@ -569,12 +500,39 @@ def generate(rules):
                 
             else:
                 firstParam, secondParam = rule(firstParam,statemachine)
-
-        # TODO MAKE THIS POP PRESERVE order
-        del rulesCopy[randomindex]
+        currentPrevalence = determine_non_determinism(statemachine)
+        
+       
+   
     
-    statemachine.setBeginFinal()   
+   
     return statemachine
+
+
+def determine_non_determinism(statemachine):
+    deterministic = 0
+    nondeterministic = 0
+
+    transition_counts = defaultdict(int)
+
+    for transition in statemachine.transitions:
+        transition_counts[transition.start] += 1
+    
+   
+    for state in statemachine.states:
+       
+        if transition_counts[state] > 1:
+            nondeterministic += transition_counts[state]
+        else:
+            deterministic += transition_counts[state]
+
+
+
+    
+    return nondeterministic/(deterministic + nondeterministic)
+        
+
+   
 
 
 if __name__ == "__main__":
@@ -611,8 +569,10 @@ if __name__ == "__main__":
     if prevalence > max_prev:
         warnings.warn("Prevalence of {} higher than maximum achievable {}".format(prevalence,max_prev), RuntimeWarning,stacklevel=2)
     
-    rules = random_generator(inputs,outputs,prevalence)
-    statemachine  = generate(rules)
+    statemachine = random_generator(inputs,outputs,prevalence)
+    print(verify_choice_property(statemachine))
+    print(determine_non_determinism(statemachine))
+    # statemachine  = generate(rules)
 
    
 
