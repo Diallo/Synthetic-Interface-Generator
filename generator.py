@@ -23,8 +23,6 @@ class StateMachine:
         self.rulelist = []
         self.transitions = []
         self.states = []
-        self.nondeterminsitics = 0 # Number of nondeterministic transitions
-        self.deterministic = 0 # Number of deterministic transitions
         self.BeginState = None
         self.FinalState = None
         self.legs = 1 # All portnets start with a single leg as the main leg
@@ -59,7 +57,7 @@ class StateMachine:
     
 
 
-
+    # TODO: THIS NO LNOGER WORK BECAUSE .DETERMINISTIC IS GONE
     def __str__(self):
         output = "STATES: \n"
         for state in self.states:
@@ -86,9 +84,6 @@ class State:
         self.name = name
         self.modifiable = True
         self.name = "p{}_{}".format(leg,number)
-        self.deterministic = True
-        self.outgoing = 0
-        self.nondeterministic = False
         # identifying info for leg STARTS AT 1
         self.leg = leg
         self.number = number
@@ -118,7 +113,6 @@ class Transition:
         self.end = end
         self.input = False # This indicates that this transition is an output
         self.output = False
-        self.nondeterministic = False
         statemachine.transitions.append(self)
     
     def __str__(self):
@@ -139,14 +133,7 @@ def r0(state,statemachine):
 
     transition = Transition(state,newState,statemachine)
 
-    if state.nondeterministic:
-        transition.nondeterministic = True
-        newState.nondeterministic = True
-
-    if not state.deterministic:
-        newState.deterministic = False
-        state.deterministic = True
-
+  
     return (transition,None)
 
 def r1(transition,statemachine):
@@ -154,16 +141,12 @@ def r1(transition,statemachine):
     newTransition = Transition(newState,transition.end,statemachine)
     transition.end = newState
 
-    if transition.nondeterministic:
-        newTransition.nondeterministic = True
-        newState.nondeterministic = True
 
     return (transition,newTransition) ### T1 and T2
 
 
 def r2(transition,statemachine):
     newTransition = Transition(transition.start,transition.end,statemachine)
-    transition.start.deterministic = False
     
     
     # TODO: Don't need to do anything here about nondeterminism cause modified rules
@@ -173,7 +156,6 @@ def r2(transition,statemachine):
 def r3(state,statemachine):
     transition = Transition(state,state,statemachine)
 
-    state.deterministic = False
     #TODO:L Dont need to do anything here about nondet cause modified rules
 
     return (state,transition)
@@ -221,13 +203,7 @@ def r2_1(t1,t2,statemachine):
     t4.input = True
 
 
-    FirstLegState.nondeterministic = True
-    SecondLegState.nondeterministic = True
-    t1.nondeterministic = True
-    t2.nondeterministic = True
-    t3.nondeterministic = True
-    t4.nondeterministic = True
-
+   
     return None,None
 
     
@@ -250,12 +226,7 @@ def r2_2(t1,t2,statemachine):
     t1.input = True
     t2.input = True
 
-    FirstLegState.nondeterministic = True
-    SecondLegState.nondeterministic = True
-    t1.nondeterministic = True
-    t2.nondeterministic = True
-    t3.nondeterministic = True
-    t4.nondeterministic = True
+    
 
     return None,None
 
@@ -271,7 +242,7 @@ def r3_1(p1,t1,statemachine):
     t1.input = True
 
 
-    p1.nondeterministic = True
+    
     return None,None
 
 def r3_2(p1,t1,statemachine):
@@ -285,7 +256,6 @@ def r3_2(p1,t1,statemachine):
     t2.input = True
     t1.output = True
 
-    p1.nondeterministic = True
     
    
 
@@ -295,27 +265,6 @@ def r3_2(p1,t1,statemachine):
 
 
 
-# These dictionaires represent THE FSM
-# indicating which rule functions may be called in which
-# state. 
-# Split into the deterministic ruleset and non-deterministic ruleset
-# Druleset = {}
-# Druleset["start"] = [r0]
-# Druleset[r0] = [r0_1,r0_2,r1]
-# Druleset[r1] = [r1_1,r1_2]
-# NRuleset = {}
-# NRuleset["start"] = [r0,r3]
-# NRuleset[r0] = [r2]
-# NRuleset[r2] = [r2_1,r2_2]
-# NRuleset[r3] = [r3_1,r3_2]
-
-
-
-Druleset = [(r0,r0_1), (r0,r0_2), (r0,r1,r1_1), (r0,r1,r1_1)]
-NRuleset = [(r3,r3_1),(r3,r3_2),(r0,r2,r2_1),(r0,r2,r2_2)]
-
-# LetNonDetRules={〈R3,R3′〉,〈R3,R3”〉,〈R0,R2,R2′〉,〈R0,R2,R2”〉}
-# LetDetRules={〈R0,R0′〉,〈R0,R0”〉,〈R0,R1,R1′〉,〈R0,R1,R1”〉}
 
 
 
@@ -354,6 +303,7 @@ def selected_rule_states(rule,placeDeterministic=False):
 
 
 def verify_choice_property(statemachine):
+    # TODO: THIS NO LONGER WORKS BECAUSE WE DO NOT HAVE NOTION OF X.DETERMINISTIC
     nondeterministic_states = [x for x in statemachine.states if x.deterministic == False]
     
     for state in nondeterministic_states:
@@ -570,7 +520,7 @@ if __name__ == "__main__":
         warnings.warn("Prevalence of {} higher than maximum achievable {}".format(prevalence,max_prev), RuntimeWarning,stacklevel=2)
     
     statemachine = random_generator(inputs,outputs,prevalence)
-    print(verify_choice_property(statemachine))
+    # print(verify_choice_property(statemachine))
     print(determine_non_determinism(statemachine))
     # statemachine  = generate(rules)
 
