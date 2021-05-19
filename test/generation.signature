@@ -1,0 +1,29 @@
+import "generation.types"
+
+signature generation
+
+// inputs
+signals 
+inTRp1_1_0
+inTRp1_1_1
+inTRp1_2_4
+inTRp1_2_5
+inTRp4_1_8
+inTRp4_1_9
+inTRp8_1_13
+inTRp9_1_15
+inTRp10_1_18
+inTRp11_1_19
+// outputs
+notifications
+outTRp2_1_2
+outTRp3_1_3
+outTRp4_1_6
+outTRp5_1_7
+outTRp6_1_10
+outTRp7_1_11
+outTRp3_1_12
+outTRp3_1_14
+outTRp1_1_16
+outTRp1_1_17
+

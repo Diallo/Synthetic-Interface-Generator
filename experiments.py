@@ -385,7 +385,7 @@ def experiment_4(prevalence=0.2):
 
 
 if __name__ == "__main__":
-    experiment_1()
+    # experiment_1()
     print("done1")
     # experiment_2()
     print("done2")

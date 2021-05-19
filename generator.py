@@ -375,67 +375,67 @@ def random_generator(inputs,outputs,prevalence):
         inputs {[type]} -- [description]
         outputs {[type]} -- [description]
     """
-    tempInputs = inputs
-    tempOutputs = outputs
-    
-    
-    
-    nondeterministic = 0
-    deterministic = 0
-    currentPrevalence = 0
 
-
-    
+    # We define the rulesets: Deterministic, NonDeterministic respectively.
     Druleset = [(r0,r0_1), (r0,r0_2), (r0,r1,r1_1), (r0,r1,r1_1)]
     Nruleset = [(r3,r3_1),(r3,r3_2),(r0,r2,r2_1),(r0,r2,r2_2)]
-    ruleset = None
+    currentPrevalence = 0
+    
+    ruleset = None # (Current Ruleset in the algorithm)
 
+    # We generate an empty portnet and then add one singular place to it.
     statemachine = StateMachine()
     state = State("start",statemachine,statemachine.legs,1)
 
+    # The main body of the algorithm. We continue until we satisfy the inputs/outputs
+    while inputs > 0 or outputs > 0: 
 
-    while tempInputs > 0 or tempOutputs > 0:
+        # Helper code to mark the begin and final state within our algorithm
+        # This can be ignored but is needed so we cannot refine R3 upon start/initial
         statemachine.setBeginFinal()
 
-        if currentPrevalence < prevalence and tempInputs >= 1 and tempOutputs >= 1 :
-            
-            #Nruleset
+        # Additional condition: BOTH inputs and outputs need to be higher than 
+        # one, otherwise no nondeterministic rule can satisfy our condition
+        if currentPrevalence < prevalence and inputs >= 1 and outputs >= 1 :
             ruleset = Nruleset
         else:
             ruleset = Druleset
 
-        
+        # Select a random rule and state to apply it upon.
         refinement_iteration = random.choice(ruleset)
         state = random.choice(statemachine.states)
-        # Can't apply upon initial and final place
-        
+
+        # Can't apply upon initial and final place. If we have selected R3 and a final/start place.
+        # We randomly select again from the list of rules and select another place.
         while refinement_iteration[0] == r3 and (state == statemachine.BeginState or state == statemachine.FinalState):
             refinement_iteration = random.choice(ruleset)
             state = random.choice(statemachine.states)
 
 
-           
-        tempInputs -= selected_rule_inputs_outputs(refinement_iteration[-1])[0]
-        tempOutputs -= selected_rule_inputs_outputs(refinement_iteration[-1])[1]
+        # We compute the new values of inputs/outputs and subtract them
+        inputs -= selected_rule_inputs_outputs(refinement_iteration[-1])[0]
+        outputs -= selected_rule_inputs_outputs(refinement_iteration[-1])[1]
 
-        if tempInputs < 0 or tempOutputs < 0:
-            tempInputs += selected_rule_inputs_outputs(refinement_iteration[-1])[0]
-            tempOutputs += selected_rule_inputs_outputs(refinement_iteration[-1])[1]
+        # If we go under the desired inputs/outputs (the rule adds too many inputs/outputs)
+        # we run the algorithm again discarding the selected rule.
+        if inputs < 0 or outputs < 0:
+            inputs += selected_rule_inputs_outputs(refinement_iteration[-1])[0]
+            outputs += selected_rule_inputs_outputs(refinement_iteration[-1])[1]
             continue
 
 
 
-              
-
+        # APPLICATION SET OF RULES
+        # Parameters are used to provide functions with the required input
         firstParam = state
-        secondParam = None
+        secondParam = None  
 
+        # For each rule within the refinement iteration we selected
+        # We apply this rule
         for rule in refinement_iteration:
-           
-
-            # r3_1 or r3_2
+            # Sometimes r3_1 or r3_2 might violate choice property, then we just
+            # switch the rules around.
             if rule == r3_1 or rule == r3_2:
-            
                 for transition in statemachine.transitions:
                     if transition.start == state:
                         if transition.input:
@@ -444,18 +444,17 @@ def random_generator(inputs,outputs,prevalence):
                             rule = r3_2
                         break
 
-                   
+            # helper code, can be ignored.
             if secondParam:
                 firstParam, secondParam = rule(firstParam,secondParam,statemachine)
                 
             else:
                 firstParam, secondParam = rule(firstParam,statemachine)
+        
+        # Compute the prevalence of the portnet that has just been constructed and run
+        # algorithm again if needed
         currentPrevalence = determine_non_determinism(statemachine)
         
-       
-   
-    
-   
     return statemachine
 
 
