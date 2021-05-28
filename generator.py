@@ -23,8 +23,6 @@ class StateMachine:
         self.rulelist = []
         self.transitions = []
         self.states = []
-        self.nondeterminsitics = 0 # Number of nondeterministic transitions
-        self.deterministic = 0 # Number of deterministic transitions
         self.BeginState = None
         self.FinalState = None
         self.legs = 1 # All portnets start with a single leg as the main leg
@@ -59,7 +57,7 @@ class StateMachine:
     
 
 
-
+    # TODO: THIS NO LNOGER WORK BECAUSE .DETERMINISTIC IS GONE
     def __str__(self):
         output = "STATES: \n"
         for state in self.states:
@@ -86,9 +84,6 @@ class State:
         self.name = name
         self.modifiable = True
         self.name = "p{}_{}".format(leg,number)
-        self.deterministic = True
-        self.outgoing = 0
-        self.nondeterministic = False
         # identifying info for leg STARTS AT 1
         self.leg = leg
         self.number = number
@@ -118,7 +113,6 @@ class Transition:
         self.end = end
         self.input = False # This indicates that this transition is an output
         self.output = False
-        self.nondeterministic = False
         statemachine.transitions.append(self)
     
     def __str__(self):
@@ -139,14 +133,7 @@ def r0(state,statemachine):
 
     transition = Transition(state,newState,statemachine)
 
-    if state.nondeterministic:
-        transition.nondeterministic = True
-        newState.nondeterministic = True
-
-    if not state.deterministic:
-        newState.deterministic = False
-        state.deterministic = True
-
+  
     return (transition,None)
 
 def r1(transition,statemachine):
@@ -154,16 +141,12 @@ def r1(transition,statemachine):
     newTransition = Transition(newState,transition.end,statemachine)
     transition.end = newState
 
-    if transition.nondeterministic:
-        newTransition.nondeterministic = True
-        newState.nondeterministic = True
 
     return (transition,newTransition) ### T1 and T2
 
 
 def r2(transition,statemachine):
     newTransition = Transition(transition.start,transition.end,statemachine)
-    transition.start.deterministic = False
     
     
     # TODO: Don't need to do anything here about nondeterminism cause modified rules
@@ -173,7 +156,6 @@ def r2(transition,statemachine):
 def r3(state,statemachine):
     transition = Transition(state,state,statemachine)
 
-    state.deterministic = False
     #TODO:L Dont need to do anything here about nondet cause modified rules
 
     return (state,transition)
@@ -221,13 +203,7 @@ def r2_1(t1,t2,statemachine):
     t4.input = True
 
 
-    FirstLegState.nondeterministic = True
-    SecondLegState.nondeterministic = True
-    t1.nondeterministic = True
-    t2.nondeterministic = True
-    t3.nondeterministic = True
-    t4.nondeterministic = True
-
+   
     return None,None
 
     
@@ -250,12 +226,7 @@ def r2_2(t1,t2,statemachine):
     t1.input = True
     t2.input = True
 
-    FirstLegState.nondeterministic = True
-    SecondLegState.nondeterministic = True
-    t1.nondeterministic = True
-    t2.nondeterministic = True
-    t3.nondeterministic = True
-    t4.nondeterministic = True
+    
 
     return None,None
 
@@ -271,7 +242,7 @@ def r3_1(p1,t1,statemachine):
     t1.input = True
 
 
-    p1.nondeterministic = True
+    
     return None,None
 
 def r3_2(p1,t1,statemachine):
@@ -285,7 +256,6 @@ def r3_2(p1,t1,statemachine):
     t2.input = True
     t1.output = True
 
-    p1.nondeterministic = True
     
    
 
@@ -293,21 +263,6 @@ def r3_2(p1,t1,statemachine):
 
 
 
-
-
-# These dictionaires represent THE FSM
-# indicating which rule functions may be called in which
-# state. 
-# Split into the deterministic ruleset and non-deterministic ruleset
-Druleset = {}
-Druleset["start"] = [r0]
-Druleset[r0] = [r0_1,r0_2,r1]
-Druleset[r1] = [r1_1,r1_2]
-NRuleset = {}
-NRuleset["start"] = [r0,r3]
-NRuleset[r0] = [r2]
-NRuleset[r2] = [r2_1,r2_2]
-NRuleset[r3] = [r3_1,r3_2]
 
 
 
@@ -348,6 +303,7 @@ def selected_rule_states(rule,placeDeterministic=False):
 
 
 def verify_choice_property(statemachine):
+    # TODO: THIS NO LONGER WORKS BECAUSE WE DO NOT HAVE NOTION OF X.DETERMINISTIC
     nondeterministic_states = [x for x in statemachine.states if x.deterministic == False]
     
     for state in nondeterministic_states:
@@ -419,142 +375,67 @@ def random_generator(inputs,outputs,prevalence):
         inputs {[type]} -- [description]
         outputs {[type]} -- [description]
     """
-    tempInputs = inputs
-    tempOutputs = outputs
-    
-    # estimatedPlaces = round(inputs * 2 /AVGNUMBER)
-    # rule2applications = round(prevalence * estimatedPlaces)
-    ruleApplications = []
 
-
-    
-    nondeterministic = 0
-    deterministic = 0
+    # We define the rulesets: Deterministic, NonDeterministic respectively.
+    Druleset = [(r0,r0_1), (r0,r0_2), (r0,r1,r1_1), (r0,r1,r1_1)]
+    Nruleset = [(r3,r3_1),(r3,r3_2),(r0,r2,r2_1),(r0,r2,r2_2)]
     currentPrevalence = 0
-
-
-    while tempInputs > 0 or tempOutputs > 0:
-        if currentPrevalence < prevalence and tempInputs >= 1 and tempOutputs >= 1 :
-            
-            currentState = "start"
-            rules = []
-            while currentState in NRuleset:
-             
-                madeChoice = random.choice(NRuleset[currentState])
-                if madeChoice == r3 and deterministic == 0:
-                    continue
-                else:
-                    currentState = madeChoice
-                    rules.append(currentState)
-                
-            deterministic += selected_rule_states(currentState)[0]
-            nondeterministic += selected_rule_states(currentState)[1]
-            tempInputs -= selected_rule_inputs_outputs(currentState)[0]
-            tempOutputs -= selected_rule_inputs_outputs(currentState)[1]
-
-            if tempInputs < 0 or tempOutputs < 0:
-                tempInputs += selected_rule_inputs_outputs(currentState)[0]
-                tempOutputs += selected_rule_inputs_outputs(currentState)[1]
-                deterministic += selected_rule_states(currentState)[0]
-                nondeterministic += selected_rule_states(currentState)[1]
-            else:
-                ruleApplications.append(tuple(rules))
-
-
-        
-        # if prevalence above required
-        else:
-      
-            currentState = "start"
-            rules = []
-            while currentState in Druleset:
-             
-                madeChoice = random.choice(Druleset[currentState])
-                
-                currentState = madeChoice
-                rules.append(currentState)
-                
-            
-            deterministic += selected_rule_states(currentState)[0]
-            nondeterministic += selected_rule_states(currentState)[1]
-            tempInputs -= selected_rule_inputs_outputs(currentState)[0]
-            tempOutputs -= selected_rule_inputs_outputs(currentState)[1]
-
-            if tempInputs < 0 or tempOutputs < 0:
-                tempInputs += selected_rule_inputs_outputs(currentState)[0]
-                tempOutputs += selected_rule_inputs_outputs(currentState)[1]
-                deterministic -= selected_rule_states(currentState)[0]
-                nondeterministic -= selected_rule_states(currentState)[1]
-            else:
-                ruleApplications.append(tuple(rules))
-
-        currentPrevalence = (nondeterministic/(nondeterministic+deterministic) ) if (nondeterministic+deterministic) else 0
-      
-       
-   
-    StateMachine.deterministic = deterministic
-    StateMachine.nondeterminsitics = nondeterministic
-    random.shuffle(ruleApplications)
-   
-   
-    return ruleApplications
-
-
-def determine_non_determinism(statemachine):
-    deterministic = 0
-    nondeterministic = 0
-
-    for transition in statemachine.transitions:
-        transition.start.outgoing += 1
     
-   
-    for state in statemachine.states:
-       
-        if state.outgoing > 1:
-            nondeterministic += state.outgoing
-        else:
-            deterministic += state.outgoing
-   
-    return nondeterministic/(deterministic + nondeterministic)
-        
+    ruleset = None # (Current Ruleset in the algorithm)
 
-    
-
-def generate(rules):
+    # We generate an empty portnet and then add one singular place to it.
     statemachine = StateMachine()
-    statemachine.rulelist  = rules
-    
     state = State("start",statemachine,statemachine.legs,1)
-    rulesCopy = copy.deepcopy(rules)
 
-    while len(rulesCopy) != 0:
-       
-        
+    # The main body of the algorithm. We continue until we satisfy the inputs/outputs
+    while inputs > 0 or outputs > 0: 
 
-        
-
-        randomindex =  random.randrange(len(rulesCopy))
-        ruleTuple = rulesCopy[randomindex]
-
+        # Helper code to mark the begin and final state within our algorithm
+        # This can be ignored but is needed so we cannot refine R3 upon start/initial
         statemachine.setBeginFinal()
-        
 
+        # Additional condition: BOTH inputs and outputs need to be higher than 
+        # one, otherwise no nondeterministic rule can satisfy our condition
+        if currentPrevalence < prevalence and inputs >= 1 and outputs >= 1 :
+            ruleset = Nruleset
+        else:
+            ruleset = Druleset
+
+        # Select a random rule and state to apply it upon.
+        refinement_iteration = random.choice(ruleset)
         state = random.choice(statemachine.states)
-        
-        while ruleTuple[0] == r3 and (state == statemachine.BeginState or state == statemachine.FinalState):
+
+        # Can't apply upon initial and final place. If we have selected R3 and a final/start place.
+        # We randomly select again from the list of rules and select another place.
+        while refinement_iteration[0] == r3 and (state == statemachine.BeginState or state == statemachine.FinalState):
+            refinement_iteration = random.choice(ruleset)
             state = random.choice(statemachine.states)
-            randomindex =  random.randrange(len(rulesCopy))
-            ruleTuple = rules[randomindex]
 
+
+        # We compute the new values of inputs/outputs and subtract them
+        inputs -= selected_rule_inputs_outputs(refinement_iteration[-1])[0]
+        outputs -= selected_rule_inputs_outputs(refinement_iteration[-1])[1]
+
+        # If we go under the desired inputs/outputs (the rule adds too many inputs/outputs)
+        # we run the algorithm again discarding the selected rule.
+        if inputs < 0 or outputs < 0:
+            inputs += selected_rule_inputs_outputs(refinement_iteration[-1])[0]
+            outputs += selected_rule_inputs_outputs(refinement_iteration[-1])[1]
+            continue
+
+
+
+        # APPLICATION SET OF RULES
+        # Parameters are used to provide functions with the required input
         firstParam = state
-        secondParam = None
+        secondParam = None  
 
-        for rule in ruleTuple:
-           
-
-            # r3_1 or r3_2
+        # For each rule within the refinement iteration we selected
+        # We apply this rule
+        for rule in refinement_iteration:
+            # Sometimes r3_1 or r3_2 might violate choice property, then we just
+            # switch the rules around.
             if rule == r3_1 or rule == r3_2:
-            
                 for transition in statemachine.transitions:
                     if transition.start == state:
                         if transition.input:
@@ -563,18 +444,44 @@ def generate(rules):
                             rule = r3_2
                         break
 
-                   
+            # helper code, can be ignored.
             if secondParam:
                 firstParam, secondParam = rule(firstParam,secondParam,statemachine)
                 
             else:
                 firstParam, secondParam = rule(firstParam,statemachine)
-
-        # TODO MAKE THIS POP PRESERVE order
-        del rulesCopy[randomindex]
-    
-    statemachine.setBeginFinal()   
+        
+        # Compute the prevalence of the portnet that has just been constructed and run
+        # algorithm again if needed
+        currentPrevalence = determine_non_determinism(statemachine)
+        
     return statemachine
+
+
+def determine_non_determinism(statemachine):
+    deterministic = 0
+    nondeterministic = 0
+
+    transition_counts = defaultdict(int)
+
+    for transition in statemachine.transitions:
+        transition_counts[transition.start] += 1
+    
+   
+    for state in statemachine.states:
+       
+        if transition_counts[state] > 1:
+            nondeterministic += transition_counts[state]
+        else:
+            deterministic += transition_counts[state]
+
+
+
+    
+    return nondeterministic/(deterministic + nondeterministic)
+        
+
+   
 
 
 if __name__ == "__main__":
@@ -611,8 +518,10 @@ if __name__ == "__main__":
     if prevalence > max_prev:
         warnings.warn("Prevalence of {} higher than maximum achievable {}".format(prevalence,max_prev), RuntimeWarning,stacklevel=2)
     
-    rules = random_generator(inputs,outputs,prevalence)
-    statemachine  = generate(rules)
+    statemachine = random_generator(inputs,outputs,prevalence)
+    # print(verify_choice_property(statemachine))
+    print(determine_non_determinism(statemachine))
+    # statemachine  = generate(rules)
 
    
 

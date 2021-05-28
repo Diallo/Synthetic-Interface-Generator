@@ -1,0 +1,126 @@
+import "generation.signature"
+
+interface generation version "1.0"
+
+
+		
+machine generation {
+
+	initial state p1_1{
+			transition
+				do: outTRp1_1_16
+				next state: p10_1
+			
+			transition
+				do: outTRp1_1_17
+				next state: p11_1
+			}
+
+	 state p1_3{
+			transition
+				trigger: inTRp1_2_4
+				next state: p4_1
+			
+			
+			transition
+				trigger: inTRp1_2_5
+				next state: p5_1
+			
+			}
+
+	 state p2_1{
+			transition
+				do: outTRp2_1_2
+				next state: p1_3
+			}
+
+	 state p3_1{
+			transition
+				do: outTRp3_1_3
+				next state: p1_3
+			
+			transition
+				do: outTRp3_1_12
+				next state: p8_1
+			
+			transition
+				do: outTRp3_1_14
+				next state: p9_1
+			}
+
+	 state p4_1{
+			transition
+				trigger: inTRp4_1_8
+				next state: p6_1
+			
+			
+			transition
+				trigger: inTRp4_1_9
+				next state: p7_1
+			
+			}
+
+	 state p5_1{
+			transition
+				do: outTRp5_1_7
+				next state: p1_1
+			}
+
+	 state p4_2{
+			transition
+				do: outTRp4_1_6
+				next state: p1_1
+			}
+
+	 state p6_1{
+			transition
+				do: outTRp6_1_10
+				next state: p4_2
+			}
+
+	 state p7_1{
+			transition
+				do: outTRp7_1_11
+				next state: p4_2
+			}
+
+	 state p8_1{
+			transition
+				trigger: inTRp8_1_13
+				next state: p3_1
+			
+			}
+
+	 state p9_1{
+			transition
+				trigger: inTRp9_1_15
+				next state: p3_1
+			
+			}
+
+	 state p1_2{
+			transition
+				trigger: inTRp1_1_0
+				next state: p2_1
+			
+			
+			transition
+				trigger: inTRp1_1_1
+				next state: p3_1
+			
+			}
+
+	 state p10_1{
+			transition
+				trigger: inTRp10_1_18
+				next state: p1_2
+			
+			}
+
+	 state p11_1{
+			transition
+				trigger: inTRp11_1_19
+				next state: p1_2
+			
+			}
+}
