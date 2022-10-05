@@ -43,8 +43,8 @@ ComMA:  https://sws.cs.ru.nl/publications/papers/hooman/MODELSWARD2017.pdf
 
 # Gratitudes for their amazing help:
 
-Benny Akesson
-Debjyoti Bera
-Jack Sleuters
-Ronald Begeer
-
+Benny Akesson. 
+Debjyoti Bera. 
+Jack Sleuters. 
+Ronald Begeer. 
+  
