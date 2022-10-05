@@ -1,18 +1,17 @@
 # Abstract: 
-In cyber-physical systems with long lifetimes, updating components is a costly process.
-Service-oriented software architectures are used to introduce flexibility into a system. This
-allows for modification of the underlying component, which implements a particular version
-of an interface, causing the system to evolve. Service interfaces thus create an abstraction
-layer over the components. With this abstraction layer, systems can be made up of various
-components that may be replaced or modified, provided they implement the same version of
-the interface. This abstraction breaks when service interfaces need to be modified, meaning
-that all components implementing that interface may fail.
-The Dynamics project proposes a methodology for detecting and correcting incompatibilities within service interfaces post-modification. The scalability of the methodology presented in Dynamics has not been evaluated. They do not have sufficient existing interfaces
-to use for evaluations. This thesis aims to provide a starting point for the scalability evaluation of the proposed methodology. This will be done by generating synthetic interfaces of
-various complexity. We make two contributions in this thesis. First, we define the notion
-of complexity as inputs, outputs and non-determinism. Furthermore, the relation between
-these parameters is studied. Second, the methodology for a ComMA interface generator
-using user-supplied complexity parameters is introduced.
+There are many classes of Petri nets for describing communicating systems. Some of these guarantee important properties, such as
+termination in the case of portnets. There are also many methods and
+tools available for their analysis and synthesis. However, when developing new methods, or benchmarking against existing ones, it is often
+helpful to quickly generate large sets of random models satisfying certain
+properties and user-defined rules.
+This paper presents a heuristic-driven method for synthetic generation of
+random portnets based on refinement rules. The method considers three
+user-specified complexity parameters: the expected number input and
+output places, and the prevalence of non-determinism in the skeleton
+of the generated net. An implementation of this method is available
+as an open-source Python tool. Experiments demonstrate the relations
+between the three complexity parameters and investigate the boundaries
+of the proposed method.
 
 # Description
 This repository contains the source code for a PortNet (Petri Net) and CoMMa interface generator.
@@ -33,6 +32,8 @@ The code is a result of my bachelor thesis on "Towards the Scalability of Detect
 
 
 # Additional Reading
+Paper: https://diallom.com/static/pnse.pdf
+
 Thesis: https://diallom.com/static/thesis.pdf
   
   
