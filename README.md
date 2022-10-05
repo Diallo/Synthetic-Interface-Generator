@@ -13,6 +13,8 @@ as an open-source Python tool. Experiments demonstrate the relations
 between the three complexity parameters and investigate the boundaries
 of the proposed method.
 
+Paper: https://diallom.com/static/pnse.pdf
+
 # Description
 This repository contains the source code for a PortNet (Petri Net) and CoMMa interface generator.
 The code is a result of my bachelor thesis on "Towards the Scalability of Detecting and Correcting Incompatible Service Interfaces"
@@ -38,3 +40,11 @@ Thesis: https://diallom.com/static/thesis.pdf
   
   
 ComMA:  https://sws.cs.ru.nl/publications/papers/hooman/MODELSWARD2017.pdf
+
+# Gratitudes for their amazing help:
+
+Benny Akesson
+Debjyoti Bera
+Jack Sleuters
+Ronald Begeer
+
